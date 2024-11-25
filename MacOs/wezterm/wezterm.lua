@@ -45,7 +45,7 @@ config.font_rules = {
 		}),
 	},
 }
-config.font_size = 13
+config.font_size = 12
 
 -- Color schemes
 --config.color_scheme = "AdventureTime"
