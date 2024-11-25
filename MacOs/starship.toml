@@ -1,0 +1,155 @@
+format = """
+[](#3B4252)\
+$username\
+$os\
+[](bg:#434C5E fg:#3B4252)\
+$directory\
+[](fg:#434C5E bg:#4C566A)\
+$git_branch\
+$git_status\
+[](fg:#4C566A bg:#86BBD8)\
+$c\
+$golang\
+$haskell\
+$java\
+$python\
+$ocaml\
+$nodejs\
+$rust\
+[](fg:#86BBD8 bg:#06969A)\
+$localip\
+[](fg:#06969A bg:#33658A)\
+$time\
+[ ](fg:#33658A)\
+"""
+command_timeout = 5000
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+# You can also replace your username with a neat symbol like  to save some space
+[username]
+show_always = true
+style_user = "bg:#3B4252"
+style_root = "bg:#3B4252"
+format = '[$user ]($style)'
+
+[os]
+style = "bg:#3B4252"
+format = '[$symbol]($style)'
+disabled = false
+[os.symbols]
+Macos = "🎮"
+
+[directory]
+style = "bg:#434C5E"
+format = "[ $path ]($style)"
+truncation_length = 1
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+# Standard macOS directories with Foundation and Ender's Game themes
+"Documents" = "🌌 Terminus "    # Foundation's capital
+"Downloads" = "🚀 Dragon "      # Ender's Dragon Army
+"Music" = "🎭 Trantor "        # The cultural center of the Galactic Empire
+"Pictures" = "🌟 Stellar "      # For the galactic imagery in both series
+"Movies" = "🛸 Battle "         # Battle School from Ender's Game
+"Desktop" = "🌍 Prime "         # First Foundation
+"Applications" = "🧠 Second "    # Second Foundation
+"Library" = "💫 Psychohistory " # Seldon's mathematical sociology
+"ClassNotes" = "💫 Psychohistory " # Seldon's mathematical sociology
+"Public" = "🌐 IF "            # International Fleet from Ender's Game
+"Home" = "🏠 Earth "           # Humanity's origin in both series
+"GitHub" = "⚔️ Command "        # Command School from Ender's Game
+"Linux ISOs" = "🌌 Ansible "    # The ansible device from Ender's Game
+
+
+[c]
+symbol = "🤖" # Robot theme from Asimov
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[git_branch]
+symbol = "🌌"  # Galactic Empire branching paths of history
+style = "bg:#4C566A"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+# Conflicted: The war between humans and Formics
+conflicted = "⚔️ Formic War "
+
+# Ahead: Faster-Than-Light ansible communication
+ahead = "📡 Ansible ×${count} "
+
+# Behind: Time debt from relativistic space travel
+behind = "🕐 Relativistic ×${count} "
+
+# Diverged: The split between First and Second Foundation
+diverged = "🔮 Split ×${ahead_count} 🧠 ×${behind_count} "
+
+# Untracked: Unknown variables in psychohistory
+untracked = "❓ Mule ×${count} "
+
+# Stashed: Stored in the Time Vault
+stashed = "🔒 TimeVault "
+
+# Modified: Changed by psychohistorical intervention
+modified = "🌟 Seldon ×${count} "
+
+# Staged: Ready for Battle School
+staged = "🚀 Launch ×${count} "
+
+# Renamed: Given new identity like Bean/Ender
+renamed = "🎭 Identity ×${count} "
+
+# Deleted: Like the destroyed Eros
+deleted = "💥 Eros ×${count} "
+style = "bg:#4C566A"
+format = '[$all_status$ahead_behind ]($style)'
+
+[localip]
+ssh_only = false
+disabled = false
+style = "bg:#06969A"
+format = "[$localipv4]($style)"
+
+[golang]
+symbol = "🌌"  # Galactic Empire
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = "🌌"  # Galactic Empire mental powers
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = "🛸"  # Battle School ships
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = "📡"  # Ansible communications
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = "🔮"  # Psychohistory calculations
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = "⚡" # Foundation's technology
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[ocaml]
+symbol = "🌟"  # Stellar navigation
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#33658A"
+format = '[ $time ]($style)'

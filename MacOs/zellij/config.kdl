@@ -1,0 +1,40 @@
+// Hide quick navigation UI
+ui {
+    pane_frames false
+}
+
+themes {
+    default {
+        fg "#bbc2cf"           // Doom One foreground
+        bg "#282c34"           // Doom One background
+        black "#1b2229"        // Doom One black
+        red "#ff6c6b"          // Doom One red
+        green "#98be65"        // Doom One green
+        yellow "#ecbe7b"       // Doom One yellow
+        blue "#51afef"         // Doom One blue
+        magenta "#c678dd"      // Doom One magenta/purple
+        cyan "#46d9ff"         // Doom One cyan
+        white "#bbc2cf"        // Doom One light gray
+        orange "#da8548"       // Doom One orange
+    }
+}
+
+// Configure default layout
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+    }
+}
+
+// Basic settings
+simplified_ui true
+default_layout "compact"
+pane_frames false
+
+// Shell integration for current directory
+copy_command "pbcopy" 
+copy_clipboard "primary" 
+scrollback_editor "/opt/homebrew/bin/nvim" 
