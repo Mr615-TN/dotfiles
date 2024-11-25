@@ -22,6 +22,10 @@ return {
         "c",
         "rust",
         "go",
+        "cmake",
+      },
+      filetype_to_parsername = {
+        ["ino"] = "cpp",
       },
     },
   },
