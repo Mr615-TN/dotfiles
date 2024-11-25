@@ -156,8 +156,6 @@ symbol = "🌟"  # Stellar navigation
 style = "bg:blue"
 format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
-
-
 [c]
 symbol = "🤖"  # Robot theme from Asimov
 style = "bg:blue"
