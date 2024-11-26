@@ -14,7 +14,7 @@ config.window_padding = {
 	top = 12,
 	bottom = 12,
 }
-config.enable_tab_bar = true
+config.enable_tab_bar = false
 config.window_close_confirmation = "NeverPrompt"
 
 -- Font configuration

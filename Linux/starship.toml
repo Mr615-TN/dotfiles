@@ -63,7 +63,6 @@ Pop = "🌠"       # Representing the Galactic Empire
 style = "fg:base bg:orange"
 format = "[ $path ]($style)"
 truncation_length = 1
-truncation_symbol = "…/"
 
 
 # Here is how you can shorten some long paths by text replacement
