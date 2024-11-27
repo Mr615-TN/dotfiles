@@ -64,7 +64,6 @@ style = "fg:base bg:orange"
 format = "[ $path ]($style)"
 truncation_length = 1
 
-
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
 [directory.substitutions]
@@ -85,7 +84,6 @@ truncation_length = 1
 # will not be replaced, because "Documents" was already substituted before.
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important  " = "  "
-
 
 [git_branch]
 symbol = "🌌"  # Galactic Empire branching paths 
@@ -121,18 +119,15 @@ symbol = "🌌"  # Galactic Empire
 style = "bg:blue"
 format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
-
 [haskell]
 symbol = "🧠"  # Second Foundation mental powers
 style = "bg:blue"
 format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
-
 [java]
 symbol = "🛸"  # Battle School ships
 style = "bg:blue"
 format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
-
 
 [nodejs]
 symbol = "📡"  # Ansible communications
@@ -143,7 +138,6 @@ format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 symbol = "🔮"  # Psychohistory calculations
 style = "bg:blue"
 format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
-
 
 [rust]
 symbol = "⚡"  # Foundation's technology

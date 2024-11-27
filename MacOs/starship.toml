@@ -81,6 +81,7 @@ truncation_length = 1
 "Home" = "🏠 Earth "           # Humanity's origin in both series
 "GitHub" = "⚔️ Command "        # Command School from Ender's Game
 "Linux ISOs" = "🌌 Ansible "    # The ansible device from Ender's Game
+
 [git_branch]
 symbol = "🌌"  # Galactic Empire branching paths 
 style = "bg:green"
@@ -115,18 +116,15 @@ symbol = "🌌"  # Galactic Empire
 style = "bg:blue"
 format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
-
 [haskell]
 symbol = "🧠"  # Second Foundation mental powers
 style = "bg:blue"
 format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 
-
 [java]
 symbol = "🛸"  # Battle School ships
 style = "bg:blue"
 format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
-
 
 [nodejs]
 symbol = "📡"  # Ansible communications
@@ -137,7 +135,6 @@ format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 symbol = "🔮"  # Psychohistory calculations
 style = "bg:blue"
 format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
-
 
 [rust]
 symbol = "⚡"  # Foundation's technology
