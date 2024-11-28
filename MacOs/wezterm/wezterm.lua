@@ -53,6 +53,7 @@ config.font_size = 12
 --config.color_scheme = "ChallengerDeep"
 config.color_scheme = "DoomOne"
 --config.color_scheme = "Everforest Dark (Gogh)"
+--config.color_scheme = "Gruvbox dark, pale (base16)"
 
 -- Scrollback
 config.scrollback_lines = 500
