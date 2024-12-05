@@ -80,6 +80,8 @@ style = "bg:base fg:text"
 format = "[$symbol ]($style)"
 [os.symbols]
 Pop = "🌠"       # Representing the Galactic Empire
+Linux = "🌠"       # Representing the Galactic Empire
+
 
 [directory]
 style = "fg:base bg:orange"
