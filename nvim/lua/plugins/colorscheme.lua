@@ -1,14 +1,15 @@
 return {
   -- add doom-one
   {
-    "NTBBloodbath/doom-one.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
   },
 
   -- Configure LazyVim to load doom-one
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "doom-one",
+      colorscheme = "catppuccin-frappe",
     },
   },
 }

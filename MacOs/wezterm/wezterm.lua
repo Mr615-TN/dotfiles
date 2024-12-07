@@ -50,8 +50,8 @@ config.font_size = 12
 -- Color schemes
 --config.color_scheme = "AdventureTime"
 --config.color_scheme = "Batman"
---config.color_scheme = "ChallengerDeep"
-config.color_scheme = "DoomOne"
+config.color_scheme = 'Catppuccin Frappé (Gogh)'
+--config.color_scheme = "DoomOne"
 --config.color_scheme = "Everforest Dark (Gogh)"
 --config.color_scheme = "Gruvbox dark, pale (base16)"
 

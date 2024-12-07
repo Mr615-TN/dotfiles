@@ -23,49 +23,27 @@ $time\
 [ ](fg:magenta)\
 $line_break$character"""
 
-#palette = 'doom_one'
+palette = 'doom_one'
 
-#[palettes.doom_one]
-#base = "#282c34"      # Dark background
-#surface = "#313640"   # Lighter background
-#overlay = "#3f444a"   # Even lighter background
-#muted = "#494952"     # Muted foreground
-#subtle = "#6c7b8b"    # Less muted foreground
-#text = "#bbc2cf"      # Default foreground
-#love = "#ff6c6b"      # Red
-#gold = "#da8548"      # Orange
-#rose = "#db8fa3"      # Light pink
-#pine = "#98be65"      # Green
-#foam = "#46d9ff"      # Cyan
-#iris = "#a9a1e1"      # Purple
-#orange = "#da8548"    # Warm orange
-#green = "#98be65"     # Vibrant green
-#blue = "#51afef"      # Bright blue
-#violet = "#5699af"    # Blue-violet
-#magenta = "#c678dd"   # Magenta/Purple
-#red = "#ff6c6b"       # Bright red
-
-palette = 'gruvbox_dark'
-
-[palettes.gruvbox_dark]
-base = "#282828"      # Dark background
-surface = "#3c3836"   # Lighter background
-overlay = "#504945"   # Even lighter background
-muted = "#665c54"     # Muted foreground
-subtle = "#928374"    # Less muted foreground
-text = "#ebdbb2"      # Default foreground
-love = "#fb4934"      # Red
-gold = "#fabd2f"      # Yellow/Orange
-rose = "#d3869b"      # Light pink
-pine = "#b8bb26"      # Green
-foam = "#83a598"      # Cyan
-iris = "#d3869b"      # Purple/Magenta
-orange = "#fe8019"    # Warm orange
-green = "#b8bb26"     # Vibrant green
-blue = "#83a598"      # Bright blue
-violet = "#d79921"    # Blue-violet/Golden
-magenta = "#d3869b"   # Magenta
-red = "#cc241d"       # Bright red
+[palettes.doom_one]
+base = "#282c34"      # Dark background
+surface = "#313640"   # Lighter background
+overlay = "#3f444a"   # Even lighter background
+muted = "#494952"     # Muted foreground
+subtle = "#6c7b8b"    # Less muted foreground
+text = "#bbc2cf"      # Default foreground
+love = "#ff6c6b"      # Red
+gold = "#da8548"      # Orange
+rose = "#db8fa3"      # Light pink
+pine = "#98be65"      # Green
+foam = "#46d9ff"      # Cyan
+iris = "#a9a1e1"      # Purple
+orange = "#da8548"    # Warm orange
+green = "#98be65"     # Vibrant green
+blue = "#51afef"      # Bright blue
+violet = "#5699af"    # Blue-violet
+magenta = "#c678dd"   # Magenta/Purple
+red = "#ff6c6b"       # Bright red
 
 # You can also replace your username with a neat symbol like  to save some space
 [username]
