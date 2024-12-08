@@ -2,9 +2,9 @@ format = """
 [](base)\
 $os\
 $username\
-[](bg:surface0 fg:base)\
+[](bg:orange fg:base)\
 $directory\
-[](fg:surface0 bg:green)\
+[](fg:orange bg:green)\
 $git_branch\
 $git_status\
 [](fg:green bg:blue)\
@@ -16,41 +16,40 @@ $ocaml\
 $java\
 $haskell\
 $python\
-[](fg:blue bg:lavender)\
+[](fg:blue bg:violet)\
 $localip\
-[](fg:lavender bg:mauve)\
+[](fg:violet bg:magenta)\
 $time\
-[ ](fg:mauve)\
+[ ](fg:magenta)\
 $line_break$character"""
 
-palette = 'catppuccin_mocha'
+palette = 'doom_one'
 
-[palettes.catppuccin_mocha]
-base = "#1E1E2E"      # Dark background
-surface0 = "#313244"  # Lighter background
-surface1 = "#45475A"  # Even lighter background
-surface2 = "#585B70"  # Muted foreground
-overlay0 = "#6C7086"  # Subtle foreground
-text = "#CDD6F4"     # Default foreground
-rosewater = "#F5E0DC" # Light pink
-flamingo = "#F2CDCD" # Soft pink
-pink = "#F5C2E7"     # Vibrant pink
-mauve = "#CBA6F7"    # Purple
-red = "#F38BA8"      # Red
-maroon = "#EBA0AC"   # Dark pink
-peach = "#FAB387"    # Orange
-yellow = "#F9E2AF"   # Yellow
-green = "#A6E3A1"    # Green
-teal = "#94E2D5"     # Teal
-blue = "#89B4FA"     # Blue
-sapphire = "#74C7EC"  # Light blue
-sky = "#89DCEB"      # Cyan
-lavender = "#B4BEFE" # Lavender
+[palettes.doom_one]
+base = "#282c34"      # Dark background
+surface = "#313640"   # Lighter background
+overlay = "#3f444a"   # Even lighter background
+muted = "#494952"     # Muted foreground
+subtle = "#6c7b8b"    # Less muted foreground
+text = "#bbc2cf"      # Default foreground
+love = "#ff6c6b"      # Red
+gold = "#da8548"      # Orange
+rose = "#db8fa3"      # Light pink
+pine = "#98be65"      # Green
+foam = "#46d9ff"      # Cyan
+iris = "#a9a1e1"      # Purple
+orange = "#da8548"    # Warm orange
+green = "#98be65"     # Vibrant green
+blue = "#51afef"      # Bright blue
+violet = "#5699af"    # Blue-violet
+magenta = "#c678dd"   # Magenta/Purple
+red = "#ff6c6b"       # Bright red
 
+# You can also replace your username with a neat symbol like  to save some space
 [username]
 show_always = true
-style_user = "bg:base"
-style_root = "bg:base"
+style_user = "bg:#282c34"
+style_root = "bg:#282c34"
 format = '[$user ]($style)'
 
 [os]
@@ -61,7 +60,7 @@ format = "[$symbol ]($style)"
 Macos = "🎮" #Representing the Game Room
 
 [directory]
-style = "fg:base bg:surface0"
+style = "fg:base bg:orange"
 format = "[ $path ]($style)"
 truncation_length = 1
 
@@ -90,15 +89,25 @@ format = '[[ $symbol $branch ](fg:base bg:green)]($style)'
 [git_status]
 style = "bg:green"
 format = '[[($all_status$ahead_behind )](fg:base bg:green)]($style)'
+# Conflicted: The war between humans and Formics
 conflicted = "⚔️ Formic War "
+# Ahead: Faster-Than-Light ansible communication
 ahead = "📡 Ansible ×${count} "
+# Behind: Time debt from relativistic space travel
 behind = "🕐 Relativistic ×${count} "
+# Diverged: The split between First and Second Foundation
 diverged = "🔮 Split ×${ahead_count} 🧠 ×${behind_count} "
+# Untracked: Unknown variables in psychohistory
 untracked = "❓ Mule ×${count} "
+# Stashed: Stored in the Time Vault
 stashed = "🔒 TimeVault "
+# Modified: Changed by psychohistorical intervention
 modified = "🌟 Seldon ×${count} "
+# Staged: Ready for Battle School
 staged = "🚀 Launch ×${count} "
+# Renamed: Given new identity like Bean/Ender
 renamed = "🎭 Identity ×${count} "
+# Deleted: Like the destroyed Eros
 deleted = "💥 Eros ×${count} "
 
 [golang]
@@ -144,14 +153,14 @@ format = '[[ $symbol( $version) ](fg:base bg:blue)]($style)'
 [localip]
 ssh_only = false 
 disabled = false
-style = "bg:lavender"
-format = '[[($localipv4)](fg:base bg:lavender)]($style)'
+style = "bg:violet"
+format = '[[($localipv4)](fg:base bg:violet)]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:mauve"
-format = '[[  $time ](fg:base bg:mauve)]($style)'
+style = "bg:magenta"
+format = '[[  $time ](fg:base bg:magenta)]($style)'
 
 [line_break]
 disabled = false
@@ -161,6 +170,7 @@ disabled = false
 success_symbol = '[](bold fg:green)'
 error_symbol = '[](bold fg:red)'
 vimcmd_symbol = '[](bold fg:green)'
-vimcmd_replace_one_symbol = '[](bold fg:mauve)'
-vimcmd_replace_symbol = '[](bold fg:mauve)'
-vimcmd_visual_symbol = '[](bold fg:lavender)'
+vimcmd_replace_one_symbol = '[](bold fg:magenta)'
+vimcmd_replace_symbol = '[](bold fg:magenta)'
+vimcmd_visual_symbol = '[](bold fg:iris)'
+
