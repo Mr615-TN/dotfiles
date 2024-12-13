@@ -11,24 +11,33 @@ return {
             })
         end,
     },
-
-    -- telescope configuration
+  -- fzf-lua configuration (replacing Telescope)
     {
-        "nvim-telescope/telescope.nvim",
+        "ibhagwan/fzf-lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = {
             {
                 "<leader>fp",
-                function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+                function() 
+                    require("fzf-lua").files({ 
+                        cwd = require("lazy.core.config").options.root 
+                    }) 
+                end,
                 desc = "Find Plugin File",
             },
         },
-        opts = {
-            defaults = {
-                layout_strategy = "horizontal",
-                layout_config = { prompt_position = "top" },
-                sorting_strategy = "ascending",
-                winblend = 0,
-            },
-        },
+        config = function()
+            require("fzf-lua").setup({
+                -- You can customize fzf-lua options here
+                winopts = {
+                    height = 0.8,
+                    width = 0.8,
+                    preview = {
+                        layout = "vertical",
+                        vertical = "up:45%"
+                    }
+                }
+            })
+        end
     },
 }

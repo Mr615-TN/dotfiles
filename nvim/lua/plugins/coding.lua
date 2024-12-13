@@ -1,10 +1,22 @@
 return {
-  -- nvim-cmp configuration
+  -- blink.cmp configuration
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
-    opts = function(_, opts)
-      table.insert(opts.sources, { name = "emoji" })
-    end,
+    "saghen/blink.cmp",
+    lazy = false,
+    dependencies = "rafamadriz/friendly-snippets",
+    build = "cargo build --release",
+    opts = {
+      keymap = { preset = "default" },
+      appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = "mono",
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+      -- Experimental signature help support
+      -- signature = { enabled = true }
+    },
+    opts_extend = { "sources.default" },
   },
 }
