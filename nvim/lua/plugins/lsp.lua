@@ -15,6 +15,19 @@ return {
           filetypes = { "c", "cpp", "objc", "objcpp", "ino" },
         },
         rust_analyzer = {},
+        pylsp = {
+          settings = {
+            pylsp = {
+              plugins = {
+                pylint = { enabled = true, args = {} }, -- Enable pylint
+                pyflakes = { enabled = false },        -- Disable pyflakes
+                pycodestyle = { enabled = false },     -- Disable pycodestyle
+                pylsp_mypy = { enabled = true, live_mode = false }, -- Optional: Mypy
+                ruff = { enabled = true },         
+              },
+            },
+          },
+        },
       },
     },
   },
