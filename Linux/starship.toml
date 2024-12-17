@@ -77,7 +77,7 @@ truncation_length = 1
 "ClassNotes" = "💫 Psychohistory " # Seldon's mathematical sociology
 "Public" = "🌐 IF "            # International Fleet from Ender's Game
 "Home" = "🏠 Earth "           # Humanity's origin in both series
-"Github" = "⚔️ Command "        # Command School from Ender's Game
+"GitHub" = "⚔️ Command "        # Command School from Ender's Game
 "LinuxISOs" = "🌌 Ansible "    # The ansible device from Ender's Game
 
 [git_branch]
