@@ -4,15 +4,11 @@
         "separator": " "
     },
     "logo": {
-        // "padding": {
-        //     "top": 2,
-        //     "left": 1,
-        //     "right": 2
-        // }
-        "source": "~/GitHub/ClassNotes/NonClassStuff/wallpapers/AudiRS6.jpeg",
-        "type": "kitty",
-        "width": 20,
-        "height": 10
+        "padding": {
+            "top": 2,
+            "left": 1,
+            "right": 2
+        }
     },
     "modules": [
         {
