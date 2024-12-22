@@ -14,7 +14,7 @@ config.window_padding = {
 	top = 12,
 	bottom = 12,
 }
-config.enable_tab_bar = false
+config.enable_tab_bar = true
 config.window_close_confirmation = "NeverPrompt"
 
 -- Font configuration
@@ -45,10 +45,11 @@ config.font_size = 13
 -- Shell configuration
 config.default_prog = { "/bin/bash", "-l" }
 
+config.exit_behavior = "Close"
 -- Color schemes
 --config.color_scheme = "AdventureTime"
 --config.color_scheme = "Batman"
-config.color_scheme = 'Catppuccin Frappé (Gogh)'
+config.color_scheme = "Catppuccin Frappé (Gogh)"
 --config.color_scheme = "DoomOne"
 --config.color_scheme = "Everforest Dark (Gogh)"
 --config.color_scheme = "Gruvbox dark, pale (base16)"
