@@ -1,14 +1,13 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-    "display": {
-        "separator": " "
-    },
     "logo": {
-        "padding": {
-            "top": 2,
-            "left": 1,
-            "right": 2
-        }
+        "source": "$(find \"${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/pngs/\" -name \"*.png\" | sort -R | head -1)",
+        "height": 20,
+        "width": 20,
+        "type": "kitty-icat"
+    },
+    "display": {
+        "separator": " : "
     },
     "modules": [
         {
