@@ -7,7 +7,7 @@
         "type": "kitty-icat"
     },
     "display": {
-        "separator": " : "
+        "separator": "  "
     },
     "modules": [
         {
