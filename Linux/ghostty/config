@@ -13,7 +13,7 @@ cursor-color = "#c6d0f5"
 cursor-text = "#303446"
 
 # Terminal options
-#term = "xterm-256color"
+term = "xterm-256color"
 
 # Colors
 foreground = "#c6d0f5"
