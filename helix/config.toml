@@ -15,6 +15,6 @@ enable = false
 [editor.cursor-shape]
 select = "block"
 normal = "bar"
-inset = "bar"
+insert = "bar"
 
 
