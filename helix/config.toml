@@ -1,0 +1,20 @@
+theme = "base16_transparent"
+
+[editor]
+scrolloff = 0
+mouse = false
+scroll-lines = 5
+line-number = "relative"
+auto-completion = true
+auto-format = true 
+auto-info = true 
+
+[editor.lsp]
+enable = false 
+
+[editor.cursor-shape]
+select = "block"
+normal = "bar"
+inset = "bar"
+
+
