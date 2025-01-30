@@ -7,14 +7,14 @@ scroll-lines = 5
 line-number = "relative"
 auto-completion = true
 auto-format = true 
-auto-info = true 
+auto-info = true
+soft-wrap.enable = true 
 
 [editor.lsp]
-enable = false 
+enable = true 
 
 [editor.cursor-shape]
 select = "block"
 normal = "bar"
 insert = "bar"
-
 
