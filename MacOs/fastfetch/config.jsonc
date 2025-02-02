@@ -4,6 +4,10 @@
         "source": "$(find \"${HOME}/.config/fastfetch/pngs/\" -name \"*.png\" | sort -R | head -1)",
         "height": 15,
         "width": 25,
+        "padding": {
+          "top": 2,
+          "bottom": 3
+        },
         "type": "kitty-direct"
     },
     "display": {
