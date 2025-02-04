@@ -111,7 +111,7 @@
             "keyColor": "35"
         },
         {
-            "type": "command",
+            "type": "packages",
             "key": " PACKAGES:",
             "keyColor": "35"
         },
