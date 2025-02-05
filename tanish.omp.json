@@ -1,0 +1,146 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "foreground": "#a3aed2",
+            "text": "\u2591\u2592\u2593"
+          },
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "background": "#D8DEE9",
+            "foreground": "#2E3440",
+            "text": " ✙ "
+          },
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "background": "#81A1C1",
+            "folder_separator_icon": "\ue0b1",
+            "foreground": "#E5E9F0",
+            "mapped_locations": {
+              "Applications": "\udb82\udcc6",
+              "Desktop": "\uf108",
+              "Documents": "\udb80\ude19 ",
+              "Downloads": "\uf019 ",
+              "GitHub": "\ue709",
+              "Library": "\udb86\ude22",
+              "LinuxISOs": "\uf17c",
+              "Music": "\uf001 ",
+              "Pictures": "\uf03e ",
+              "Public": "\udb81\udea7",
+              "Templates": "\uebbf",
+              "Videos": "\uf03d"
+            },
+            "max_depth": 1,
+            "trailing_separator": false
+          },
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "background": "#3B4252",
+            "branch_icon": "\uf418",
+            "fetch_status": true,
+            "foreground": "#81A1C1"
+          },
+          "type": "git",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "background": "#3B4252",
+            "foreground": "#81A1C1"
+          },
+          "type": "gitstatus",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "background": "#4C566A",
+            "foreground": "#81A1C1"
+          },
+          "type": "node",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "background": "#4C566A",
+            "foreground": "#81A1C1"
+          },
+          "type": "rust",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "background": "#4C566A",
+            "foreground": "#81A1C1"
+          },
+          "type": "golang",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "background": "#4C566A",
+            "foreground": "#81A1C1"
+          },
+          "type": "c",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "background": "#4C566A",
+            "foreground": "#81A1C1"
+          },
+          "type": "python",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "background": "#2E3440",
+            "foreground": "#4C566A",
+            "text": "\ue0b4"
+          },
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "address_type": "v4",
+            "background": "#2E3440",
+            "foreground": "#D8DEE9",
+            "show_interface": false,
+            "show_ssh_only": false
+          },
+          "type": "ip",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "foreground": "#81A1C1",
+            "text": "❯"
+          },
+          "type": "text",
+          "style": "plain"
+        }
+      ]
+    }
+  ],
+  "version": 3
+}
