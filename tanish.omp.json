@@ -67,10 +67,16 @@
           "type": "root"
         },
         {
-          "foreground": "#94ffa2",
+          "type": "ipify",
           "style": "diamond",
-          "template": " <#ffffff>MEM:</> {{ round .PhysicalPercentUsed .Precision }}% ({{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB)",
-          "type": "sysinfo"
+          "foreground": "#ffffff",
+          "background": "#c386f1",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "template": "{{ .IP }}",
+          "properties": {
+            "http_timeout": 1000
+          }
         }
       ],
       "type": "prompt"
@@ -115,3 +121,4 @@
   },
   "version": 3
 }
+
