@@ -13,7 +13,7 @@ $golang\
 $c\
 $python\
 [](fg:#4C566A bg:#2E3440)\
-$time\
+$localip\
 [](fg:#2E3440)\
 \n$character"""
 
@@ -68,9 +68,9 @@ format = '[[ $symbol ($version) ](fg #81A1C1 bg:#4C566A)]($style)'
 style = "bg: #4C566A"
 format = '[[ $symbol ($version) ](fg: #81A1C1 bg: #4C566A)]($style)'
 
-
-[time]
+[localip]
+ssh_only = false 
 disabled = false
-time_format = "%R" # Hour:Minute Format
 style = "bg:#2E3440"
-format = '[[  $time ](fg:#D8DEE9 bg:#2E3440)]($style)'
+format = '[[($localipv4)](fg:#D8DEE9 bg:#2E3440)]($style)'
+
