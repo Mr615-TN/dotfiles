@@ -1,5 +1,5 @@
 alias ls='lsd'
-alias ll='lsd -alF'
+alias ll='lsd -l'
 alias la='lsd -A'
 alias l='lsd --classify'
 alias cplus='g++ -std=gnu++20 -Wall -Wextra -Wshadow -Wconversion'
