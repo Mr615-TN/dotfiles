@@ -3,17 +3,17 @@
 ICON_PADDING_RIGHT=5
 
 case $INFO in
-"Arc")
+"Zen")
     ICON_PADDING_RIGHT=5
-    ICON=󰞍
+    ICON=󰫫
     ;;
 "Code")
     ICON_PADDING_RIGHT=4
     ICON=󰨞
     ;;
-"Calendar")
+"Docker Desktop")
     ICON_PADDING_RIGHT=3
-    ICON=
+    ICON=
     ;;
 "Discord")
     ICON=
@@ -25,43 +25,31 @@ case $INFO in
 "Finder")
     ICON=󰀶
     ;;
-"Google Chrome")
+"Brave Browser")
     ICON_PADDING_RIGHT=7
     ICON=
     ;;
-"IINA")
-    ICON_PADDING_RIGHT=4
-    ICON=󰕼
-    ;;
-"kitty")
-    ICON=󰄛
+"Ghostty")
+    ICON=󰊠
     ;;
 "Messages")
     ICON=
     ;;
-"Notion")
+"LocalSend")
     ICON_PADDING_RIGHT=6
-    ICON=󰎚
+    ICON=󱁜
     ;;
 "Preview")
     ICON_PADDING_RIGHT=3
     ICON=
     ;;
-"PS Remote Play")
-    ICON_PADDING_RIGHT=3
-    ICON=
-    ;;
 "Spotify")
     ICON_PADDING_RIGHT=2
     ICON=
     ;;
-"TextEdit")
-    ICON_PADDING_RIGHT=4
-    ICON=
-    ;;
-"Transmission")
+"Zed")
     ICON_PADDING_RIGHT=3
-    ICON=󰶘
+    ICON=󰵁
     ;;
 *)
     ICON_PADDING_RIGHT=2
