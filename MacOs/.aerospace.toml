@@ -36,7 +36,7 @@ outer.right =      3
 [mode.main.binding]
 # layout setup
 alt-e = 'layout tiles'
-alt-w = 'layout h_accordion'
+alt-q = 'layout h_accordion'
 alt-shift-space = 'layout floating tiling'
 alt-shift-f = 'fullscreen'
 
