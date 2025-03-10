@@ -29,6 +29,23 @@ layout {
     }
 }
 
+// Keybindings to use Alt+H/J/K/L for navigation
+keybinds {
+    normal {
+        // Unbind default keys
+        unbind "Alt h"  // Usually left 
+        unbind "Alt j"  // Usually down
+        unbind "Alt k"  // Usually up
+        unbind "Alt l"  // Usually right
+        
+        // Rebind to specified keys
+        bind "Alt a" { MoveFocus "Left"; }
+        bind "Alt s" { MoveFocus "Down"; }
+        bind "Alt w" { MoveFocus "Up"; }
+        bind "Alt d" { MoveFocus "Right"; }
+        
+    }
+}
 // Basic settings
 simplified_ui true
 default_layout "compact"
