@@ -39,14 +39,10 @@ keybinds {
         unbind "Alt l"  // Usually right
         
         // Rebind to specified keys
-        bind "Alt a" { MoveFocus "Left"; }
-        bind "Alt s" { MoveFocus "Down"; }
-        bind "Alt w" { MoveFocus "Up"; }
-        bind "Alt d" { MoveFocus "Right"; }
-    }
-    tab {
-        bind "Alt o" { GoToPreviousTab; }
-        bind "Alt p" { GoToNextTab; }
+        bind "Ctrl h" { MoveFocus "Left"; }
+        bind "Ctrl j" { MoveFocus "Down"; }
+        bind "Ctrl k" { MoveFocus "Up"; }
+        bind "Ctrl l" { MoveFocus "Right"; }
     }
 }
 // Basic settings
