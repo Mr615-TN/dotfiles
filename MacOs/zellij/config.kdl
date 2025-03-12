@@ -43,7 +43,10 @@ keybinds {
         bind "Alt s" { MoveFocus "Down"; }
         bind "Alt w" { MoveFocus "Up"; }
         bind "Alt d" { MoveFocus "Right"; }
-        
+    }
+    tab {
+        bind "Alt o" { GoToPreviousTab; }
+        bind "Alt p" { GoToNextTab; }
     }
 }
 // Basic settings
