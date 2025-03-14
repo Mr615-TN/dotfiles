@@ -9,37 +9,33 @@ font-style-italic = "auto"
 font-style-bold-italic = "auto"
 
 # Cursor configuration
-cursor-color = "#c6d0f5"
-cursor-text = "#303446"
-
-# Terminal options
-term = "xterm-256color"
+cursor-color = "#51afef"
+cursor-text = "#282c34"
 
 # Colors
-foreground = "#c6d0f5"
-background = "#303446"
+foreground = "#bbc2cf"
+background = "#282c34"
 
 # Selection colors
-selection-foreground = "#d8caac"
-selection-background = "#505a60"
+selection-foreground = "#bbc2cf"
+selection-background = "#3f444a"
 
 # Normal colors
-palette = 0=#51576d
-palette = 1=#e78284
-palette = 2=#a6d189
-palette = 3=#e5c890
-palette = 4=#8caaee
-palette = 5=#f4b8e4
-palette = 6=#81c8be
-palette = 7=#b5bfe2
+palette = 0=#1c1f24
+palette = 1=#ff6c6b
+palette = 2=#98be65
+palette = 3=#ecbe7b
+palette = 4=#51afef
+palette = 5=#c678dd
+palette = 6=#46d9ff
+palette = 7=#bbc2cf
 
 # Bright colors
-palette = 8=#626880
-palette = 9=#e78284
-palette = 10=#a6d189
-palette = 11=#e5c890
-palette = 12=#8caaee
-palette = 13=#f4b8e4
-palette = 14=#81c8be
-palette = 15=#a5adce
-
+palette = 8=#5b6268
+palette = 9=#ff6c6b
+palette = 10=#98be65
+palette = 11=#ecbe7b
+palette = 12=#51afef
+palette = 13=#c678dd
+palette = 14=#46d9ff
+palette = 15=#bbc2cf
