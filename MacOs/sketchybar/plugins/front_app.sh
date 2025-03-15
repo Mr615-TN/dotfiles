@@ -3,9 +3,9 @@
 ICON_PADDING_RIGHT=5
 
 case $INFO in
-"Zen")
+"Floorp")
     ICON_PADDING_RIGHT=5
-    ICON=󰫫
+    ICON=
     ;;
 "Code")
     ICON_PADDING_RIGHT=4
