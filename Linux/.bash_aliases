@@ -1,6 +1,7 @@
 # alias ll='eza -alF'
 # alias la='eza -A'
 # alias l='eza --classify --icons=always --group-directories-first'
+alias lp='eza -lh --classify --icons=auto --sort=name --group-directories-first'
 alias cplus='g++ -std=gnu++20 -Wall -Wextra -Wshadow -Wconversion'
 alias cpl='g++ -std=gnu++17 -Wall -Wextra -Wshadow -Wconversion'
 alias cthis='gcc -std=gnu11 -Wall -Wextra -Wshadow -Wconversion'
