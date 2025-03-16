@@ -77,3 +77,4 @@ alias archupgrade='sudo pacman -Syu'
 alias archup='sudo pacman -Syu && yay -Syu'
 alias yup='yay -Syu'
 alias archremove='sudo pacman -Rns $(pacman -Qdtq)'
+alias hx='helix' #this is for arch only as for some reason when I do hx, it doesn't work
