@@ -5,10 +5,6 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- Set leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- === General Keybindings ===
 map("i", "jj", "<Esc>", opts) -- Exit insert mode quickly
 map("n", "<C-s>", ":w<CR>", opts) -- Save file with Ctrl + S
