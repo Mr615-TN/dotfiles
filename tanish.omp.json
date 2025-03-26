@@ -57,6 +57,27 @@
           "type": "python"
         },
         {
+          "background": "#D9E3F0",
+          "foreground": "#6B8E9E",
+          "style": "diamond",
+          "template": "{{ if .Full }}\ue718 {{ .Full }}{{ end }}",
+          "type": "node"
+        },
+        {
+          "background": "#D9E3F0",
+          "foreground": "#6B8E9E",
+          "style": "diamond",
+          "template": "{{ if .Full }}\ue7a8 {{ .Full }}{{ end }}",
+          "type": "rust"
+        },
+        {
+          "background": "#D9E3F0",
+          "foreground": "#6B8E9E",
+          "style": "diamond",
+          "template": "{{ if .Full }}\ue235 {{ .Full }}{{ end }}",
+          "type": "python"
+        },
+        {
           "background": "#80B1FA",
           "foreground": "#1E2029",
           "properties": {
@@ -76,7 +97,7 @@
         {
           "foreground": "#A7D8B9",
           "style": "plain",
-          "template": "╰─",
+          "template": "╰─❯ ",
           "type": "text"
         }
       ],
