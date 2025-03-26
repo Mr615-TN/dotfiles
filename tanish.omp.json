@@ -27,13 +27,20 @@
         },
         {
           "background": "#A7D8B9",
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#F9D57D{{ end }}",
+            "{{ if gt .Ahead 0 }}#F1A3FF{{ end }}",
+            "{{ if gt .Behind 0 }}#F4A9A1{{ end }}"
+          ],
           "foreground": "#1E2029",
           "powerline_symbol": "\ue0b0",
           "properties": {
-            "fetch_status": true
+            "branch_icon": "\ue725 ",
+            "fetch_status": true,
+            "fetch_upstream_icon": true
           },
           "style": "powerline",
-          "template": " {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }} ",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .Ahead 0 }} ↑{{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} ↓{{ .Behind }}{{ end }} ",
           "type": "git"
         }
       ],
