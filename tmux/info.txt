@@ -1,0 +1,1 @@
+This tmux config can update its colors based on the terminal
