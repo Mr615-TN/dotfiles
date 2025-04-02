@@ -61,13 +61,13 @@ map("n", "<leader>tt", function()
         terminal_id = 0 -- Reset the ID
       else
         -- If the buffer exists but window is hidden, recreate it
-        vim.cmd("split term://bash")
+        vim.cmd("split term://zsh")
         terminal_id = vim.api.nvim_get_current_buf()
         vim.cmd("startinsert")
       end
     else
       -- Buffer is invalid, create a new one
-      vim.cmd("split term://bash")
+      vim.cmd("split term://zsh")
       terminal_id = vim.api.nvim_get_current_buf()
       vim.cmd("startinsert")
     end
