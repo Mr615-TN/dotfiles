@@ -42,6 +42,38 @@ map("n", "N", "Nzzzv", opts) -- Keep search results centered
 map("n", "J", "mzJ`z", opts) -- Join lines but keep cursor position
 map("n", "<Esc>", ":noh<CR>", opts) -- Clear search highlight
 
+-- === Terminal Integration ===
+-- Toggle terminal on/off
+local terminal_id = 0
+map("n", "<leader>tt", function()
+  if terminal_id == 0 then
+    -- Create a new horizontal split terminal
+    vim.cmd("split term://zsh") -- You can change 'bash' to your preferred shell like 'zsh'
+    terminal_id = vim.api.nvim_get_current_buf()
+    vim.cmd("startinsert") -- Enter insert mode immediately in the terminal
+  else
+    -- Check if the terminal buffer still exists
+    if vim.api.nvim_buf_is_valid(terminal_id) then
+      local win_id = vim.fn.bufwinid(terminal_id)
+      if win_id > 0 then
+        -- If the terminal window is visible, close it
+        vim.api.nvim_win_close(win_id, true)
+        terminal_id = 0 -- Reset the ID
+      else
+        -- If the buffer exists but window is hidden, recreate it
+        vim.cmd("split term://bash")
+        terminal_id = vim.api.nvim_get_current_buf()
+        vim.cmd("startinsert")
+      end
+    else
+      -- Buffer is invalid, create a new one
+      vim.cmd("split term://bash")
+      terminal_id = vim.api.nvim_get_current_buf()
+      vim.cmd("startinsert")
+    end
+  end
+end, { noremap = true, silent = true, desc = "Toggle Terminal" }) -- Added desc here
+
 -- === Terminal Mode Mappings ===
 map("t", "<Esc>", "<C-\\><C-n>", opts) -- Exit terminal mode
 map("t", "<C-h>", "<C-\\><C-n><C-w>h", opts)
