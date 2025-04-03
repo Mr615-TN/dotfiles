@@ -10,6 +10,9 @@ map("i", "jj", "<Esc>", opts) -- Exit insert mode quickly
 map("n", "<C-s>", ":w<CR>", opts) -- Save file with Ctrl + S
 map("n", "<C-q>", ":q<CR>", opts) -- Quit file with Ctrl + Q
 map("n", "<C-a>", "ggVG", opts) -- Select all
+map("n", "<C-_>", function()
+  require("Comment.api").toggle.linewise.current()
+end, opts)
 
 -- === Window Navigation ===
 map("n", "<C-h>", "<C-w>h", opts) -- Move to left split
