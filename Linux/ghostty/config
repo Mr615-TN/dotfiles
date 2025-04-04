@@ -11,6 +11,8 @@ font-style-bold-italic = "auto"
 # Cursor configuration
 cursor-color = "#51afef"
 cursor-text = "#282c34"
+cursor-blink = true
+
 
 # Colors
 foreground = "#bbc2cf"
