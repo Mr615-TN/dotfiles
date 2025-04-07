@@ -26,7 +26,7 @@
             "windows": "\ue70f"
           },
           "style": "diamond",
-          "template": " {{ if .WSL }}\ue712 on {{ end }}{{ .Icon }}<#5B6268> \ue0b1</>",
+          "template": " {{ if .WSL }}\ue712 on {{ end }}{{ .Icon }} {{ if and .WSL .WSLDistro }}<#5B6268>(</>{{ .WSLDistro }}<#5B6268>)</>{{ end }}<#5B6268> \ue0b1</>",
           "type": "os"
         },
         {
@@ -165,4 +165,3 @@
   },
   "version": 3
 }
-
