@@ -1,0 +1,234 @@
+[[ ~/.config/hypr/hyprland.conf ]]
+
+# Hyprland main config
+
+# Monitor setup
+source=~/.config/hypr/monitors.conf
+
+# Default apps
+doc = ~/.config/hypr/userprefs.conf
+exec-once = kitty
+exec-once = waybar &
+exec-once = hyprpaper &
+exec-once = rofi -show drun
+exec-once = firefox &
+exec-once = code &
+
+# Input
+input {
+  kb_layout = us
+  follow_mouse = 1
+  touchpad {
+    natural_scroll = true
+  }
+}
+
+# General settings
+source=~/.config/hypr/keybindings.conf
+source=~/.config/hypr/windowrules.conf
+
+# Animations
+source=~/.config/hypr/animations.conf
+
+# Workspaces
+source=~/.config/hypr/workspaces.conf
+
+# Decoration (rounded corners, blur, shadows)
+decoration {
+  rounding = 8
+  blur {
+    enabled = true
+    size = 8
+    passes = 3
+  }
+  drop_shadow = yes
+  shadow_range = 4
+  shadow_render_power = 3
+  col.shadow = rgba(00000099)
+  col.blur = rgba(282c3488)
+}
+
+[[ ~/.config/hypr/animations.conf ]]
+
+animations {
+  enabled = yes
+  bezier = easeOutCirc, 0.00, 0.55, 0.45, 1.0
+  animation = windows, 1, 6, easeOutCirc
+  animation = fade, 1, 4, easeOutCirc
+  animation = border, 1, 6, easeOutCirc
+  animation = workspaces, 1, 5, easeOutCirc
+}
+
+[[ ~/.config/hypr/keybindings.conf ]]
+
+bind = SUPER, RETURN, exec, kitty
+bind = SUPER, Q, killactive,
+bind = SUPER, M, exit,
+bind = SUPER, D, exec, rofi -show drun
+bind = SUPER, SPACE, togglefloating,
+bind = SUPER, F, fullscreen,
+bind = SUPER, T, togglesplit,
+bind = SUPER, V, exec, kitty -e nvim
+
+# Window movement
+bind = SUPER, H, movefocus, l
+bind = SUPER, L, movefocus, r
+bind = SUPER, K, movefocus, u
+bind = SUPER, J, movefocus, d
+
+# Workspace management
+bind = SUPER, 1, workspace, 1
+bind = SUPER, 2, workspace, 2
+bind = SUPER, 3, workspace, 3
+bind = SUPER, 4, workspace, 4
+bind = SUPER, 5, workspace, 5
+
+bind = SUPER SHIFT, 1, movetoworkspace, 1
+bind = SUPER SHIFT, 2, movetoworkspace, 2
+bind = SUPER SHIFT, 3, movetoworkspace, 3
+bind = SUPER SHIFT, 4, movetoworkspace, 4
+bind = SUPER SHIFT, 5, movetoworkspace, 5
+
+# Screenshot
+bind = SUPER SHIFT, S, exec, grim -g "$(slurp)" - | swappy -f -
+
+[[ ~/.config/hypr/windowrules.conf ]]
+
+windowrulev2 = opacity 0.9 0.8, class:^(firefox|Code)$
+windowrulev2 = blur, class:^(firefox|Code)$
+
+[[ ~/.config/hypr/monitors.conf ]]
+
+display = eDP-1, preferred, auto, 1
+
+[[ ~/.config/hypr/workspaces.conf ]]
+
+workspace = eDP-1, 1
+workspace = eDP-1, 2
+workspace = eDP-1, 3
+workspace = eDP-1, 4
+workspace = eDP-1, 5
+
+[[ ~/.config/hypr/userprefs.conf ]]
+
+# Color scheme - Doom One
+# Background: #282c34, Foreground: #bbc2cf
+# Accent: #51afef, #c678dd, #98be65
+
+general {
+  gaps_in = 6
+  gaps_out = 12
+  border_size = 3
+  col.active_border = rgb(51afef) rgb(c678dd) 45deg
+  col.inactive_border = rgb(2e3440)
+  layout = dwindle
+}
+
+[[ ~/.config/hypr/hyprpaper.conf ]]
+
+preload = ~/Pictures/wallpapers/doom.png
+wallpaper = eDP-1, ~/Pictures/wallpapers/doom.png
+
+[[ ~/.config/waybar/config ]]
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "network", "battery", "tray"],
+  "clock": {
+    "format": "  {:%I:%M %p}    {:%b %d, %Y}"
+  },
+  "pulseaudio": {
+    "format": "  {volume}%"
+  },
+  "battery": {
+    "format": "  {capacity}%"
+  },
+  "network": {
+    "format": "  {ip}"
+  }
+}
+
+[[ ~/.config/waybar/style.css ]]
+* {
+  border: none;
+  border-radius: 8px;
+  font-family: JetBrainsMono Nerd Font, monospace;
+  font-size: 13px;
+  padding: 2px 6px;
+  background-color: rgba(40, 44, 52, 0.8);
+  color: #bbc2cf;
+}
+
+window#waybar {
+  background-color: rgba(40, 44, 52, 0.7);
+  border-bottom: 2px solid #51afef;
+}
+
+#clock, #battery, #pulseaudio, #network, #tray {
+  margin: 0 6px;
+}
+
+[[ ~/.config/rofi/config.rasi ]]
+
+configuration {
+  font: "JetBrainsMono Nerd Font 12";
+  show-icons: true;
+  icon-theme: "Papirus";
+  theme: "doom-one"
+}
+
+* {
+  background: #282c34;
+  foreground: #bbc2cf;
+  border-color: #51afef;
+  border-radius: 6px;
+}
+
+[[ install.sh ]]
+#!/bin/bash
+
+set -e
+
+# Update system and install packages
+echo "📦 Updating system and installing packages..."
+sudo pacman -Syu --noconfirm
+sudo pacman -S --noconfirm hyprland kitty waybar wofi hyprpaper grim slurp swappy neovim tmux zellij git base-devel unzip nodejs npm firefox code rofi papirus-icon-theme
+
+# Setup config directories
+echo "🔧 Creating config directories..."
+mkdir -p ~/.config/hypr
+mkdir -p ~/.config/hyprpaper
+mkdir -p ~/.config/kitty
+mkdir -p ~/.config/nvim
+mkdir -p ~/.config/zellij
+mkdir -p ~/.config/tmux
+mkdir -p ~/.config/oh-my-posh
+mkdir -p ~/.config/waybar
+mkdir -p ~/.config/rofi
+
+# Copy dotfiles
+cp ./hyprland.conf ~/.config/hypr/hyprland.conf
+cp ./animations.conf ~/.config/hypr/animations.conf
+cp ./keybindings.conf ~/.config/hypr/keybindings.conf
+cp ./monitors.conf ~/.config/hypr/monitors.conf
+cp ./windowrules.conf ~/.config/hypr/windowrules.conf
+cp ./userprefs.conf ~/.config/hypr/userprefs.conf
+cp ./workspaces.conf ~/.config/hypr/workspaces.conf
+cp ./hyprpaper.conf ~/.config/hyprpaper/hyprpaper.conf
+cp -r ./kitty/* ~/.config/kitty/
+cp -r ./nvim/* ~/.config/nvim/
+cp -r ./zellij/* ~/.config/zellij/
+cp -r ./tmux/* ~/.config/tmux/
+cp -r ./oh-my-posh/* ~/.config/oh-my-posh/
+cp ./waybar/config ~/.config/waybar/config
+cp ./waybar/style.css ~/.config/waybar/style.css
+cp ./rofi/config.rasi ~/.config/rofi/config.rasi
+
+# Optional: VS Code theme
+code --install-extension themedev.doom-one-theme || true
+
+# Final message
+echo "🎉 Hyprland setup complete! Reboot and start Hyprland to enjoy your dev setup."
+
