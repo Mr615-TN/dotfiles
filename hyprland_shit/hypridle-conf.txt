@@ -1,0 +1,31 @@
+# Hypridle Configuration for Debian Sid
+# Doom One Colorscheme
+
+general {
+    lock_cmd = hyprlock
+    unlock_cmd = killall hyprlock
+    before_sleep_cmd = loginctl lock-session
+    after_sleep_cmd = hyprctl dispatch dpms on
+}
+
+listener {
+    timeout = 300                                 # 5 minutes
+    on-timeout = brightnessctl -s set 30%         # dim the screen to 30%
+    on-resume = brightnessctl -r                  # restore previous brightness
+}
+
+listener {
+    timeout = 600                                 # 10 minutes
+    on-timeout = loginctl lock-session            # lock screen
+}
+
+listener {
+    timeout = 900                                 # 15 minutes
+    on-timeout = hyprctl dispatch dpms off        # turn off displays
+    on-resume = hyprctl dispatch dpms on          # turn displays back on
+}
+
+listener {
+    timeout = 1800                                # 30 minutes
+    on-timeout = systemctl suspend                # suspend system
+}

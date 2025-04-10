@@ -1,0 +1,14 @@
+# Hyprpaper Configuration for Debian Sid
+# Doom One Colorscheme
+
+# Set preload to prevent blank screen when switching to new wallpaper
+preload = ~/.config/hypr/wallpapers/doom-bg.png
+
+# Set wallpaper for all monitors
+wallpaper = ,~/.config/hypr/wallpapers/doom-bg.png
+
+# Splash text configuration
+splash = false
+
+# Set ipc = off if you don't want to use IPC for control
+ipc = on

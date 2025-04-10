@@ -1,0 +1,28 @@
+# Doom One Colorscheme Configuration
+# Based on Doom Emacs' doom-one theme
+
+# Base colors
+$background = 0xff282c34
+$foreground = 0xffbbc2cf
+$selection = 0xff3e4451
+$comment = 0xff5b6268
+
+# Colors
+$black = 0xff1c1f24
+$red = 0xffff6c6b
+$green = 0xff98be65
+$yellow = 0xffecbe7b
+$blue = 0xff51afef
+$magenta = 0xffc678dd
+$cyan = 0xff46d9ff
+$white = 0xffbbc2cf
+
+# Bright colors
+$brightBlack = 0xff5b6268
+$brightRed = 0xffda8548
+$brightGreen = 0xff4db5bd
+$brightYellow = 0xffecbe7b
+$brightBlue = 0xff51afef
+$brightMagenta = 0xffa9a1e1
+$brightCyan = 0xff46d9ff
+$brightWhite = 0xffdfdfdf

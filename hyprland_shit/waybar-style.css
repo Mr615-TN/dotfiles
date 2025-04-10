@@ -1,0 +1,162 @@
+/* Waybar styling with Doom One colorscheme */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono Nerd Font", "Font Awesome 6 Free";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(40, 44, 52, 0.85);
+    color: #bbc2cf;
+    border-radius: 8px;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: #bbc2cf;
+    border-radius: 6px;
+    margin: 4px 2px;
+}
+
+#workspaces button.active {
+    background: #51afef;
+    color: #282c34;
+}
+
+#workspaces button.urgent {
+    background: #ff6c6b;
+    color: #282c34;
+}
+
+#workspaces button:hover {
+    background: #c678dd;
+    color: #282c34;
+    transition-duration: 0.3s;
+}
+
+#window {
+    margin-left: 10px;
+    padding: 0 10px;
+    color: #bbc2cf;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#tray,
+#bluetooth,
+#custom-power {
+    padding: 0 10px;
+    margin: 0 3px;
+    border-radius: 6px;
+    background: rgba(40, 44, 52, 0.7);
+    color: #bbc2cf;
+}
+
+#clock {
+    font-weight: bold;
+    color: #ecbe7b;
+}
+
+#battery {
+    color: #98be65;
+}
+
+#battery.charging {
+    color: #98be65;
+}
+
+#battery.warning:not(.charging) {
+    color: #ecbe7b;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff6c6b;
+    animation: blink 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ff6c6b;
+        color: #282c34;
+    }
+}
+
+#cpu {
+    color: #51afef;
+}
+
+#memory {
+    color: #c678dd;
+}
+
+#temperature {
+    color: #46d9ff;
+}
+
+#temperature.critical {
+    color: #ff6c6b;
+}
+
+#backlight {
+    color: #ecbe7b;
+}
+
+#network {
+    color: #51afef;
+}
+
+#network.disconnected {
+    color: #ff6c6b;
+}
+
+#pulseaudio {
+    color: #98be65;
+}
+
+#pulseaudio.muted {
+    color: #5b6268;
+}
+
+#bluetooth {
+    color: #51afef;
+}
+
+#bluetooth.disabled {
+    color: #5b6268;
+}
+
+#custom-power {
+    color: #ff6c6b;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+#tray {
+    padding: 0 10px;
+}
+
+tooltip {
+    background: #282c34;
+    border: 1px solid #51afef;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #bbc2cf;
+}
