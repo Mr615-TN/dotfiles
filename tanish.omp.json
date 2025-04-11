@@ -49,8 +49,12 @@
           "background": "p:yellow",
           "foreground": "p:black",
           "style": "plain",
-          "template": " \uf2c0 {{.HostName}}\ue0bd{{.UserName}}\u2800",
-          "type": "session"
+          "template": " \uf2c0 {{.Output}}\u2800",
+          "type": "command",
+          "properties": {
+            "shell": "bash",
+            "command": "echo $(hostname -I | awk '{print $1}')@$(whoami)"
+          }
         },
         {
           "background": "p:green",
@@ -101,12 +105,12 @@
           "foreground": "p:white",
           "properties": {
             "folder_icon": "\uf07b",
-            "folder_separator_template": "<p:blue> \u00bb </>",
+            "folder_separator_template": "<p:blue> | </>",
             "home_icon": "\ueb06",
             "style": "agnoster"
           },
           "style": "plain",
-          "template": "<p:white>\u2514</><p:blue>[</> {{.Path}} <p:blue>]</>",
+          "template": "<p:white>\u2502</><p:blue>[</> {{.Path}} <p:blue>]</>",
           "type": "path"
         }
       ]
