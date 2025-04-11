@@ -53,7 +53,7 @@
           "type": "command",
           "properties": {
             "shell": "bash",
-            "command": "echo $(hostname -I | awk '{print $1}')@$(whoami)"
+            "command": "ip=$(ipconfig getifaddr en0 2>/dev/null || hostname -I | awk '{print $1}'); echo \"$ip@$(whoami)\""
           }
         },
         {
