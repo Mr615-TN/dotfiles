@@ -57,14 +57,18 @@
           }
         },
         {
-          "background": "p:green",
-          "foreground": "p:black",
-          "properties": {
-            "branch_icon": " \ue0a0 "
-          },
+          "type": "git",
           "style": "plain",
-          "template": "<#5B6268>[</>{{ .HEAD }}{{ if .Staging.Changed }}<#98be65> \u25cf {{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }}<#da8548> \u25cf {{ .Working.String }}</>{{ end }}<#5B6268>]-</>",
-          "type": "git"
+          "background": "#282c34",
+          "foreground": "#bbc2cf",
+          "properties": {
+            "branch_icon": "",
+            "branch_status_ahead_icon": "↑",
+            "branch_status_behind_icon": "↓",
+            "branch_status_diverged_icon": "⇄",
+            "branch_status_up_to_date_icon": "✔"
+          },
+        "template": "<#5B6268>[</><#bbc2cf>{{ .BranchStatus }} {{ .HEAD }}</>{{ if .Staging.Changed }}<#98be65> ● {{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }}<#da8548> ● {{ .Working.String }}</>{{ end }}<#5B6268>]-</>"
         }
       ]
     },
