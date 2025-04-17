@@ -1,75 +1,68 @@
 after-login-command = []
-after-startup-command = [
-    # JankyBorders has a built-in detection of already running process,
-    # so it won't be run twice on AeroSpace restart
-    'exec-and-forget borders active_color=0xffff4641‰ width=5.0'
-]
+
+after-startup-command = []
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = []
 
 start-at-login = true
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
-
-accordion-padding = 20
-
-# Possible values: tiles|accordion
-default-root-container-layout = 'tiles'
-
-# Possible values: horizontal|vertical|auto
-# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
-#               tall monitor (anything higher than wide) gets vertical orientation
-default-root-container-orientation = 'auto'
-
-# Possible values: (qwerty|dvorak)
-key-mapping.preset = 'qwerty'
-
-# Mouse follows focus when focused monitor changes
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+[key-mapping]
+preset = 'qwerty'
+
 [gaps]
-inner.horizontal = 3
-inner.vertical =   3
-outer.left =       3
-outer.bottom =     3
-outer.top =        3
-outer.right =      3
+inner.horizontal = 10
+inner.vertical = 10
+outer.left = 10
+outer.bottom = 10
+outer.top = 40
+# outer.top =        10
+outer.right = 10
 
 [mode.main.binding]
-# layout setup
-alt-e = 'layout tiles'
-alt-q = 'layout h_accordion'
-alt-shift-space = 'layout floating tiling'
-alt-shift-f = 'fullscreen'
+# See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
+alt-enter = '''exec-and-forget osascript -e '
+    tell application "Terminal"
+        do script
+        activate
+    end tell'
+    '''
 
-# focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+# i3 wraps focus by default
+alt-j = 'focus --boundaries-action wrap-around-the-workspace left'
+alt-k = 'focus --boundaries-action wrap-around-the-workspace down'
+alt-l = 'focus --boundaries-action wrap-around-the-workspace up'
+alt-semicolon = 'focus --boundaries-action wrap-around-the-workspace right'
 
-# move window
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
+alt-shift-j = 'move left'
+alt-shift-k = 'move down'
+alt-shift-l = 'move up'
+alt-shift-semicolon = 'move right'
 
-# join/split window
-alt-ctrl-h = 'join-with left'
-alt-ctrl-j = 'join-with down'
-alt-ctrl-k = 'join-with up'
-alt-ctrl-l = 'join-with right'
+# Consider using 'join-with' command as a 'split' replacement if you want to enable
+# normalizations
+alt-h = 'split horizontal'
+alt-v = 'split vertical'
 
-# resizing
-# u/i/o/p follows GlazeWM default setup
-alt-u = 'resize width -75'
-alt-i = 'resize height -75'
-alt-o = 'resize height +75'
-alt-p = 'resize width +75'
-alt-shift-u = 'resize width -350'
-alt-shift-i = 'resize height -350'
-alt-shift-o = 'resize height +350'
-alt-shift-p = 'resize width +350'
+alt-f = 'fullscreen'
 
-# workspaces
+alt-s = 'layout v_accordion'               # 'layout stacking' in i3
+alt-w = 'layout h_accordion'               # 'layout tabbed' in i3
+alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+
+alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+
+# Not supported, because this command is redundant in AeroSpace mental model.
+# See: https://nikitabobko.github.io/AeroSpace/guide#floating-windows
+#alt-space = 'focus toggle_tiling_floating'
+
+# `focus parent`/`focus child` are not yet supported, and it's not clear whether they
+# should be supported at all https://github.com/nikitabobko/AeroSpace/issues/5
+# alt-a = 'focus parent'
+
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -80,32 +73,31 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-0 = 'workspace 10'
-alt-a = 'workspace 11'
-alt-b = 'workspace 12'
 
-ctrl-left = 'workspace --wrap-around prev'
-ctrl-right = 'workspace --wrap-around next'
-alt-tab = 'workspace-back-and-forth'
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 10'
 
-# move to workspace
-alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
-alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
-alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
-alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
-alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
-alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
-alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
-alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
-alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
-alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
-alt-shift-a = ['move-node-to-workspace 11', 'workspace 11']
-alt-shift-b = ['move-node-to-workspace 12', 'workspace 12']
+alt-shift-c = 'reload-config'
 
+alt-r = 'mode resize'
 
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
 alt-shift-r = 'reload-config'
 
-
 # disable hide application
-cmd-h = [] # Disable "hide application"
+cmd-h = []     # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
-
