@@ -65,3 +65,7 @@ alias ta='tmux attach -t'
 alias td='tmux detach'
 alias tn='tmux new -s'
 alias tr='tmux rename'
+alias doomsync='~/.emacs.d/bin/doom sync'
+alias doomdoctor='~/.emacs.d/bin/doom doctor'
+alias teamacs='emacs -nw'
+
