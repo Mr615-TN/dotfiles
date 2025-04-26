@@ -11,7 +11,6 @@ opt.relativenumber = true -- Relative line numbers
 opt.cursorline = true -- Highlight current line
 opt.termguicolors = true -- Enable true colors
 opt.signcolumn = "yes" -- Always show sign column
-opt.guifont = "MapleMono NF:h12"
 
 -- Indentation & Formatting
 opt.expandtab = true -- Convert tabs to spaces
