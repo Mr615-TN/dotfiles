@@ -3,73 +3,78 @@ c = c  # noqa: F821 pylint: disable=E0602,C0103
 config = config  # noqa: F821 pylint: disable=E0602,C0103
 # pylint settings included to disable linting errors
 
-import subprocess
-def read_xresources(prefix):
-    props = {}
-    x = subprocess.run(['xrdb', '-query'], capture_output=True, check=True, text=True)
-    lines = x.stdout.split('\n')
-    for line in filter(lambda l : l.startswith(prefix), lines):
-        prop, _, value = line.partition(':\t')
-        props[prop] = value
-    return props
+# --- Initial D Inspired Hardcoded Color Palette ---
+bg_color = "#1A202C"    # A dark, almost black, blue-grey
+fg_color = "#E0E0E0"    # A soft, off-white for primary text
 
-xresources = read_xresources("*")
+color0 = "#1A202C"      # Black (same as background for consistency)
+color8 = "#4A5568"      # Bright Black/Dark Grey
+color6 = "#00BFFF"      # Cyan (Deep Sky Blue - vibrant)
+color10 = "#00FF7F"     # Bright Green (Spring Green - bright, slightly neon)
+color12 = "#4169E1"     # Bright Blue (Royal Blue - strong, classic blue)
+color13 = "#DA70D6"     # Bright Magenta/Purple (Orchid - noticeable purple/magenta)
+color14 = "#00CED1"     # Bright Cyan (Dark Turquoise - a slightly different cyan)
+# --- End Hardcoded Color Palette ---
 
-c.colors.statusbar.normal.bg = "#00000000"
-c.colors.statusbar.command.bg = "#00000000"
-# c.colors.statusbar.normal.bg = xresources["*.background"]
-# c.colors.statusbar.command.bg = xresources["*.background"]
-c.colors.statusbar.command.fg = xresources["*.foreground"]
-c.colors.statusbar.normal.fg = xresources["*color14"]
-c.colors.statusbar.passthrough.fg = xresources["*color14"]
-c.colors.statusbar.url.fg = xresources["*color13"]
-c.colors.statusbar.url.success.https.fg = xresources["*color13"]
-c.colors.statusbar.url.hover.fg = xresources["*color12"]
+
+# Status bar colors
+c.colors.statusbar.normal.bg = "#00000000" # Transparent
+c.colors.statusbar.command.bg = "#00000000" # Transparent
+c.colors.statusbar.command.fg = fg_color
+c.colors.statusbar.normal.fg = color14
+c.colors.statusbar.passthrough.fg = color14
+c.colors.statusbar.url.fg = color13
+c.colors.statusbar.url.success.https.fg = color13
+c.colors.statusbar.url.hover.fg = color12
 # c.statusbar.show = "always"
-c.colors.tabs.even.bg = "#00000000" # transparent tabs!!
+
+# Tab colors
+c.colors.tabs.even.bg = "#00000000" # Transparent tabs!!
 c.colors.tabs.odd.bg = "#00000000"
 c.colors.tabs.bar.bg = "#00000000"
-# c.colors.tabs.even.bg = xresources["*.background"]
-# c.colors.tabs.odd.bg = xresources["*.background"]
-c.colors.tabs.even.fg = xresources["*.color0"]
-c.colors.tabs.odd.fg = xresources["*.color0"]
-c.colors.tabs.selected.even.bg = xresources["*.foreground"]
-c.colors.tabs.selected.odd.bg = xresources["*.foreground"]
-c.colors.tabs.selected.even.fg = xresources["*.background"]
-c.colors.tabs.selected.odd.fg = xresources["*.background"]
-c.colors.hints.bg = xresources["*.background"]
-c.colors.hints.fg = xresources["*.foreground"]
+c.colors.tabs.even.fg = color0
+c.colors.tabs.odd.fg = color0
+c.colors.tabs.selected.even.bg = fg_color
+c.colors.tabs.selected.odd.bg = fg_color
+c.colors.tabs.selected.even.fg = bg_color
+c.colors.tabs.selected.odd.fg = bg_color
+
+# Hint colors
+c.colors.hints.bg = bg_color
+c.colors.hints.fg = fg_color
 c.tabs.show = "multiple"
 
-c.colors.completion.item.selected.match.fg = xresources["*color6"]
-c.colors.completion.match.fg = xresources["*color6"]
+# Completion colors
+c.colors.completion.item.selected.match.fg = color6
+c.colors.completion.match.fg = color6
+c.colors.tabs.indicator.start = color10
+c.colors.tabs.indicator.stop = color8
+c.colors.completion.odd.bg = bg_color
+c.colors.completion.even.bg = bg_color
+c.colors.completion.fg = fg_color
+c.colors.completion.category.bg = bg_color
+c.colors.completion.category.fg = fg_color
+c.colors.completion.item.selected.bg = bg_color
+c.colors.completion.item.selected.fg = fg_color
 
-c.colors.tabs.indicator.start = xresources["*color10"]
-c.colors.tabs.indicator.stop = xresources["*color8"]
-c.colors.completion.odd.bg = xresources["*.background"]
-c.colors.completion.even.bg = xresources["*.background"]
-c.colors.completion.fg = xresources["*.foreground"]
-c.colors.completion.category.bg = xresources["*.background"]
-c.colors.completion.category.fg = xresources["*.foreground"]
-c.colors.completion.item.selected.bg = xresources["*.background"]
-c.colors.completion.item.selected.fg = xresources["*.foreground"]
+# Message and download colors
+c.colors.messages.info.bg = bg_color
+c.colors.messages.info.fg = fg_color
+c.colors.messages.error.bg = bg_color
+c.colors.messages.error.fg = fg_color
+c.colors.downloads.error.bg = bg_color
+c.colors.downloads.error.fg = fg_color
 
-c.colors.messages.info.bg = xresources["*.background"]
-c.colors.messages.info.fg = xresources["*.foreground"]
-c.colors.messages.error.bg = xresources["*.background"]
-c.colors.messages.error.fg = xresources["*.foreground"]
-c.colors.downloads.error.bg = xresources["*.background"]
-c.colors.downloads.error.fg = xresources["*.foreground"]
+c.colors.downloads.bar.bg = bg_color
+c.colors.downloads.start.bg = color10
+c.colors.downloads.start.fg = fg_color
+c.colors.downloads.stop.bg = color8
+c.colors.downloads.stop.fg = fg_color
 
-c.colors.downloads.bar.bg = xresources["*.background"]
-c.colors.downloads.start.bg = xresources["*.color10"]
-c.colors.downloads.start.fg = xresources["*.foreground"]
-c.colors.downloads.stop.bg = xresources["*.color8"]
-c.colors.downloads.stop.fg = xresources["*.foreground"]
-
-c.colors.tooltip.bg = xresources["*.background"]
-c.colors.webpage.bg = xresources["*.background"]
-c.hints.border = xresources["*.foreground"]
+# Tooltip and webpage colors
+c.colors.tooltip.bg = bg_color
+c.colors.webpage.bg = bg_color
+c.hints.border = fg_color
 
 # c.url.start_pages = ""
 # c.url.default_page = ""
@@ -132,7 +137,7 @@ c.fonts.web.family.standard = 'monospace'
 
 # privacy - adjust these settings based on your preference
 # config.set("completion.cmd_history_max_items", 0)
-# config.set("content.private_browsing", True)
+# config.set("content.private_Browse", True)
 config.set("content.webgl", False, "*")
 config.set("content.canvas_reading", False)
 config.set("content.geolocation", False)
@@ -150,21 +155,21 @@ config.set("content.cookies.store", True)
 c.content.blocking.enabled = True
 # c.content.blocking.method = 'adblock' # uncomment this if you install python-adblock
 # c.content.blocking.adblock.lists = [
-#         "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2024.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-cookies.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-others.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
-#         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
+#           "https://github.com/ewpratten/youtube_ad_blocklist/blob/master/blocklist.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2021.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2022.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2023.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2024.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badware.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/privacy.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-cookies.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/annoyances-others.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/badlists.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/quick-fixes.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/resource-abuse.txt",
+#           "https://github.com/uBlockOrigin/uAssets/raw/master/filters/unbreak.txt"]
