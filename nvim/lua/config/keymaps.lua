@@ -30,6 +30,11 @@ map("n", "<Leader>sv", ":vsplit<CR>", opts) -- Vertical split
 map("n", "<Leader>sh", ":split<CR>", opts) -- Horizontal split
 map("n", "<Leader>sx", ":close<CR>", opts) -- Close split
 
+--- New Pane/Buffer Creation ---
+map("n", "<Leader>sn", ":new<CR>", { desc = "Create new horizontal buffer" }) -- New horizontal buffer
+map("n", "<Leader>sv", ":vnew<CR>", { desc = "Create new vertical buffer" }) -- New vertical buffer
+map("n", "<Leader>st", ":tabnew<CR>", { desc = "Create new tab" }) -- New tab
+
 -- === Clipboard & Text Manipulation ===
 map("v", "<Leader>y", '"+y', opts) -- Copy to system clipboard
 map("n", "<Leader>p", '"+p', opts) -- Paste from system clipboard
