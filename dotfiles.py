@@ -6,6 +6,7 @@ import platform
 import os
 import sys
 import time # For sleep calls
+import zipfile # For unzipping fonts
 
 # Global variable to store Homebrew environment variables
 homebrew_env = {}
@@ -249,11 +250,11 @@ def ensure_homebrew_installed(distro_id, id_like):
             print(stdout)
             print(stderr)
             print("Homebrew installation script completed.")
-            
+           
             # Extract and source Homebrew environment variables
             print("Sourcing Homebrew environment...")
             brew_exec_path = os.path.join(homebrew_prefix, "bin", "brew")
-            
+           
             if os.path.exists(brew_exec_path):
                 brew_shellenv_output = subprocess.check_output(f"{brew_exec_path} shellenv", shell=True, text=True).strip()
                 for line in brew_shellenv_output.split('\n'):
@@ -342,6 +343,147 @@ def install_kitty_linux():
         print("Failed to install Kitty via official script. Please consider manual installation.")
         return False
 
+def install_rustup():
+    """
+    Installs Rust and Cargo using rustup.
+    """
+    print("\n--- Installing Rust (rustup) ---")
+    if is_installed("cargo"):
+        print("Rust (cargo) is already installed.")
+        return True
+
+    install_cmd = "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+    print("Running rustup installer...")
+    try:
+        # Use Popen to allow the interactive script to run, but pass -y for unattended
+        process = subprocess.Popen(install_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        stdout, stderr = process.communicate()
+        if process.returncode != 0:
+            print(f"Rustup installation failed with exit code {process.returncode}.")
+            print(f"STDOUT:\n{stdout}")
+            print(f"STDERR:\n{stderr}")
+            return False
+        else:
+            print("Rustup installation script completed.")
+            # Source the cargo environment for the current script
+            cargo_env_path = os.path.expanduser("~/.cargo/env")
+            if os.path.exists(cargo_env_path):
+                print(f"Sourcing Rust environment from {cargo_env_path}...")
+                # Execute the script and update the current process's environment
+                # This is tricky in Python. For persistent changes, user needs to do it.
+                # For this script's execution, we can parse and update os.environ.
+                try:
+                    env_output = subprocess.check_output(f"bash -c 'source {cargo_env_path} && env'", shell=True, text=True)
+                    for line in env_output.split('\n'):
+                        if '=' in line and not line.startswith('_'): # Avoid internal bash variables
+                            key, value = line.split('=', 1)
+                            os.environ[key] = value
+                    print("Rust environment loaded for current session.")
+                except Exception as e:
+                    print(f"Warning: Could not source Rust environment for current script: {e}")
+            return True
+    except Exception as e:
+        print(f"An error occurred during Rustup installation: {e}")
+        return False
+
+def install_jetbrains_mono_nerd_font():
+    """
+    Installs JetBrains Mono Nerd Font.
+    """
+    print("\n--- Installing JetBrains Mono Nerd Font ---")
+    font_dir = os.path.expanduser("~/.local/share/fonts/JetBrainsMono")
+    
+    # Check if font directory already exists and has files
+    if os.path.exists(font_dir) and any(f.endswith(('.ttf', '.otf')) for f in os.listdir(font_dir)):
+        print("JetBrains Mono Nerd Font appears to be already installed.")
+        return True
+
+    os.makedirs(font_dir, exist_ok=True)
+    download_url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip"
+    zip_path = os.path.join(font_dir, "JetBrainsMono.zip")
+
+    print(f"Downloading JetBrains Mono Nerd Font from {download_url}...")
+    if not run_command(f"wget {download_url} -O {zip_path}", shell=True):
+        print("Failed to download JetBrains Mono Nerd Font.")
+        return False
+
+    print("Unzipping font files...")
+    try:
+        with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+            # Extract only .ttf and .otf files directly into font_dir
+            for member in zip_ref.namelist():
+                if member.endswith(('.ttf', '.otf')):
+                    # Extract to a temporary path first to avoid nested directories
+                    temp_path = zip_ref.extract(member, path=font_dir)
+                    # Move the file to the root of font_dir
+                    shutil.move(temp_path, os.path.join(font_dir, os.path.basename(member)))
+                    # Remove the temporary directory if it was created
+                    if os.path.dirname(temp_path) != font_dir:
+                        os.rmdir(os.path.dirname(temp_path)) # This might fail if dir not empty
+        os.remove(zip_path) # Clean up the zip file
+        print("Font files unzipped successfully.")
+    except Exception as e:
+        print(f"Failed to unzip font files: {e}")
+        return False
+
+    print("Updating font cache...")
+    if not run_command("fc-cache -fv"):
+        print("Failed to update font cache.")
+        return False
+
+    print("JetBrains Mono Nerd Font installed successfully.")
+    print("You may need to select 'JetBrainsMono Nerd Font' in your terminal emulator's settings.")
+    return True
+
+def install_pokeget():
+    """
+    Installs pokeget using pip.
+    """
+    print("\n--- Installing pokeget ---")
+    if is_installed("pokeget"):
+        print("pokeget is already installed.")
+        return True
+
+    # Ensure pip is available
+    if not is_installed("pip"):
+        print("pip is not found. Attempting to install pip...")
+        if not run_command("python3 -m ensurepip --default-pip"):
+            print("Failed to ensure pip is installed. Cannot install pokeget.")
+            return False
+        # After ensuring pip, it might still not be in PATH for the current process
+        # A simple recheck or direct call might be needed.
+        if not is_installed("pip"): # Recheck after ensurepip
+             # Try installing pip via native package manager if ensurepip fails or isn't enough
+            distro_id, _ = get_distribution_info()
+            if distro_id in ["ubuntu", "debian", "linuxmint"]:
+                if not run_command("apt install -y python3-pip", sudo=True):
+                    print("Failed to install python3-pip via apt. Cannot install pokeget.")
+                    return False
+            elif distro_id in ["fedora", "centos", "rhel", "almalinux", "rocky"]:
+                if not run_command("dnf install -y python3-pip", sudo=True):
+                    print("Failed to install python3-pip via dnf. Cannot install pokeget.")
+                    return False
+            elif distro_id == "arch":
+                if not run_command("pacman -S --noconfirm python-pip", sudo=True):
+                    print("Failed to install python-pip via pacman. Cannot install pokeget.")
+                    return False
+            elif distro_id == "opensuse":
+                if not run_command("zypper install -y python3-pip", sudo=True):
+                    print("Failed to install python3-pip via zypper. Cannot install pokeget.")
+                    return False
+            else:
+                print("Cannot automatically install pip for this distribution. Please install pip manually.")
+                return False
+        
+    print("Installing pokeget via pip...")
+    if run_command("pip install pokeget"):
+        print("pokeget installed successfully.")
+        return True
+    else:
+        print("Failed to install pokeget via pip.")
+        return False
+
+
 def main():
     global homebrew_env
     
@@ -352,6 +494,7 @@ def main():
     # 'exec': The actual executable name (if different from common name)
     
     apps_config = {
+        "rust": {"exec": "cargo", "native": None, "brew": "rustup", "flatpak_id": None, "special_install": "rustup"}, # Handled by special function
         "cava": {"exec": "cava", "native": "cava", "brew": "cava", "flatpak_id": "com.github.karlstav.cava"},
         "helix": {"exec": "hx", "native": "helix", "brew": "helix", "flatpak_id": "com.helix_editor.Helix"},
         "btop": {"exec": "btop", "native": "btop", "brew": "btop", "flatpak_id": "com.github.aristidb.btop"},
@@ -359,7 +502,14 @@ def main():
         "fastfetch": {"exec": "fastfetch", "native": "fastfetch", "brew": "fastfetch", "flatpak_id": "io.github.fastfetch.Fastfetch"},
         "zellij": {"exec": "zellij", "native": "zellij", "brew": "zellij", "flatpak_id": "org.zellij.Zellij"},
         "tmux": {"exec": "tmux", "native": "tmux", "brew": "tmux", "flatpak_id": None}, # tmux typically not via flatpak
-        "zsh": {"exec": "zsh", "native": "zsh", "brew": "zsh", "flatpak_id": None}, # zsh not via flatpak
+        "zsh": {"exec": "zsh", "native": "zsh", "brew": "zsh", "flatpak_id": None}, # zsh not via flatpak, but core shell
+        "eza": {"exec": "eza", "native": "eza", "brew": "eza", "flatpak_id": None},
+        "emacs": {"exec": "emacs", "native": "emacs", "brew": "emacs", "flatpak_id": "org.gnu.Emacs"},
+        "zsh-syntax-highlighting": {"exec": None, "native": "zsh-syntax-highlighting", "brew": "zsh-syntax-highlighting", "flatpak_id": None}, # No direct exec, but a plugin
+        "zsh-autosuggestions": {"exec": None, "native": "zsh-autosuggestions", "brew": "zsh-autosuggestions", "flatpak_id": None}, # No direct exec, but a plugin
+        "warehouse": {"exec": "warehouse", "native": None, "brew": None, "flatpak_id": "io.github.flattool.Warehouse"},
+        "yazi": {"exec": "yazi", "native": "yazi", "brew": "yazi", "flatpak_id": None},
+        "zathura": {"exec": "zathura", "native": "zathura", "brew": "zathura", "flatpak_id": None},
     }
 
     distro_id, id_like = get_distribution_info()
@@ -373,6 +523,13 @@ def main():
     # Update native package lists first
     if not update_package_lists(distro_id):
         print("Warning: Failed to update native package lists. Installations might fail or get old versions.")
+
+    # Special installation for Rust (rustup) - requested to be first
+    if "special_install" in apps_config["rust"] and apps_config["rust"]["special_install"] == "rustup":
+        install_rustup()
+        # Remove rust from general apps_config to avoid re-processing
+        del apps_config["rust"]
+
 
     # Attempt to install/configure Homebrew if on supported distro family
     if (distro_id in ["ubuntu", "debian", "linuxmint"] or "debian" in id_like or
@@ -393,33 +550,36 @@ def main():
         executable_name = config.get("exec", app_name)
 
         # Check if already installed via any method
-        if is_installed(executable_name, env=homebrew_env):
+        # For Zsh plugins, we can't directly check 'exec' as they don't have one
+        if executable_name and is_installed(executable_name, env=homebrew_env):
             print(f"{app_name} is already installed.")
             continue
-        
+        # Special check for zsh plugins if they don't have a direct executable
+        elif app_name in ["zsh-syntax-highlighting", "zsh-autosuggestions"]:
+            # These are usually sourced, not directly executable.
+            # We'll assume if they are in homebrew_env's path, they are "installed"
+            # or if the brew install command succeeds.
+            pass # Will proceed to installation attempts
+
         print(f"{app_name} not found. Attempting to install...")
         installed = False
 
-        # 1. Attempt installation via native package manager
-        if "native" in config and config["native"]:
-            if install_native_package(distro_id, config["native"], app_name):
-                installed = True
-            else:
-                print(f"Failed to install {app_name} via native package manager (or package not found).")
-        
-        # 2. If not installed and on a supported Homebrew distro family, try Homebrew
-        if not installed and homebrew_env and "brew" in config and config["brew"]:
+        # 1. Attempt installation via Homebrew (if set up and package defined)
+        if homebrew_env and "brew" in config and config["brew"]:
             if install_homebrew_package(config["brew"], app_name):
                 installed = True
             else:
                 print(f"Failed to install {app_name} via Homebrew.")
+        
+        # 2. If not installed, attempt via native package manager (if package defined)
+        if not installed and "native" in config and config["native"]:
+            if install_native_package(distro_id, config["native"], app_name):
+                installed = True
+            else:
+                print(f"Failed to install {app_name} via native package manager (or package not found).")
 
-        # 3. If still not installed and Flatpak is ready, try Flatpak
+        # 3. If still not installed and Flatpak is ready, try Flatpak (if package defined)
         if not installed and flatpak_ready and "flatpak_id" in config and config["flatpak_id"]:
-            # Note: Flatpak apps run in a sandbox, so their executables might not be directly in PATH
-            # However, `flatpak run <app_id>` can launch them, or desktop entries
-            # For simplicity in this script, we'll try to install, but `is_installed`
-            # might not detect it unless Flatpak's binaries are symlinked to PATH (often they are not by default)
             print(f"Trying Flatpak for {app_name}...")
             if install_flatpak_package(config["flatpak_id"], app_name, distro_id, id_like):
                 installed = True
@@ -435,36 +595,26 @@ def main():
     print("\n--- Special Installations ---")
 
     # Oh My Posh (direct download)
-    if not is_installed("oh-my-posh"):
-        install_oh_my_posh_linux()
-    else:
-        print("Oh My Posh is already installed.")
+    install_oh_my_posh_linux()
 
     # Kitty (official script)
-    if not is_installed("kitty"):
-        install_kitty_linux()
-    else:
-        print("Kitty is already installed.")
-    
-    # Oh My Zsh (requires Zsh to be present)
-    print("\n--- Checking for Oh My Zsh ---")
-    if is_installed("zsh"):
-        home_dir = os.path.expanduser("~")
-        oh_my_zsh_path = os.path.join(home_dir, ".oh-my-zsh")
-        if not os.path.exists(oh_my_zsh_path):
-            print("Oh My Zsh not found. Installing...")
-            install_command = 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended'
-            if not run_command(install_command, shell=True, check=False):
-                print("Failed to install Oh My Zsh. It might already be partially installed or requires manual intervention.")
-                print("Check for ~/.oh-my-zsh directory and ~/.zshrc file.")
-            else:
-                print("Oh My Zsh installed successfully.")
-                print("Remember to configure your ~/.zshrc for Oh My Zsh and any themes/plugins.")
-        else:
-            print("Oh My Zsh is already installed.")
-    else:
-        print("Zsh is not installed. Cannot install Oh My Zsh.")
+    install_kitty_linux()
 
+    # JetBrains Mono Nerd Font
+    install_jetbrains_mono_nerd_font()
+
+    # Pokeget (pip install)
+    install_pokeget()
+
+    print("\n--- Post-installation Notes ---")
+    print("For zsh-syntax-highlighting and zsh-autosuggestions, remember to add them to your ~/.zshrc:")
+    print("  # For zsh-syntax-highlighting (assuming Homebrew default path):")
+    print("  # source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh")
+    print("  # For zsh-autosuggestions (assuming Homebrew default path):")
+    print("  # source /home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh")
+    print("  # Or if installed natively, paths might be different, e.g., /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh")
+    print("  # Add these lines near the end of your .zshrc after other configurations.")
+    
     print("\n--- Package installation process complete ---")
     print("You should now proceed with linking your dotfiles and configuring your applications.")
     print("Remember to install a Nerd Font for powerline-enabled prompts (like Oh My Posh) to display correctly.")
