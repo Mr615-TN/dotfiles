@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env python3
 
 import subprocess
 import shutil
