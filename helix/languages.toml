@@ -45,6 +45,8 @@ includeInlayParameterNameHintsWhenArgumentMatchesName = true
 includeInlayPropertyDeclarationTypeHints = true
 includeInlayVariableTypeHints = true
 
+[language-server.marksman]
+command = "marksman"
 # Language configurations
 [[language]]
 name = "python"
@@ -106,3 +108,19 @@ file-types = ["tsx"]
 roots = ["package.json", "tsconfig.json"]
 language-servers = ["typescript-language-server"]
 indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "markdown"
+scope = "source.markdown"
+file-types = ["md", "markdown"]
+language-servers = ["marksman"]
+auto-format = true # Optional: Enable auto-formatting
+indent = { tab-width = 2, unit = "  " } # Or whatever indent you prefer for markdown
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+
