@@ -1,16 +1,22 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
-    "bg": "#282c34",
-    "fg": "#bbc2cf",
-    "red": "#ff6c6b",
-    "orange": "#da8548",
-    "green": "#98be65",
-    "teal": "#4db5bd",
-    "blue": "#51afef",
-    "purple": "#c678dd",
-    "cyan": "#46d9ff",
-    "yellow": "#ecbe7b"
+    "base": "#1e1e2e",
+    "text": "#cdd6f4",
+    "rosewater": "#f5e0dc",
+    "flamingo": "#f2cdcd",
+    "pink": "#f5c2e7",
+    "mauve": "#cba6f7",
+    "red": "#f38ba8",
+    "maroon": "#eba0ac",
+    "peach": "#fab387",
+    "yellow": "#f9e2af",
+    "green": "#a6e3a1",
+    "teal": "#94e2d5",
+    "sky": "#89dceb",
+    "sapphire": "#74c7ec",
+    "blue": "#89b4fa",
+    "lavender": "#b4befe"
   },
   "blocks": [
     {
@@ -20,14 +26,14 @@
           "type": "text",
           "style": "diamond",
           "leading_diamond": "\ue0b6",
-          "foreground": "p:fg",
+          "foreground": "#000000",
           "background": "p:red",
           "template": "{{ if .Env.PNPPSHOST }} \uf8c5 {{ .Env.PNPPSHOST }} {{ end }}"
         },
         {
           "type": "text",
           "style": "powerline",
-          "foreground": "p:fg",
+          "foreground": "p:text",
           "background": "p:teal",
           "powerline_symbol": "\ue0b0",
           "template": "{{ if .Env.PNPPSSITE }} \uf2dd {{ .Env.PNPPSSITE }}{{ end }}"
@@ -36,7 +42,7 @@
           "type": "text",
           "style": "diamond",
           "trailing_diamond": "\ue0b4",
-          "foreground": "p:fg",
+          "foreground": "p:text",
           "background": "p:teal",
           "template": "{{ if .Env.PNPPSSITE }}\u00A0{{ end }}"
         }
@@ -47,16 +53,16 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "p:purple",
-          "foreground": "p:fg",
+          "background": "p:mauve",
+          "foreground": "p:text",
           "leading_diamond": "\ue0b6",
           "style": "diamond",
           "template": "{{ .UserName }} ",
           "type": "session"
         },
         {
-          "background": "p:orange",
-          "foreground": "p:fg",
+          "background": "p:peach",
+          "foreground": "p:base",
           "powerline_symbol": "\ue0b0",
           "properties": {
             "style": "folder"
@@ -67,7 +73,7 @@
         },
         {
           "background": "p:green",
-          "foreground": "p:bg",
+          "foreground": "p:base",
           "powerline_symbol": "\ue0b0",
           "properties": {
             "branch_icon": "",
@@ -79,71 +85,65 @@
           "template": " \u279c ({{ .UpstreamIcon }}{{ .HEAD }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }}) ",
           "type": "git"
         },
-
-        // Python virtual environment
         {
           "type": "python",
           "style": "powerline",
           "background": "p:yellow",
-          "foreground": "p:bg",
+          "foreground": "p:base",
           "powerline_symbol": "\ue0b0",
-          "template": " \ue235 {{ .Venv }} "
+          "template": "{{ if .Venv }} \ue235 {{ .Venv }} {{ end }}"
         },
-
-        // Rust detection
         {
           "type": "rust",
           "style": "powerline",
-          "background": "p:blue",
-          "foreground": "p:bg",
+          "background": "p:maroon",
+          "foreground": "p:base",
           "powerline_symbol": "\ue0b0",
-          "template": " \ue7a8 {{ .Full }} "
+          "template": "{{ if .Full }} \ue7a8 {{ .Full }} {{ end }}"
         },
-
-        // NodeJS (JavaScript) detection
         {
           "type": "node",
           "style": "powerline",
-          "background": "p:cyan",
-          "foreground": "p:bg",
+          "background": "p:sky",
+          "foreground": "p:base",
           "powerline_symbol": "\ue0b0",
-          "template": " \ue718 {{ .Full }} "
+          "template": "{{ if .Full }} \ue718 {{ .Full }} {{ end }}"
         },
-
-        // C/C++ detection via command segment
         {
           "type": "command",
           "style": "powerline",
-          "background": "p:red",
-          "foreground": "p:bg",
+          "background": "p:sapphire",
+          "foreground": "p:base",
           "powerline_symbol": "\ue0b0",
-          "template": " \ue61d C/C++ ",
+          "template": "{{ if eq .Code 0 }} \ue61d C/C++ {{ end }}",
           "properties": {
             "shell": "bash",
-            "command": "[ -f Makefile ] || [ -f CMakeLists.txt ] || ls *.c *.cpp 1>/dev/null 2>&1",
-            "exit_codes": [0]
+            "command": "sh -c '[ -f Makefile ] || [ -f CMakeLists.txt ] || ls *.c *.cpp 1>/dev/null 2>&1'",
+            "exit_codes": [0],
+            "ignore_error": true
           }
         },
-
-        // Docker running check
         {
-          "type": "docker",
+          "type": "command",
           "style": "powerline",
           "background": "p:teal",
-          "foreground": "p:bg",
+          "foreground": "p:base",
           "powerline_symbol": "\ue0b0",
-          "template": " \u25a3 Docker "
+          "template": "{{ $d := trim .Output }}{{ if ne $d \"0/0\" }} \ud83d\udce6 Ctnrs {{$d}} {{ end }}",
+          "properties": {
+            "shell": "bash",
+            "command": "d=$(docker ps -q 2>/dev/null | wc -l || echo 0); p=$(podman ps -q 2>/dev/null | wc -l || echo 0); echo ${d}/${p}",
+            "ignore_error": true
+          }
         },
-
-        // Time
         {
-          "background": "p:purple",
-          "foreground": "p:bg",
+          "background": "p:lavender",
+          "foreground": "p:base",
           "properties": {
             "time_format": "15:04"
           },
           "style": "diamond",
-          "template": " \u2665 {{ .CurrentDate | date .Format }} ",
+          "template": " 🦄 {{ .CurrentDate | date .Format }} ",
           "trailing_diamond": "\ue0b0",
           "type": "time"
         }
