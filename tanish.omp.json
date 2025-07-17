@@ -72,21 +72,25 @@
           "type": "path"
         },
         {
+          "type": "git",
+          "style": "powerline",
           "background": "p:green",
           "foreground": "p:base",
           "powerline_symbol": "\ue0b0",
-          "style": "powerline",
           "properties": {
-            "branch_icon": "\ue725",
-            "fetch_stash_count": true,
             "fetch_status": true,
+            "fetch_stash_count": true,
             "fetch_upstream_icon": true,
             "display_stash_count": true,
             "display_status": true,
-            "display_upstream_icon": true
+            "display_upstream_icon": true,
+            "branch_icon": "\ue725",
+            "branch_status_ahead_icon": "↑",
+            "branch_status_behind_icon": "↓",
+            "branch_status_diverged_icon": "⇄",
+            "branch_status_up_to_date_icon": "✔"
           },
-          "template": " {{ .BranchStatus }} {{ if .Working.Changed }}\u270e {{ end }}{{ if .Staging.Changed }}\u2714 {{ end }}{{ if gt .Ahead 0 }}\u2b06 {{ .Ahead }}{{ end }}{{ if gt .Behind 0 }}\u2b07 {{ .Behind }}{{ end }} ",
-          "type": "git"
+          "template": " \ue725 {{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} ✎{{ end }}{{ if .Staging.Changed }} ✔{{ end }}"
         },
         {
           "type": "python",
