@@ -131,19 +131,6 @@
           }
         },
         {
-          "type": "command",
-          "style": "powerline",
-          "background": "p:teal",
-          "foreground": "p:base",
-          "powerline_symbol": "\ue0b0",
-          "template": "{{ $d := trim .Output }}{{ if ne $d \"0/0\" }} \ud83d\udce6 Ctnrs {{$d}} {{ end }}",
-          "properties": {
-            "shell": "bash",
-            "command": "d=$(docker ps -q 2>/dev/null | wc -l || echo 0); p=$(podman ps -q 2>/dev/null | wc -l || echo 0); echo ${d}/${p}",
-            "ignore_error": true
-          }
-        },
-        {
           "background": "p:lavender",
           "foreground": "p:base",
           "properties": {
