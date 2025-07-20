@@ -1,6 +1,10 @@
-alias ll='eza -alF'
+alias l='eza -lh --icons=auto'                                         # long list
+alias ls='eza -1 --icons=auto'                                         # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto'                                       # long list dirs
+alias lt='eza --icons=auto --tree'                                     # list folder as tree
 alias la='eza -A'
-alias l='eza --classify --icons=always --group-directories-first'
+#alias l='eza --classify --icons=always --group-directories-first'
 alias battery='upower -i $(upower -e | grep 'BAT')'
 alias lp='eza -lh --classify --icons=auto --sort=name --group-directories-first'
 alias cplus='g++ -std=gnu++20 -Wall -Wextra -Wshadow -Wconversion'
