@@ -12,15 +12,15 @@ return {
         nerd_font_variant = "mono",
       },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "jupynium" },
+        default = { "lsp", "path", "snippets", "buffer" },
       },
-      providers = { -- <--- ADD THIS 'providers' TABLE HERE
-        jupynium = {
-          name = "Jupynium",
-          module = "jupynium.blink_cmp",
-          score_offset = 100, -- Adjust priority as desired
-        },
-      },
+      --providers = { -- <--- ADD THIS 'providers' TABLE HERE
+      --jupynium = {
+      --name = "Jupynium",
+      --module = "jupynium.blink_cmp",
+      --score_offset = 100, -- Adjust priority as desired
+      -- },
+      -- },
       -- Experimental signature help support
       -- signature = { enabled = true }
     },
