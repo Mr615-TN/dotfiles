@@ -5,7 +5,6 @@ return {
     opts = {
       ensure_installed = {
         "bash",
-        "html",
         "javascript",
         "json",
         "lua",
@@ -23,7 +22,6 @@ return {
         "rust",
         "go",
         "cmake",
-        "latex", -- Add this line for LaTeX support
       },
       filetype_to_parsername = {
         ["ino"] = "cpp",
