@@ -1,4 +1,4 @@
-alias l='eza -lh --icons=auto'                                         # long list
+alias l='eza -lh --icons=auto' # long list
 #alias ls='eza -1 --icons=auto'                                         # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto'                                       # long list dirs
@@ -55,6 +55,8 @@ alias deletez='zellij delete-all-sessions -y'
 alias deleter='zellij delete-session'
 alias lister='zellij list-sessions'
 alias attach='zellij attach'
+alias detach='zellij detach'
+alias createzellij='zellij attach --create'
 alias ig='kitty +kitten icat'
 alias lgit='lazygit'
 alias startlib='sudo systemctl start libvirtd'
@@ -75,7 +77,6 @@ alias restore='git restore .'
 alias ldock='lazydocker'
 alias top='btop'
 alias cds='cd .ssh_keys'
-alias createzellij='zellij attach --create'
 alias docks='podman system prune -a --volumes -f'
 alias gl='gitleaks'
 alias glg='gitleaks git'
