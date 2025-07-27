@@ -9,7 +9,7 @@ return {
     --- Neominimap configuration
     ---@type Neominimap.UserConfig
     vim.g.neominimap = {
-      auto_enable = true, -- Enable the minimap globally by default
+      auto_enable = false, -- Enable the minimap globally by default
     }
   end,
   keys = {
