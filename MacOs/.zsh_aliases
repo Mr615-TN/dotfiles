@@ -73,3 +73,9 @@ alias x86='arch -x86_64 zsh'
 alias aeroinstall='brew install --cask nikitabobko/tap/aerospace'
 alias aerouninstall='brew uninstall --cask nikitabobko/tap/aerospace'
 alias hugging='huggingface-cli'
+alias Prod="TERM=xterm-ghostty ssh prod"
+alias Test="TERM=xterm-ghostty ssh test"
+alias jrml='TERM=xterm-ghostty ssh mlserver'
+alias stml='TERM=xterm-ghostty ssh mlserver2'
+
+
