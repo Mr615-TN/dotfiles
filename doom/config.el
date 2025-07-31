@@ -74,3 +74,7 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+;; Define a list of directories to be scanned for Org files
+(setq org-agenda-files (list "~/org/"
+                             "~/GitHub/DiigitalNotebook/WorkNotes/VLA/Notes"
+                             "~/projects/project-beta/"))
