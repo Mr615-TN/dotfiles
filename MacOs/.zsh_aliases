@@ -77,5 +77,6 @@ alias Prod="TERM=xterm-ghostty ssh prod"
 alias Test="TERM=xterm-ghostty ssh test"
 alias jrml='TERM=xterm-ghostty ssh mlserver'
 alias stml='TERM=xterm-ghostty ssh mlserver2'
-
+alias uvenv='uv venv'
+alias condavirt='conda create --prefix'
 
