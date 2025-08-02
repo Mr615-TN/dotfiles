@@ -79,4 +79,5 @@ alias jrml='TERM=xterm-ghostty ssh mlserver'
 alias stml='TERM=xterm-ghostty ssh mlserver2'
 alias uvenv='uv venv'
 alias condavirt='conda create --prefix'
-
+alias cd='z'
+alias ci='zi'
