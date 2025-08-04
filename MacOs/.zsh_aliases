@@ -6,7 +6,7 @@ alias lt='eza --icons=auto --tree'                                     # list fo
 alias la='eza -A'
 alias ls='eza --classify --icons=always --group-directories-first'
 alias lp='eza -lh --classify --icons=auto --sort=name --group-directories-first'
-aalias cplus='g++ -std=gnu++20 -Wall -Wextra -Wshadow -Wconversion'
+alias cplus='g++ -std=gnu++20 -Wall -Wextra -Wshadow -Wconversion'
 alias cpl='g++ -std=gnu++17 -Wall -Wextra -Wshadow -Wconversion'
 alias cthis='gcc -std=gnu11 -Wall -Wextra -Wshadow -Wconversion'
 alias py3='python3'
