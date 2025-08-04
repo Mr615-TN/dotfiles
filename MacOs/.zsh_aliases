@@ -1,9 +1,12 @@
+alias l='eza -lh --icons=auto' # long list
+#alias ls='eza -1 --icons=auto'                                         # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto'                                       # long list dirs
+alias lt='eza --icons=auto --tree'                                     # list folder as tree
+alias la='eza -A'
 alias ls='eza --classify --icons=always --group-directories-first'
-alias ll='eza -lh --classify --icons=always --group-directories-first'
-alias la='eza -A --classify --icons=always --group-directories-first'
-alias l='eza --classify --icons=always --group-directories-first'
-alias lp='eza -lh --classify --icons=always --group-directories-first'
-alias cplus='g++ -std=gnu++20 -Wall -Wextra -Wshadow -Wconversion'
+alias lp='eza -lh --classify --icons=auto --sort=name --group-directories-first'
+aalias cplus='g++ -std=gnu++20 -Wall -Wextra -Wshadow -Wconversion'
 alias cpl='g++ -std=gnu++17 -Wall -Wextra -Wshadow -Wconversion'
 alias cthis='gcc -std=gnu11 -Wall -Wextra -Wshadow -Wconversion'
 alias py3='python3'
