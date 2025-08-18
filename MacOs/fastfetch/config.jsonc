@@ -32,10 +32,10 @@
             }
         },
         "bar": {
-            "charElapsed": "▰",
-            "charTotal": " ",
-            "borderLeft": "",
-            "borderRight": "",
+            "char.elapsed": "▰",
+            "char.total": " ",
+            "border.left": "",
+            "border.right": "",
             "width": 28
         },
         "percent": {
