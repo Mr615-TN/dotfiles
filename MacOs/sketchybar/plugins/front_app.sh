@@ -3,7 +3,7 @@
 ICON_PADDING_RIGHT=5
 
 case $INFO in
-"Zen")
+"Firefox")
     ICON_PADDING_RIGHT=5
     ICON=
     ;;
