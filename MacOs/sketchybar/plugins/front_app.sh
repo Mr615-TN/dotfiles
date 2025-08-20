@@ -3,7 +3,7 @@
 ICON_PADDING_RIGHT=5
 
 case $INFO in
-"Floorp")
+"Zen")
     ICON_PADDING_RIGHT=5
     ICON=
     ;;
@@ -15,7 +15,7 @@ case $INFO in
     ICON_PADDING_RIGHT=3
     ICON=
     ;;
-"Discord")
+"Vesktop")
     ICON=
     ;;
 "FaceTime")
