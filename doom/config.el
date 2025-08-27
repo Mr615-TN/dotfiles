@@ -41,7 +41,7 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/GitHub/DigitalNotebook/org/")
-(setq org-agenda-files '("~/GitHub/DigitalNotebook/org/MetaMorphTODO.org" "~/GitHub/DigitalNotebook/org/VLA_TODO.org"))
+(setq org-agenda-files '("~/GitHub/DigitalNotebook/org/MetaMorphTODO.org" "~/GitHub/DigitalNotebook/org/VLA_TODO.org" "~/GitHub/DigitalNotebook/org/GeneralTodo.org"))
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
