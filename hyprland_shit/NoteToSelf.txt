@@ -1,4 +1,0 @@
-Switching audio output:
-pactl list short sinks  # List devices
-pactl set-default-sink <TV_SINK_ID>
-
