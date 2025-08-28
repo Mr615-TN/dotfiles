@@ -40,17 +40,21 @@ rm strap.sh
 echo "Updating system and syncing repositories..."
 pacman -Syyu --noconfirm
 
-# Install all necessary packages, including the ones from your screenshot
-echo "Installing core packages and user-requested tools..."
+# Install all necessary packages, including a graphical login manager (SDDM)
+echo "Installing core packages, SDDM, and user-requested tools..."
 pacman -S --noconfirm \
-    sway swaylock waybar mako kitty \
+    sway swaylock waybar mako kitty sddm \
     zsh zsh-autosuggestions zsh-completions \
     oh-my-posh-bin \
     eza lazygit lazydocker docker-cli \
     amfora zathura imv cava \
     firefox brave-browser chromium ferdium notion-app-bin \
     ttf-firacode-nerd ttf-nerd-fonts-symbols \
-    emacs-git # Doom Emacs requires a recent Emacs version, so we install from git
+    emacs-pgtk # Using emacs-pgtk for native Wayland support from Arch repo
+
+# Enable SDDM to start on boot
+echo "Enabling SDDM as the graphical login manager..."
+systemctl enable sddm.service
 
 echo "Package installation complete. Proceed with configuration."
 
@@ -58,9 +62,7 @@ echo "Package installation complete. Proceed with configuration."
 # --- SECTION 2: SWAY CONFIGURATION (~/.config/sway/config) ---
 # -----------------------------------------------------------------------------
 
-# Note: Replace this file with your user's existing config or add it after
-# the user has logged in to the new environment.
-# This config will be copied to ~/.config/sway/config
+# Note: This config will be copied to ~/.config/sway/config
 
 echo '#
 # Initial D Themed Sway Configuration
@@ -326,13 +328,15 @@ echo "----------------------------------------"
 
 echo "What you have done:"
 echo "1. Added Chaotic-AUR and BlackArch repositories."
-echo "2. Installed all the required packages."
-echo "3. Created an Initial D-themed Sway configuration."
-echo "4. Created Waybar and Mako configurations."
-echo "5. Set up your ZSH shell with autosuggestions and Oh My Posh."
+echo "2. Installed all the required packages, including SDDM."
+echo "3. Enabled SDDM to start automatically on boot."
+echo "4. Created an Initial D-themed Sway configuration."
+echo "5. Created Waybar and Mako configurations."
+echo "6. Set up your ZSH shell with autosuggestions and Oh My Posh."
 
 echo "What to do next:"
-echo "1. Reboot your system and log in. You should now be in a fresh Sway session."
-echo "2. Once in Sway, you can open your Kitty terminal and check if the theme and commands like 'eza' and 'lazygit' work."
-echo "3. Remember to copy your existing configuration files for Doom Emacs, Kitty, Nvim, Btop, and Starship.toml."
-echo "4. For the wallpaper, you can download an Initial D image and place it in a known location, then update the line in your Sway config."
+echo "1. Reboot your system. It should now boot directly to the SDDM login screen."
+echo "2. Log in with your username and password. SDDM will automatically start Sway."
+echo "3. Once in Sway, you can open your Kitty terminal and check if the theme and commands like 'eza' and 'lazygit' work."
+echo "4. Remember to copy your existing configuration files for Doom Emacs, Kitty, Nvim, Btop, and Starship.toml."
+echo "5. For the wallpaper, you can download an Initial D image and place it in a known location, then update the line in your Sway config."
