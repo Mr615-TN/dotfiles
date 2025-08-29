@@ -103,3 +103,4 @@ alias stml='ssh -XC mlserver2'
 alias condavirt='conda create --prefix' #make sure to do "./mynewenv or some other name" and then the specific python version you want for example python=3.9, so an example of the entire command would be conda create --prefix ./mynewenv python=3.9
 alias cd='z'
 alias ci='zi'
+alias npm='pnpm'
