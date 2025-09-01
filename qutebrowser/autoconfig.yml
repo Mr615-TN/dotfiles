@@ -7,6 +7,7 @@
 config_version: 2
 settings:
   content.javascript.clipboard:
+    https://gemini.google.com: access-paste
     https://pass.proton.me: access-paste
   content.notifications.enabled:
     https://www.facebook.com: true
