@@ -15,7 +15,7 @@ opt.signcolumn = "yes" -- Always show sign column
 -- Indentation & Formatting
 opt.expandtab = true -- Convert tabs to spaces
 opt.shiftwidth = 4 -- Indentation width
-opt.tabstop = 4 -- Number of spaces per tab
+opt.tabstop = 2 -- Number of spaces per tab
 opt.smartindent = true -- Smart indentation
 opt.wrap = false -- Disable line wrapping
 
