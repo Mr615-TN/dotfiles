@@ -109,6 +109,7 @@ config.set("content.notifications.enabled", False, "*")
 config.set("content.autoplay", False)
 config.set("content.javascript.can_open_tabs_automatically", False, "*")
 config.set("content.headers.do_not_track", True)
+config.set('content.cookies.accept', 'all', 'https://pass.proton.me/')
 
 # =========================
 #   ADBLOCKING (python-adblock)
