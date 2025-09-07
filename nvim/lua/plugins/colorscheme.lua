@@ -1,38 +1,76 @@
 return {
-  -- This is the main configuration for the tokyonight.nvim plugin.
-  -- LazyVim will use these settings to apply your custom theme.
   {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {
-      -- Set the base theme to 'night' to start with
-      style = "night",
-
-      -- Use the on_colors function to override the default palette
-      on_colors = function(colors)
-        -- Colors for the main UI elements, inspired by the AE86
-        colors.bg_normal = "#1A1A1A" -- Deep black like the AE86's hood
-        colors.fg = "#F5F5F5" -- Bright white like the AE86's body
-        colors.fg_dark = "#BDC3C7" -- A slightly darker white for secondary text
-
-        -- The color palette for syntax highlighting, inspired by the
-        -- aesthetic of the Initial D world.
-        colors.comment = "#81C8BE" -- Misty blue-green like the mountain fog
-        colors.statement = "#F1C40F" -- Vibrant yellow for keywords, like headlights and team logos
-        colors.keyword = "#F1C40F" -- Another vibrant yellow
-        colors.variable = "#8CAAEE" -- A cool blue for variables, like the Akina Speed Stars logo
-        colors.special = "#E74C3C" -- Bright red for warnings or important elements, like the Night Kids team
-        colors.error = "#E74C3C" -- Red for errors
-        colors.warning = "#E74C3C" -- Red for warnings
-        colors.info = "#3498DB" -- Blue for info messages
-        colors.border = "#F1C40F" -- Yellow border for windows
-        colors.syntax.string = "#A6D189" -- Green, like a trackside tree
-      end,
-    },
     config = function()
-      -- This command applies the colorscheme after the plugin is loaded.
+      -- make sure we have true colors
+      vim.o.termguicolors = true
+
+      -- Setup tokyonight with both on_colors and on_highlights
+      require("tokyonight").setup({
+        style = "night",
+        transparent = true,
+        terminal_colors = true,
+        styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+        },
+
+        on_colors = function(colors)
+          -- keep palette minimal / monochrome with small accents
+          colors.bg = "NONE"
+          colors.fg = "#F5F5F5"
+          colors.comment = "#7A7A7A"
+          colors.keyword = "#FFD700"
+          colors.error = "#E74C3C"
+          colors.border = "#BFAF00"
+        end,
+
+        on_highlights = function(hl, c)
+          -- force important UI groups to transparent / AE86-like colors
+          hl.Normal = { bg = "NONE", fg = c.fg }
+          hl.NormalFloat = { bg = "NONE" }
+          hl.SignColumn = { bg = "NONE" }
+          hl.LineNr = { fg = "#5C5C5C", bg = "NONE" }
+          hl.CursorLineNr = { fg = "#FFD700", bg = "NONE", bold = true }
+          hl.FloatBorder = { fg = "#FFD700", bg = "NONE" }
+          hl.Pmenu = { bg = "NONE" }
+          hl.PmenuSel = { bg = "NONE", underline = true }
+          hl.StatusLine = { bg = "NONE", fg = c.fg }
+          hl.StatusLineNC = { bg = "NONE", fg = "#9E9E9E" }
+          hl.Visual = { bg = "#2A2A2A" }
+          hl.CursorLine = { bg = "#1E1E1E" }
+
+          -- syntax
+          hl.Comment = { fg = "#7A7A7A", italic = true }
+          hl.Keyword = { fg = "#FFD700", bold = true }
+          hl.Statement = { fg = "#FFD700" }
+          hl.String = { fg = "#B0B0B0" }
+          hl.Error = { fg = "#E74C3C", bold = true }
+          hl.Warning = { fg = "#E67E22" }
+        end,
+      })
+
+      -- apply colorscheme
       vim.cmd("colorscheme tokyonight")
+
+      -- extra safety: force bg=NONE for groups that often get reset later
+      local force_none =
+        { "Normal", "NormalFloat", "SignColumn", "LineNr", "CursorLine", "Pmenu", "StatusLine", "StatusLineNC" }
+      for _, g in ipairs(force_none) do
+        vim.api.nvim_set_hl(0, g, { bg = "NONE" })
+      end
+
+      -- keep forcing none if some plugin later changes the colorscheme
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "*",
+        callback = function()
+          for _, g in ipairs(force_none) do
+            vim.api.nvim_set_hl(0, g, { bg = "NONE" })
+          end
+        end,
+      })
     end,
   },
 }
