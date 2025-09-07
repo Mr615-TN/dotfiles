@@ -85,7 +85,7 @@ input "1739:30385:CUST0001:00_06CB:76B1_Touchpad" {
     bindsym $mod+q kill
 
     # Start your launcher
-    bindsym $mod+a exec $menu
+    bindsym $mod+Shift+a exec $menu
 
     #open browser (firefox)
     bindsym $mod+f exec firefox
@@ -176,8 +176,8 @@ input "1739:30385:CUST0001:00_06CB:76B1_Touchpad" {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+a splith
+    bindsym $mod+d splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -194,7 +194,7 @@ input "1739:30385:CUST0001:00_06CB:76B1_Touchpad" {
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+d focus parent
+    bindsym $mod+shift+d focus parent
 #
 # Scratchpad:
 #
