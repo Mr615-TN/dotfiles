@@ -129,12 +129,5 @@
         "icon-size": 16,
         "spacing": 8,
         "tooltip": true
-    },
-    "custom/cava": {
-        "exec": "cava -p ~/.config/cava/config_waybar",
-        "format": "🎵 {}",
-        "restart-interval": 1,
-        "on-click": "pkill cava",
-        "tooltip": false
     }
 }

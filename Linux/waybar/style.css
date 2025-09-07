@@ -265,8 +265,8 @@ button:hover {
 #memory,
 #temperature,
 #idle_inhibitor {
-    padding: 6px 12px;
-    margin: 4px 2px;
+    padding: 7px 14px;
+    margin: 5px 3px;
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
