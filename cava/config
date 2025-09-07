@@ -1,35 +1,18 @@
 [general]
-
 bar_width = 2
 bar_spacing = 1
 
 [output]
-
 method = ncurses
 
 [color]
-
 gradient = 1
-gradient_color_1 = '#80a0ff'
-gradient_color_2 = '#74b2ff'
-gradient_color_3 = '#79dac8'
-gradient_color_4 = '#85dc85'
-gradient_color_5 = '#36c692'
-gradient_color_6 = '#f09479'
-gradient_color_7 = '#e2637f'
-gradient_color_8 = '#ff5189'
-
-### Auto generated wallbash colors ###
-
-[color]
-
- gradient = 1
- gradient_count = 8
- gradient_color_1 = '#52294C'
- gradient_color_2 = '#6B3A64'
- gradient_color_3 = '#7D5B4B'
- gradient_color_4 = '#8F6957'
- gradient_color_5 = '#657CA3'
- gradient_color_6 = '#7A95C2'
- gradient_color_7 = '#E6B99A'
- gradient_color_8 = '#F0C6AA'
+gradient_count = 8
+gradient_color_1 = '#121C26'  // Dark, almost black blue, for a nighttime feel
+gradient_color_2 = '#1C2E40'  // Slightly lighter dark blue
+gradient_color_3 = '#273F5C'  // Medium dark blue
+gradient_color_4 = '#315173'  // More vibrant blue
+gradient_color_5 = '#5E2B2B'  // Deep red, like a brake light
+gradient_color_6 = '#823C3C'  // Brighter red
+gradient_color_7 = '#E04A4A'  // Vibrant red/pink
+gradient_color_8 = '#F85A5A'  // Brightest red/pink, for high frequencies
