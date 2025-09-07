@@ -1,4 +1,10 @@
-/* 頭文字D (Initial D) themed Waybar style */
+#temperature {
+    background: linear-gradient(45deg, #b7950b, #d68910, #f4d03f);
+    color: #2c3e50;
+    border-left: 3px solid #9a7d0a;
+    border-top: 1px solid rgba(212, 137, 16, 0.4);
+    text-shadow: 0 0 6px rgba(244, 208, 63, 0.8);
+}/* 頭文字D (Initial D) themed Waybar style */
 /* Inspired by the legendary street racing anime */
 
 * {
@@ -250,7 +256,7 @@ button:hover {
     }
 }
 
-/* === MODULE STYLING === */
+/* === モジュールスタイリング - プロドライバー仕様 === */
 #clock,
 #pulseaudio,
 #network,
@@ -261,10 +267,13 @@ button:hover {
 #idle_inhibitor {
     padding: 6px 12px;
     margin: 4px 2px;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 #clock:hover,
@@ -275,5 +284,8 @@ button:hover {
 #memory:hover,
 #temperature:hover,
 #idle_inhibitor:hover {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.3),
+        0 0 8px rgba(255, 204, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
