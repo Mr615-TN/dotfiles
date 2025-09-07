@@ -3,14 +3,15 @@
   "palette": {
     "base": "#000000",
     "text": "#ffffff",
+    "ae86_white": "#f2f2f2",
+    "ae86_black": "#1a1a1a",
     "red": "#e74c3c",
     "yellow": "#f1c40f",
     "blue": "#3498db",
     "green": "#2ecc71",
-    "white": "#ecf0f1",
-    "gray": "#95a5a6",
     "orange": "#f39c12",
-    "purple": "#9b59b6"
+    "purple": "#9b59b6",
+    "gray": "#95a5a6"
   },
   "blocks": [
     {
@@ -47,15 +48,15 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "p:orange",
-          "foreground": "p:base",
+          "background": "p:ae86_black",
+          "foreground": "p:text",
           "leading_diamond": "\ue0b6",
           "style": "diamond",
           "template": " {{ .UserName }} ",
           "type": "session"
         },
         {
-          "background": "p:white",
+          "background": "p:ae86_white",
           "foreground": "p:base",
           "powerline_symbol": "\ue0b0",
           "properties": {
@@ -68,8 +69,8 @@
         {
           "type": "git",
           "style": "powerline",
-          "background": "p:green",
-          "foreground": "p:base",
+          "background": "p:ae86_black",
+          "foreground": "p:text",
           "powerline_symbol": "\ue0b0",
           "properties": {
             "fetch_status": true,
@@ -125,7 +126,7 @@
           }
         },
         {
-          "background": "p:red",
+          "background": "p:ae86_white",
           "foreground": "p:base",
           "properties": {
             "time_format": "15:04"
