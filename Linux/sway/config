@@ -88,10 +88,10 @@ input "1739:30385:CUST0001:00_06CB:76B1_Touchpad" {
     bindsym $mod+Shift+a exec $menu
 
     #open browser (firefox)
-    bindsym $mod+f exec firefox
+    bindsym $mod+b exec firefox
 
     #open browser (qutebrowser)
-    bindsym $mod+Shift+b exec qutebrowser
+    bindsym $mod+u exec qutebrowser
     #open discord
     bindsym $mod+t exec flatpak run dev.vencord.Vesktop
 
@@ -185,7 +185,7 @@ input "1739:30385:CUST0001:00_06CB:76B1_Touchpad" {
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+u fullscreen
+    bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
