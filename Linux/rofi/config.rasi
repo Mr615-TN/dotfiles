@@ -1,2 +1,126 @@
+//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
 
-@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+/*
+ * Initial D Themed Rofi Configuration
+ * Inspired by the show's dark, high-contrast, and digital aesthetic.
+ */
+
+configuration {
+    modi: "drun";
+    show-icons: true;
+    display-drun: "RUN ";
+    drun-display-format: "{name}";
+    font: "JetBrainsMono Nerd Font 12"; /* Changed to your preferred font */
+    location: 0;
+    yoffset: 0;
+    xoffset: 0;
+    /* To make the Rofi window fullscreen and centered: */
+    /*
+    fullscreen: true;
+    location: 0;
+    */
+}
+
+* {
+    /* Define Initial D color scheme */
+    bg-color:                  #121C26;  /* Very dark blue for a night sky feel */
+    bg-alt-color:              #1C2E40;  /* Slightly lighter shade for alternating rows */
+    text-color:                #D8D8D8;  /* Light gray for general text */
+    highlight-color:           #F0C6AA;  /* Warm orange/beige, like streetlights */
+    urgent-color:              #F85A5A;  /* Bright red/pink for urgent items, like a brake light */
+    active-color:              #7A95C2;  /* Vibrant blue for active items */
+
+    /* Generic Rofi properties, using the defined colors */
+    background-color:          @bg-color;
+    foreground-color:          @text-color;
+    border-color:              @highlight-color;
+    border-radius:             4px;
+    
+    /* Layout */
+    margin: 0;
+    padding: 0;
+}
+
+window {
+    width: 30%;
+    border: 2px;
+    padding: 10px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    spacing: 0;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    font: "JetBrainsMono Nerd Font 12 bold";
+    enabled: true;
+    padding: 0 5px 0 0;
+    text-color: @highlight-color;
+}
+
+entry {
+    enabled: true;
+    padding: 0 0 0 5px;
+    text-color: @text-color;
+}
+
+listview {
+    padding: 10px 0 0 0;
+    spacing: 5px;
+    dynamic: false;
+    cycle: true;
+}
+
+element {
+    padding: 5px;
+    text-color: @text-color;
+    border-radius: 2px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element-icon {
+    size: 1.5ch;
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element.normal.normal {
+    background-color: @bg-color;
+    text-color: @text-color;
+}
+
+element.normal.urgent {
+    background-color: @bg-color;
+    text-color: @urgent-color;
+}
+
+element.normal.active {
+    background-color: @bg-color;
+    text-color: @active-color;
+}
+
+element.selected.normal {
+    background-color: @bg-alt-color;
+    text-color: @highlight-color;
+    border: 1px;
+    border-color: @highlight-color;
+}
+
+element.selected.urgent {
+    background-color: @urgent-color;
+    text-color: @text-color;
+}
+
+element.selected.active {
+    background-color: @active-color;
+    text-color: @text-color;
+}
