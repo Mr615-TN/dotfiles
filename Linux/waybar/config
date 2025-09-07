@@ -1,0 +1,132 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 35,
+    "spacing": 8,
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "sway/window"
+    ],
+    "modules-right": [
+        "clock",
+        "pulseaudio",
+        "network",
+        "battery",
+        "temperature",
+        "cpu",
+        "memory",
+        "idle_inhibitor",
+        "tray"
+    ],
+    // Modules configuration
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}",
+        "format-icons": {
+            "1": "🏁",
+            "2": "🏎️", 
+            "3": "⚡",
+            "4": "🔧",
+            "5": "📱",
+            "urgent": "🚨",
+            "focused": "🎯",
+            "default": "💨"
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">🏁 {} MODE 🏁</span>"
+    },
+    "sway/window": {
+        "format": "{} - 頭文字D",
+        "max-length": 50,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "<span font-weight='bold'>⏰ {:%H:%M:%S}</span>",
+        "format-alt": "<span font-weight='bold'>📅 {:%Y-%m-%d}</span>",
+        "tooltip-format": "<big>📅 {:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "mode"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} 🔵",
+        "format-bluetooth-muted": "🔇 {icon} 🔵",
+        "format-muted": "🔇",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "🎧",
+            "hands-free": "🎤",
+            "headset": "🎧",
+            "phone": "📱",
+            "portable": "🔊",
+            "car": "🚗",
+            "default": ["🔈", "🔉", "🔊"]
+        },
+        "on-click": "pavucontrol",
+        "tooltip": true
+    },
+    "network": {
+        "format-wifi": "📶 {essid} ({signalStrength}%)",
+        "format-ethernet": "🔌 {ifname}: {ipaddr}/{cidr}",
+        "format-linked": "🔗 {ifname} (No IP)",
+        "format-disconnected": "❌ Disconnected",
+        "format-alt": "🌐 {ifname}: {ipaddr}",
+        "tooltip-format": "🌐 {ifname} via {gwaddr}",
+        "tooltip-format-wifi": "📶 {essid} ({signalStrength}%)\n🔒 {frequency}MHz\n📍 {ipaddr}/{cidr}",
+        "on-click": "nmtui"
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "⚡ {capacity}%",
+        "format-plugged": "🔌 {capacity}%",
+        "format-alt": "⏱️ {time} {icon}",
+        "format-full": "💯 FULL",
+        "format-icons": ["🪫", "🔋", "🔋", "🔋", "🔋"],
+        "tooltip": true
+    },
+    "cpu": {
+        "format": "🏎️ {usage}%",
+        "tooltip": true,
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+    "memory": {
+        "format": "🧠 {percentage}%",
+        "tooltip": true,
+        "tooltip-format": "Memory: {used:0.1f}G/{total:0.1f}G\nSwap: {swapUsed:0.1f}G/{swapTotal:0.1f}G"
+    },
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "format": "🌡️ {temperatureC}°C",
+        "format-critical": "🔥 {temperatureC}°C",
+        "tooltip": true,
+        "critical-threshold": 80
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "🔒",
+            "deactivated": "🔓"
+        },
+        "tooltip": true
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8,
+        "tooltip": true
+    }
+}

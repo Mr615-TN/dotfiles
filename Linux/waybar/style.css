@@ -1,0 +1,279 @@
+/* 頭文字D (Initial D) themed Waybar style */
+/* Inspired by the legendary street racing anime */
+
+* {
+    /* Sleek monospaced font for that digital speedometer feel */
+    font-family: 'JetBrains Mono', 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Main waybar window - like the dashboard of an AE86 */
+window#waybar {
+    /* Dark gradient background reminiscent of Akina's midnight atmosphere */
+    background: linear-gradient(135deg, 
+        rgba(18, 18, 25, 0.95) 0%, 
+        rgba(25, 25, 35, 0.95) 50%, 
+        rgba(18, 18, 25, 0.95) 100%);
+    
+    /* Signature Akina SpeedStars yellow border */
+    border-bottom: 3px solid #ffcc00;
+    border-top: 1px solid rgba(255, 204, 0, 0.3);
+    
+    color: #ffffff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover effects for interactive elements */
+button {
+    background: transparent;
+    border: none;
+    border-radius: 0px;
+    color: #ffffff;
+    transition: all 0.2s ease;
+    margin: 0px 2px;
+    padding: 2px 6px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, transparent, rgba(255, 204, 0, 0.2), transparent);
+    box-shadow: inset 0 -2px #ffcc00;
+    color: #ffcc00;
+}
+
+/* === WORKSPACES - Racing positions === */
+#workspaces {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 2px 8px;
+    margin: 4px 8px;
+}
+
+#workspaces button {
+    background: rgba(255, 255, 255, 0.05);
+    color: #888888;
+    border-radius: 4px;
+    margin: 2px 1px;
+    padding: 2px 8px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+#workspaces button.active {
+    background: linear-gradient(45deg, #ffcc00, #ffd700);
+    color: #000000;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+    border: 1px solid #ffcc00;
+}
+
+#workspaces button.urgent {
+    background: linear-gradient(45deg, #ff4444, #ff6666);
+    color: #ffffff;
+    animation: blink 1s ease-in-out infinite alternate;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 204, 0, 0.3);
+    color: #ffcc00;
+    box-shadow: 0 0 4px rgba(255, 204, 0, 0.3);
+}
+
+/* === WINDOW TITLE - Current race === */
+#window {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 6px 16px;
+    margin: 4px 8px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-shadow: 0 0 4px rgba(255, 204, 0, 0.3);
+}
+
+/* === RIGHT MODULES - Dashboard gauges === */
+#clock {
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+    border-left: 2px solid #3498db;
+}
+
+#pulseaudio {
+    background: linear-gradient(45deg, #e74c3c, #ff6b6b);
+    color: #ffffff;
+    border-left: 2px solid #c0392b;
+}
+
+#pulseaudio.muted {
+    background: linear-gradient(45deg, #7f8c8d, #95a5a6);
+    color: #2c3e50;
+}
+
+#network {
+    background: linear-gradient(45deg, #3498db, #5dade2);
+    color: #ffffff;
+    border-left: 2px solid #2980b9;
+}
+
+#network.disconnected {
+    background: linear-gradient(45deg, #7f8c8d, #95a5a6);
+    color: #2c3e50;
+}
+
+#battery {
+    background: linear-gradient(45deg, #2ecc71, #58d68d);
+    color: #ffffff;
+    border-left: 2px solid #27ae60;
+}
+
+#battery.warning {
+    background: linear-gradient(45deg, #f39c12, #f7dc6f);
+    color: #2c3e50;
+    animation: warning-pulse 2s ease-in-out infinite alternate;
+}
+
+#battery.critical {
+    background: linear-gradient(45deg, #e74c3c, #ff6b6b);
+    color: #ffffff;
+    animation: critical-blink 1s ease-in-out infinite alternate;
+}
+
+#cpu {
+    background: linear-gradient(45deg, #8e44ad, #bb8fce);
+    color: #ffffff;
+    border-left: 2px solid #7d3c98;
+}
+
+#cpu.warning {
+    background: linear-gradient(45deg, #f39c12, #f7dc6f);
+    color: #2c3e50;
+}
+
+#cpu.critical {
+    background: linear-gradient(45deg, #e74c3c, #ff6b6b);
+    color: #ffffff;
+}
+
+#memory {
+    background: linear-gradient(45deg, #16a085, #5dbeaa);
+    color: #ffffff;
+    border-left: 2px solid #138d75;
+}
+
+#temperature {
+    background: linear-gradient(45deg, #d68910, #f4d03f);
+    color: #2c3e50;
+    border-left: 2px solid #b7950b;
+}
+
+#temperature.critical {
+    background: linear-gradient(45deg, #e74c3c, #ff6b6b);
+    color: #ffffff;
+    animation: critical-blink 1s ease-in-out infinite alternate;
+}
+
+#idle_inhibitor {
+    background: rgba(0, 0, 0, 0.2);
+    color: #888888;
+}
+
+#idle_inhibitor.activated {
+    background: linear-gradient(45deg, #ffcc00, #ffd700);
+    color: #000000;
+}
+
+#tray {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 2px 8px;
+    margin: 4px 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+/* === MODE DISPLAY === */
+#mode {
+    background: linear-gradient(45deg, #ff4444, #ff6666);
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin: 4px 8px;
+    animation: mode-pulse 2s ease-in-out infinite alternate;
+}
+
+/* === ANIMATIONS === */
+@keyframes blink {
+    to {
+        background-color: #ff6666;
+        color: #ffffff;
+    }
+}
+
+@keyframes warning-pulse {
+    from {
+        box-shadow: 0 0 0 rgba(243, 156, 18, 0.4);
+    }
+    to {
+        box-shadow: 0 0 8px rgba(243, 156, 18, 0.8);
+    }
+}
+
+@keyframes critical-blink {
+    from {
+        box-shadow: 0 0 4px rgba(231, 76, 60, 0.8);
+    }
+    to {
+        box-shadow: 0 0 12px rgba(231, 76, 60, 1);
+    }
+}
+
+@keyframes mode-pulse {
+    from {
+        box-shadow: 0 0 4px rgba(255, 68, 68, 0.6);
+    }
+    to {
+        box-shadow: 0 0 12px rgba(255, 68, 68, 1);
+    }
+}
+
+/* === MODULE STYLING === */
+#clock,
+#pulseaudio,
+#network,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#idle_inhibitor {
+    padding: 6px 12px;
+    margin: 4px 2px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#clock:hover,
+#pulseaudio:hover,
+#network:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#idle_inhibitor:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
