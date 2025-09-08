@@ -1,0 +1,10 @@
+[manager]
+sort_by = "alphabetical"
+show_hidden = false
+
+[[manager.open]]
+# This is a rule that matches any file with the .pdf extension
+ext = "pdf"
+# This is the command that will be executed.
+# It uses the shell to open the file with Zathura.
+run = "zathura \"$1\""
