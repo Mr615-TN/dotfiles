@@ -95,6 +95,7 @@ alias condavirt='conda create --prefix' #make sure to do "./mynewenv or some oth
 alias cd='z'
 alias ci='zi'
 alias npm='pnpm'
+alias dnfupgrade='sudo dnf upgrade --refresh'
 #alias startlib='sudo systemctl start libvirtd'
 #alias startvirt='sudo systemctl start libvirtd.socket'
 #alias startadmin='sudo systemctl start libvirtd-admin.socket'
