@@ -1,0 +1,91 @@
+# Initial D / AE86 Themed Swaylock Configuration
+
+# Background - dark like nighttime touge runs
+color=0f0f0f
+
+# Ring colors (inspired by AE86's gauge cluster)
+ring-color=16213e
+ring-clear-color=16213e
+ring-caps-lock-color=ff4757
+ring-ver-color=FF6B35
+ring-wrong-color=ff4757
+
+# Inside colors
+inside-color=1a1a2e
+inside-clear-color=1a1a2e  
+inside-caps-lock-color=2d1b1b
+inside-ver-color=0f0f0f
+inside-wrong-color=2d1b1b
+
+# Key highlight (when typing)
+key-hl-color=FF6B35
+
+# Backspace highlight 
+bs-hl-color=ff4757
+
+# Line colors (the line between ring and inside)
+line-color=0f0f0f
+line-clear-color=0f0f0f
+line-caps-lock-color=0f0f0f
+line-ver-color=0f0f0f
+line-wrong-color=0f0f0f
+
+# Text colors
+text-color=ffffff
+text-clear-color=ffffff
+text-caps-lock-color=ffffff
+text-ver-color=ffffff
+text-wrong-color=ffffff
+
+# Separator color (line between ring sections)
+separator-color=FF6B35
+
+# Layout and appearance
+layout-bg-color=0f0f0f
+layout-border-color=FF6B35
+layout-text-color=ffffff
+
+# Ring geometry
+ring-width=8
+line-width=2
+
+# Font
+font="JetBrains Mono Bold"
+font-size=16
+
+# Position indicator on all displays  
+show-keyboard-layout
+indicator
+indicator-radius=120
+indicator-thickness=10
+
+# Disable the default unlock indicator
+no-unlock-indicator
+
+# Grace period (in seconds) - like warming up the engine
+grace=2
+grace-no-mouse
+grace-no-touch
+
+# Fade in time (smooth like shifting gears)  
+fade-in=0.5
+
+# Custom text
+text-ver="Verifying..."
+text-wrong="Engine stalled!"
+text-clear="Ready to race"
+text-caps-lock="CAPS LOCK"
+
+# Effects
+effect-blur=7x5
+effect-vignette=0.2:0.5
+effect-scale=0.1
+
+# Clock display (like dashboard clock)
+clock
+timestr=%H:%M
+datestr=%Y-%m-%d
+
+# Position clock (top center like dashboard) 
+indicator-x-position=50
+indicator-y-position=200
