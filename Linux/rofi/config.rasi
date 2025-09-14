@@ -1,10 +1,7 @@
-//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
-
 /*
- * Initial D Themed Rofi Configuration
+ * Initial D Themed Rofi Configuration - Transparent Version
  * Inspired by the show's dark, high-contrast, and digital aesthetic.
  */
-
 configuration {
     modi: "drun";
     show-icons: true;
@@ -20,16 +17,15 @@ configuration {
     location: 0;
     */
 }
-
 * {
-    /* Define Initial D color scheme */
-    bg-color:                  #121C26;  /* Very dark blue for a night sky feel */
-    bg-alt-color:              #1C2E40;  /* Slightly lighter shade for alternating rows */
-    text-color:                #D8D8D8;  /* Light gray for general text */
-    highlight-color:           #F0C6AA;  /* Warm orange/beige, like streetlights */
-    urgent-color:              #F85A5A;  /* Bright red/pink for urgent items, like a brake light */
-    active-color:              #7A95C2;  /* Vibrant blue for active items */
-
+    /* Define Initial D color scheme with transparency */
+    bg-color:                  rgba(18, 28, 38, 0.85);   /* Semi-transparent dark blue */
+    bg-alt-color:              rgba(28, 46, 64, 0.9);    /* Slightly more opaque for contrast */
+    text-color:                #D8D8D8;                  /* Keep text opaque for readability */
+    highlight-color:           #F0C6AA;                  /* Keep highlight opaque */
+    urgent-color:              #F85A5A;                  /* Keep urgent opaque */
+    active-color:              #7A95C2;                  /* Keep active opaque */
+    
     /* Generic Rofi properties, using the defined colors */
     background-color:          @bg-color;
     foreground-color:          @text-color;
@@ -40,87 +36,79 @@ configuration {
     margin: 0;
     padding: 0;
 }
-
 window {
     width: 30%;
     border: 2px;
     padding: 10px;
+    /* Ensure window background is transparent */
+    background-color: @bg-color;
 }
-
 mainbox {
     children: [ inputbar, listview ];
+    background-color: transparent;
 }
-
 inputbar {
     spacing: 0;
     children: [ prompt, entry ];
+    background-color: transparent;
 }
-
 prompt {
     font: "JetBrainsMono Nerd Font 12 bold";
     enabled: true;
     padding: 0 5px 0 0;
     text-color: @highlight-color;
+    background-color: transparent;
 }
-
 entry {
     enabled: true;
     padding: 0 0 0 5px;
     text-color: @text-color;
+    background-color: transparent;
 }
-
 listview {
     padding: 10px 0 0 0;
     spacing: 5px;
     dynamic: false;
     cycle: true;
+    background-color: transparent;
 }
-
 element {
     padding: 5px;
     text-color: @text-color;
     border-radius: 2px;
 }
-
 element-text {
     background-color: transparent;
     text-color: inherit;
 }
-
 element-icon {
     size: 1.5ch;
     background-color: transparent;
     text-color: inherit;
 }
-
 element.normal.normal {
-    background-color: @bg-color;
+    background-color: transparent;
     text-color: @text-color;
 }
-
 element.normal.urgent {
-    background-color: @bg-color;
+    background-color: transparent;
     text-color: @urgent-color;
 }
-
 element.normal.active {
-    background-color: @bg-color;
+    background-color: transparent;
     text-color: @active-color;
 }
-
 element.selected.normal {
     background-color: @bg-alt-color;
     text-color: @highlight-color;
     border: 1px;
     border-color: @highlight-color;
 }
-
 element.selected.urgent {
-    background-color: @urgent-color;
+    background-color: rgba(248, 90, 90, 0.8);  /* Semi-transparent urgent background */
     text-color: @text-color;
 }
-
 element.selected.active {
-    background-color: @active-color;
+    background-color: rgba(122, 149, 194, 0.8); /* Semi-transparent active background */
     text-color: @text-color;
 }
