@@ -49,8 +49,6 @@ exec swayidle -w \
 
 ### Input configuration
 #
-# Example configuration:
-#
 input "2:14:SynPS/2_Synaptics_TouchPad" {
        dwt enabled
        tap enabled
@@ -97,7 +95,7 @@ input "1739:30385:CUST0001:00_06CB:76B1_Touchpad" {
     bindsym $mod+c exec emacs
     
     #open neovim
-    bindsym $mod+n exec /usr/bin/nvim
+    bindsym $mod+n exec $term -e nvim
 
     # Suspend the system
     bindsym $mod+Shift+s exec systemctl suspend
