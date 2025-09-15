@@ -95,6 +95,9 @@ input "1739:30385:CUST0001:00_06CB:76B1_Touchpad" {
 
     # emacs
     bindsym $mod+c exec emacs
+    
+    #open neovim
+    bindsym $mod+n exec /usr/bin/nvim
 
     # Suspend the system
     bindsym $mod+Shift+s exec systemctl suspend
