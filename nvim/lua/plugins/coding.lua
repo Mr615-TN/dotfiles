@@ -52,6 +52,7 @@ return {
         filetypes = {
           markdown = {},
           wiki = {},
+          latex = { enabled = false },
         },
       })
     end,
