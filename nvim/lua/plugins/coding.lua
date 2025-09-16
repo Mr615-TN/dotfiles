@@ -4,6 +4,8 @@ return {
     "saghen/blink.cmp",
     lazy = false,
     dependencies = "rafamadriz/friendly-snippets",
+    -- The `cargo build --release` step is necessary for the plugin to work,
+    -- as it has a Rust component. It should not be removed.
     build = "cargo build --release",
     opts = {
       keymap = { preset = "default" },
@@ -14,19 +16,26 @@ return {
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
       },
-      --providers = { -- <--- ADD THIS 'providers' TABLE HERE
-      --jupynium = {
-      --name = "Jupynium",
-      --module = "jupynium.blink_cmp",
-      --score_offset = 100, -- Adjust priority as desired
-      -- },
-      -- },
-      -- Experimental signature help support
-      -- signature = { enabled = true }
     },
-    -- Keep opts_extend, though it primarily applies to 'sources.default' merging from other files
-    -- For providers, they need to be defined directly here.
-    opts_extend = { "sources.default" },
+
+    -- This function runs *after* the plugin is loaded but *before* it is fully set up.
+    -- It directly overrides the 'fuzzy' module to prevent the database from being created.
+    config = function(_, opts)
+      -- Load the blink.cmp module
+      local blink_cmp = require("blink.cmp")
+
+      -- Check if the fuzzy module exists before trying to patch it
+      if pcall(require, "blink.cmp.fuzzy") then
+        local fuzzy = require("blink.cmp.fuzzy")
+        -- Override the 'init_db' function with a blank one to prevent the error
+        fuzzy.init_db = function() end
+      end
+
+      -- Now, set up the plugin with the rest of your options
+      blink_cmp.setup(opts)
+    end,
+
+    -- opts_extend is not necessary here because we are using a custom config function
   },
 
   -- render-markdown.nvim configuration
@@ -38,17 +47,11 @@ return {
     },
     config = function()
       require("render-markdown").setup({
-        -- Configuration for markdown files
-        -- You can add specific options for markdown rendering here if needed.
-
-        -- Enable completions for blink.cmp
         completions = {
           blink = {
             enabled = true,
           },
         },
-
-        -- Basic configuration for LaTeX files
         filetypes = {
           markdown = {},
           wiki = {},
@@ -61,10 +64,9 @@ return {
   -- mini.nvim for icons (dependency for render-markdown.nvim)
   {
     "echasnovski/mini.nvim",
-    version = "*", -- Use latest stable release
+    version = "*",
     config = function()
       -- Minimal setup for mini.nvim if you only need it for icons
-      -- You can configure specific mini modules here if you want to use more of its features.
     end,
   },
 }
