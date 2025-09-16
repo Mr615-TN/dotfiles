@@ -50,6 +50,8 @@ return {
 
         -- Basic configuration for LaTeX files
         filetypes = {
+          markdown = {},
+          wiki = {},
           latex = {
             -- You can add specific options for LaTeX rendering here if render-markdown.nvim supports them.
             -- For example, if it had a 'render_command' option for LaTeX:
