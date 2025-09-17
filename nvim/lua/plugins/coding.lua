@@ -43,7 +43,7 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "echasnovski/mini.nvim", -- Use mini.nvim for icons
+      "nvim-mini/mini.nvim", -- Use mini.nvim for icons
     },
     config = function()
       require("render-markdown").setup({
