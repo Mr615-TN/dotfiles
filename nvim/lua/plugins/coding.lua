@@ -63,8 +63,8 @@ return {
 
   -- mini.nvim for icons (dependency for render-markdown.nvim)
   {
-    "echasnovski/mini.nvim",
-    version = "*",
+    "nvim-mini/mini.nvim",
+    version = false,
     config = function()
       -- Minimal setup for mini.nvim if you only need it for icons
     end,
