@@ -1,8 +1,9 @@
 return {
   {
-    "echasnovski/mini.visits",
+    "nvim-mini/mini.nvim",
     version = false,
     config = function()
+      -- Configure the specific mini.nvim modules you want to use.
       local visits = require("mini.visits")
       visits.setup()
 
