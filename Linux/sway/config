@@ -85,14 +85,18 @@ input "1739:30385:CUST0001:00_06CB:76B1_Touchpad" {
 
     #open browser (qutebrowser)
     bindsym $mod+u exec qutebrowser
+
     #open discord
-    bindsym $mod+t exec flatpak run dev.vencord.Vesktop
+    bindsym $mod+v exec flatpak run dev.vencord.Vesktop
 
     #open spotify
     bindsym $mod+o exec flatpak run com.spotify.Client
 
     # emacs
     bindsym $mod+c exec emacs
+
+    #thunar
+    bindsym $mod+t exec thunar
     
     # Suspend the system
     bindsym $mod+Shift+s exec systemctl suspend
