@@ -1,6 +1,3 @@
-# Default config for sway
-#
-# Read `man 5 sway` for a complete reference.
 default_border none
 gaps inner 5
 gaps outer 3
@@ -22,8 +19,9 @@ set $rofi_cmd rofi \
 # TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
-### Output configuration
-#
+### Add this line here
+exec "export QT_QPA_PLATFORMTHEME=qt5ct"
+
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg, jxl-pixbuf-loader
 output * bg /home/tanish/GitHub/Tanish_Wallpapers/wallhaven-kwq9j6.jpg fill
