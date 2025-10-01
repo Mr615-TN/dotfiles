@@ -44,16 +44,20 @@
           "type": "path"
         },
         {
+          "type": "git",
+          "style": "plain",
           "foreground": "p:red",
           "powerline_symbol": "\ue0b0",
           "properties": {
             "fetch_status": true,
+            "fetch_stash_count": true,
             "fetch_upstream_icon": true,
-            "fetch_stash_count": true
+            "branch_status_ahead_icon": "↑",
+            "branch_status_behind_icon": "↓",
+            "branch_status_diverged_icon": "⇄",
+            "branch_status_up_to_date_icon": "✔"
           },
-          "style": "plain",
-          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .Behind}} ↓{{ .Behind }}{{end}}{{if .Ahead}} ↑{{ .Ahead }}{{end}}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
-          "type": "git"
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .Working.Changed }} \u2699{{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \u26a0{{ .Staging.String }}{{ end }} {{ .BranchStatus }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} "
         },
         {
           "type": "python",
