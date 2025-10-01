@@ -1,0 +1,145 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "base": "#000000",
+    "text": "#ffffff",
+    "ae86_white": "#f2f2f2",
+    "ae86_black": "#1a1a1a",
+    "red": "#e74c3c",
+    "yellow": "#f1c40f",
+    "blue": "#3498db",
+    "green": "#2ecc71",
+    "orange": "#f39c12",
+    "purple": "#9b59b6",
+    "gray": "#95a5a6"
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "foreground": "p:base",
+          "background": "p:red",
+          "template": "{{ if .Env.PNPPSHOST }} \uf8c5 {{ .Env.PNPPSHOST }} {{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "powerline",
+          "foreground": "p:text",
+          "background": "p:blue",
+          "powerline_symbol": "\ue0b0",
+          "template": "{{ if .Env.PNPPSSITE }} \uf2dd {{ .Env.PNPPSSITE }}{{ end }}"
+        },
+        {
+          "type": "text",
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "p:text",
+          "background": "p:blue",
+          "template": "{{ if .Env.PNPPSSITE }}\u00A0{{ end }}"
+        }
+      ],
+      "type": "rprompt"
+    },
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "background": "p:ae86_black",
+          "foreground": "p:text",
+          "leading_diamond": "\ue0b6",
+          "style": "diamond",
+          "template": " {{ .UserName }} ",
+          "type": "session"
+        },
+        {
+          "background": "p:ae86_white",
+          "foreground": "p:base",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "style": "folder"
+          },
+          "style": "powerline",
+          "template": " {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "background": "p:ae86_black",
+          "foreground": "p:text",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "fetch_status": true,
+            "fetch_stash_count": true,
+            "fetch_upstream_icon": true,
+            "display_stash_count": true,
+            "display_status": true,
+            "display_upstream_icon": true,
+            "branch_icon": "\ue725",
+            "branch_status_ahead_icon": "↑",
+            "branch_status_behind_icon": "↓",
+            "branch_status_diverged_icon": "⇄",
+            "branch_status_up_to_date_icon": "✔"
+          },
+          "template": " \ue725 {{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} ✎{{ end }}{{ if .Staging.Changed }} ✔{{ end }}"
+        },
+        {
+          "type": "python",
+          "style": "powerline",
+          "background": "p:yellow",
+          "foreground": "p:base",
+          "powerline_symbol": "\ue0b0",
+          "template": "{{ if .Venv }} \ue235 {{ .Venv }} {{ end }}"
+        },
+        {
+          "type": "rust",
+          "style": "powerline",
+          "background": "p:purple",
+          "foreground": "p:base",
+          "powerline_symbol": "\ue0b0",
+          "template": "{{ if .Full }} \ue7a8 {{ .Full }} {{ end }}"
+        },
+        {
+          "type": "node",
+          "style": "powerline",
+          "background": "p:blue",
+          "foreground": "p:base",
+          "powerline_symbol": "\ue0b0",
+          "template": "{{ if .Full }} \ue718 {{ .Full }} {{ end }}"
+        },
+        {
+          "type": "command",
+          "style": "powerline",
+          "background": "p:gray",
+          "foreground": "p:base",
+          "powerline_symbol": "\ue0b0",
+          "template": "{{ if eq .Code 0 }} \ue61d C/C++ {{ end }}",
+          "properties": {
+            "shell": "bash",
+            "command": "sh -c '[ -f Makefile ] || [ -f CMakeLists.txt ] || ls *.c *.cpp 1>/dev/null 2>&1'",
+            "exit_codes": [0],
+            "ignore_error": true
+          }
+        },
+        {
+          "background": "p:ae86_white",
+          "foreground": "p:base",
+          "properties": {
+            "time_format": "15:04"
+          },
+          "style": "diamond",
+          "template": " \u23f1 {{ .CurrentDate | date .Format }} ",
+          "trailing_diamond": "\ue0b0",
+          "type": "time"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 3
+}
