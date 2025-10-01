@@ -18,123 +18,71 @@
       "alignment": "left",
       "segments": [
         {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "foreground": "p:base",
-          "background": "p:red",
-          "template": "{{ if .Env.PNPPSHOST }} \uf8c5 {{ .Env.PNPPSHOST }} {{ end }}"
-        },
-        {
-          "type": "text",
-          "style": "powerline",
-          "foreground": "p:text",
-          "background": "p:blue",
-          "powerline_symbol": "\ue0b0",
-          "template": "{{ if .Env.PNPPSSITE }} \uf2dd {{ .Env.PNPPSSITE }}{{ end }}"
-        },
-        {
-          "type": "text",
-          "style": "diamond",
-          "trailing_diamond": "\ue0b4",
-          "foreground": "p:text",
-          "background": "p:blue",
-          "template": "{{ if .Env.PNPPSSITE }}\u00A0{{ end }}"
-        }
-      ],
-      "type": "rprompt"
-    },
-    {
-      "alignment": "left",
-      "segments": [
-        {
-          "background": "p:ae86_black",
-          "foreground": "p:text",
-          "leading_diamond": "\ue0b6",
-          "style": "diamond",
-          "template": " {{ .UserName }} ",
+          "foreground": "p:ae86_white",
+          "style": "plain",
+          "template": "[\uf1b9 {{ .UserName }}]",
           "type": "session"
         },
         {
-          "background": "p:ae86_white",
-          "foreground": "p:base",
-          "powerline_symbol": "\ue0b0",
+          "foreground": "p:ae86_white",
           "properties": {
-            "style": "folder"
+            "folder_separator_icon": "/",
+            "style": "full"
           },
-          "style": "powerline",
-          "template": " {{ .Path }} ",
+          "style": "plain",
+          "template": " \u276f ",
+          "type": "text"
+        },
+        {
+          "foreground": "p:ae86_white",
+          "properties": {
+            "folder_separator_icon": "/",
+            "style": "full"
+          },
+          "style": "plain",
+          "template": "{{ .Path }}",
           "type": "path"
         },
         {
-          "type": "git",
-          "style": "powerline",
-          "background": "p:ae86_black",
-          "foreground": "p:text",
+          "foreground": "p:red",
           "powerline_symbol": "\ue0b0",
           "properties": {
-            "fetch_status": true,
-            "fetch_stash_count": true,
             "fetch_upstream_icon": true,
-            "display_stash_count": true,
-            "display_status": true,
-            "display_upstream_icon": true,
-            "branch_icon": "\ue725",
-            "branch_status_ahead_icon": "↑",
-            "branch_status_behind_icon": "↓",
-            "branch_status_diverged_icon": "⇄",
-            "branch_status_up_to_date_icon": "✔"
+            "fetch_stash_count": true
           },
-          "template": " \ue725 {{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} ✎{{ end }}{{ if .Staging.Changed }} ✔{{ end }}"
+          "style": "plain",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "type": "git"
         },
         {
           "type": "python",
-          "style": "powerline",
-          "background": "p:yellow",
-          "foreground": "p:base",
-          "powerline_symbol": "\ue0b0",
-          "template": "{{ if .Venv }} \ue235 {{ .Venv }} {{ end }}"
+          "style": "plain",
+          "foreground": "p:yellow",
+          "template": "{{ if .Venv }}[\ue235 {{ .Venv }}] {{ end }}"
         },
         {
           "type": "rust",
-          "style": "powerline",
-          "background": "p:purple",
-          "foreground": "p:base",
-          "powerline_symbol": "\ue0b0",
-          "template": "{{ if .Full }} \ue7a8 {{ .Full }} {{ end }}"
+          "style": "plain",
+          "foreground": "p:orange",
+          "template": "{{ if .Full }}[\ue7a8 {{ .Full }}] {{ end }}"
         },
         {
           "type": "node",
-          "style": "powerline",
-          "background": "p:blue",
-          "foreground": "p:base",
-          "powerline_symbol": "\ue0b0",
-          "template": "{{ if .Full }} \ue718 {{ .Full }} {{ end }}"
+          "style": "plain",
+          "foreground": "p:green",
+          "template": "{{ if .Full }}[\ue718 {{ .Full }}] {{ end }}"
         },
         {
           "type": "command",
-          "style": "powerline",
-          "background": "p:gray",
-          "foreground": "p:base",
-          "powerline_symbol": "\ue0b0",
-          "template": "{{ if eq .Code 0 }} \ue61d C/C++ {{ end }}",
+          "style": "plain",
+          "foreground": "p:gray",
+          "template": "{{ if eq .Code 0 }}[\ue61d C/C++] {{ end }}",
           "properties": {
             "shell": "bash",
             "command": "sh -c '[ -f Makefile ] || [ -f CMakeLists.txt ] || ls *.c *.cpp 1>/dev/null 2>&1'",
             "exit_codes": [0],
             "ignore_error": true
           }
-        },
-        {
-          "background": "p:ae86_white",
-          "foreground": "p:base",
-          "properties": {
-            "time_format": "15:04"
-          },
-          "style": "diamond",
-          "template": " \u23f1 {{ .CurrentDate | date .Format }} ",
-          "trailing_diamond": "\ue0b0",
-          "type": "time"
         }
       ],
       "type": "prompt"
@@ -150,15 +98,14 @@
           "type": "root"
         },
         {
-          "foreground": "p:text",
+          "foreground": "p:red",
           "style": "plain",
-          "template": "❯ ",
+          "template": "\u276f\u276f ",
           "type": "text"
         }
       ],
       "type": "prompt"
     }
   ],
-  "final_space": true,
   "version": 3
 }
