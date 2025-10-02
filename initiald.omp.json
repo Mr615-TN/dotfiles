@@ -37,7 +37,7 @@
           "foreground": "p:ae86_white",
           "properties": {
             "folder_separator_icon": "/",
-            "style": "full"
+            "style": "folder"
           },
           "style": "plain",
           "template": "{{ .Path }}",
