@@ -7,10 +7,6 @@ case $INFO in
     ICON_PADDING_RIGHT=5
     ICON=
     ;;
-"Code")
-    ICON_PADDING_RIGHT=4
-    ICON=󰨞
-    ;;
 "Docker Desktop")
     ICON_PADDING_RIGHT=3
     ICON=
@@ -29,8 +25,8 @@ case $INFO in
     ICON_PADDING_RIGHT=7
     ICON=
     ;;
-"Ghostty")
-    ICON=󰊠
+"kitty")
+    ICON=
     ;;
 "Messages")
     ICON=
