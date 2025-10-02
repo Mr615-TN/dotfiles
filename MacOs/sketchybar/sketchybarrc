@@ -15,8 +15,8 @@ FONT_FACE="JetBrainsMono Nerd Font"
 
 sketchybar --bar \
     height=20 \
-    color=0xcc0a0a0a \
-    shadow=0x88000000 \
+    color=0x00000000 \
+    shadow=0x44000000 \
     margin=10 \
     sticky=on \
     padding_left=5 \
