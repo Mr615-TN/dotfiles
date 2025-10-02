@@ -28,6 +28,12 @@ case $INFO in
 "kitty")
     ICON=
     ;;
+"Slack")
+    ICON=
+    ;;
+"qutebrowser")
+    ICON=󰖉
+    ;;
 "Messages")
     ICON=
     ;;
