@@ -43,7 +43,7 @@ alias glg='gitleaks git' # Run gitleaks on git
 # ===============================================
 alias nv='nvim'      # nvim
 alias ve='nvim .'    # nvim .
-alias emacs='emacs -nw' # Emacs in terminal
+alias temacs='emacs -nw' # Emacs in terminal
 
 # Doom Emacs Aliases (OS Specific)
 alias macsync='~/.emacs.d/bin/doom sync'      # Doom Emacs sync (macOS path)
