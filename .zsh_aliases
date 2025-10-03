@@ -1,0 +1,151 @@
+# ===============================================
+# FILE NAVIGATION & LISTING (eza & zoxide)
+# ===============================================
+alias l='eza -lh --icons=auto'                                         # long list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto'                                       # long list dirs
+alias lt='eza --icons=auto --tree'                                     # list folder as tree
+alias la='eza -A'                                                      # list all files
+alias ls='eza --classify --icons=always --group-directories-first'     # default list
+alias lp='eza -lh --classify --icons=auto --sort=name --group-directories-first' # long list with specific options
+alias cd='z'                                                           # Replace cd with zoxide (z)
+alias ci='zi'                                                          # zoxide interactive search
+alias back='z ..'                                                      # Go up one directory with zoxide
+alias cds='cd .ssh_keys'                                               # Change to SSH keys directory
+
+# ===============================================
+# GIT / LAZYGIT
+# ===============================================
+alias lgit='lazygit'     # Launch Lazygit
+alias add='git add .'    # git add .
+alias status='git status' # git status
+alias commit='git commit -m' # git commit -m
+alias push='git push'    # git push
+alias pull='git pull'    # git pull
+alias stash='git stash'  # git stash
+alias pop='git stash pop' # git stash pop
+alias branch='git branch' # git branch
+alias checkout='git checkout' # git checkout
+alias allbranch='git branch -a' # git branch -a
+alias log='git log'      # git log
+alias clone='git clone'  # git clone
+alias merge='git merge'  # git merge
+alias diff='git diff'    # git diff
+alias rebase='git rebase' # git rebase
+alias fetch='git fetch'  # git fetch
+alias remote='git remote' # git remote
+alias restore='git restore .' # git restore .
+alias gl='gitleaks'      # Run gitleaks
+alias glg='gitleaks git' # Run gitleaks on git
+
+# ===============================================
+# EDITOR & DEVELOPMENT TOOLS
+# ===============================================
+alias nv='nvim'      # nvim
+alias ve='nvim .'    # nvim .
+alias emacs='emacs -nw' # Emacs in terminal
+
+# Doom Emacs Aliases (OS Specific)
+alias macsync='~/.emacs.d/bin/doom sync'      # Doom Emacs sync (macOS path)
+alias macdoctor='~/.emacs.d/bin/doom doctor'  # Doom Emacs doctor (macOS path)
+alias macupgrade='~/.emacs.d/bin/doom upgrade' # Doom Emacs upgrade (macOS path)
+alias fedsync='~/.config/emacs/bin/doom sync' # Doom Emacs sync (Fedora path)
+alias feddoctor='~/.config/emacs/bin/doom doctor' # Doom Emacs doctor (Fedora path)
+alias fedupgrade='~/.config/emacs/bin/doom upgrade' # Doom Emacs upgrade (Fedora path)
+
+# C/C++ Compiler Aliases
+alias cplus='g++ -std=gnu++20 -Wall -Wextra -Wshadow -Wconversion' # C++20
+alias cpl='g++ -std=gnu++17 -Wall -Wextra -Wshadow -Wconversion'   # C++17
+alias cthis='gcc -std=gnu11 -Wall -Wextra -Wshadow -Wconversion'   # C11
+alias runc='./a.out'     # Run compiled executable
+alias cleaner='rm -rf a.out' # Remove compiled executable
+
+# Python / Virtual Environments
+alias py3='python3'      # python3
+alias uvenv='uv venv'    # uv venv
+alias condavirt='conda create --prefix' # conda create --prefix (Note: requires specifying env path and python version)
+
+# ===============================================
+# DOCKER / PODMAN
+# ===============================================
+alias ldock='lazydocker' # Launch Lazydocker
+
+# Docker Compose (Combined for flexibility)
+alias dcu='docker-compose up'              # Docker Compose Up (Older style)
+alias dcd='docker-compose down'            # Docker Compose Down (Older style)
+alias dcv='docker-compose down -v'         # Docker Compose Down with volumes
+alias dcbc='docker-compose build --no-cache' # Docker Compose build no-cache
+alias dcb='docker-compose build'           # Docker Compose build
+alias vp='docker volume prune'             # Docker volume prune
+alias dvp='docker volume prune -f'         # Docker volume prune -f
+alias dock='docker system prune -a --volumes' # Docker system prune
+
+# Docker Service Management (Linux Specific)
+alias startsock='systemctl start docker.socket' # Start Docker socket
+alias stopsock='systemctl stop docker.socket' # Stop Docker socket
+alias startdock='systemctl start docker'   # Start Docker service
+alias stopdock='systemctl stop docker'     # Stop Docker service
+
+# Podman Compose
+alias pcu='podman-compose up'              # Podman Compose Up (zsh style)
+alias pcd='podman-compose down'            # Podman Compose Down (zsh style)
+alias pcdc='podman-compose down -v'        # Podman Compose Down with volumes
+alias pcbc='podman-compose build --no-cache' # Podman Compose build no-cache
+alias pcbr='podman-compose build'          # Podman Compose build
+alias pcv='podman volume prune'            # Podman volume prune
+alias pcc='podman container prune'         # Podman container prune
+alias pcr='podman rmi'                     # Podman rmi
+alias docks='podman system prune -a --volumes -f' # Podman system prune
+
+# ===============================================
+# ZELLIJ / WINDOW MANAGEMENT
+# ===============================================
+alias zel='zellij'                 # zellij
+alias killz='zellij kill-all-sessions' # kill all zellij sessions
+alias deletez='zellij delete-all-sessions -y' # delete all zellij sessions -y
+alias lister='zellij list-sessions' # list zellij sessions
+alias attach='zellij attach'       # attach to zellij session
+alias deleter='zellij delete-session' # delete zellij session
+alias killer='zellij kill-session' # kill zellij session
+alias createzellij='zellij attach --create' # attach or create zellij session
+
+# macOS Specific (Aerospace/Sketchybar)
+alias reloadsketch='sketchybar --reload' # sketchybar reload
+alias aeroinstall='brew install --cask nikitabobko/tap/aerospace' # install Aerospace
+alias aerouninstall='brew uninstall --cask nikitabobko/tap/aerospace' # uninstall Aerospace
+
+# ===============================================
+# SYSTEM & UTILITIES
+# ===============================================
+alias cleanup='clear && exit' # Clear and exit shell
+alias fast='fastfetch'        # fastfetch
+alias top='btop'              # btop
+alias cat='bat'               # Replace cat with bat
+alias tofu='zathura'          # Zathura (PDF viewer)
+alias pdf='mupdf-gl'          # mupdf-gl (PDF viewer)
+alias ig='kitty +kitten icat' # Kitty image preview
+alias x86='arch -x86_64 zsh'  # Run zsh in x86_64 mode on Apple Silicon
+alias story='history | less'  # history | less
+alias txtmd='for f in *.txt; do mv "$f" "${f%.txt}.md"; done' # Convert .txt to .md
+alias battery='upower -i $(upower -e | grep 'BAT')' # Get battery status (Linux)
+alias np='pnpm' # pnpm
+alias fu='flatpak update' # flatpak update (Fedora/Linux)
+alias acli='arduino-cli' # arduino-cli
+alias upgrade='sudo dnf upgrade --refresh' # Fedora upgrade
+alias ncdu='gdu' # Replace ncdu with gdu
+
+# ===============================================
+# HOMEBREW (macOS/Linux)
+# ===============================================
+alias brewdate='brew update' # brew update
+alias brewup='brew upgrade'  # brew upgrade
+
+# ===============================================
+# REMOTE & SSH
+# ===============================================
+alias Prod="ssh prod"     # SSH to production server
+alias Test="ssh test"     # SSH to test server
+alias jrml='ssh -XC mlserver' # SSH to ML server 1
+alias stml='ssh -XC mlserver2' # SSH to ML server 2
+alias hugging='huggingface-cli' # huggingface-cli
+alias huggingface='huggingface-cli' # huggingface-cli (duplicate of above)
