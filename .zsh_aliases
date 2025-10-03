@@ -139,7 +139,7 @@ alias ncdu='gdu' # Replace ncdu with gdu
 # ===============================================
 alias brewdate='brew update' # brew update
 alias brewup='brew upgrade'  # brew upgrade
-
+alias brewclean='brew cleanup' # brew cleanup
 # ===============================================
 # REMOTE & SSH
 # ===============================================
