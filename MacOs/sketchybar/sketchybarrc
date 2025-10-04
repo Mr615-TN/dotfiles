@@ -90,7 +90,7 @@ sketchybar --add item current_space left \
     icon.font="$FONT_FACE:Bold:15.0" \
     icon.color=0xfffffff8 \
     label.drawing=off \
-    script="$PLUGIN_SHARED_DIR/current_space.sh" \
+    script="$PLUGIN_SHARED_DIR/currentspace.sh" \
     --subscribe current_space space_change mouse.clicked
 
 # Tracks aerospace workspaces (This event is crucial for updates)
