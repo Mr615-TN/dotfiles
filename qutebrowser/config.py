@@ -143,12 +143,15 @@ config.set('colors.webpage.darkmode.enabled', False, 'file://*')
 # =========================
 #   KEYBINDINGS
 # =========================
-
 config.bind('=', 'cmd-set-text -s :open')
 config.bind('h', 'history')
 config.bind('cs', 'cmd-set-text -s :config-source')
+
+# Tab/Statusbar Toggles (Fine to keep)
 config.bind('tH', 'config-cycle tabs.show multiple never')
 config.bind('sH', 'config-cycle statusbar.show always never')
+
+# Clipboard/Primary Selection (Fine to keep)
 config.bind('pP', 'open -- {primary}')
 config.bind('pp', 'open -- {clipboard}')
 config.bind('pt', 'open -t -- {clipboard}')
@@ -156,24 +159,13 @@ config.bind('qm', 'macro-record')
 config.bind('<ctrl-y>', 'spawn --userscript ytdl.sh')
 config.bind('tT', 'config-cycle tabs.position top left')
 
-# Safely bind Ctrl + 1-0 for tab switching
-config.bind('C-1', 'tab-focus 1')
-config.bind('C-2', 'tab-focus 2')
-config.bind('C-3', 'tab-focus 3')
-config.bind('C-4', 'tab-focus 4')
-config.bind('C-5', 'tab-focus 5')
-config.bind('C-6', 'tab-focus 6')
-config.bind('C-7', 'tab-focus 7')
-config.bind('C-8', 'tab-focus 8')
-config.bind('C-9', 'tab-focus 9')
-config.bind('C-0', 'tab-focus 10')
+# NEW SAFEST TAB NAVIGATION: two-key bindings (avoids WM directional conflicts)
+config.bind('tn', 'tab-next')
+config.bind('tp', 'tab-prev')
+config.bind('gm', 'tab-move') # Keep original tab-move command
 
-# Safely bind Ctrl+T for opening a hint in a new tab
-config.bind('C-t', 'hint links tab')
-
-# Add explicit tab-next/tab-prev
-config.bind('<Ctrl-Tab>', 'tab-next')
-config.bind('<Ctrl-Shift-Tab>', 'tab-prev')
+# Hinting: Use a non-mod key
+config.bind('T', 'hint links tab') 
 
 # =========================
 #   MISC SETTINGS
