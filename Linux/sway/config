@@ -24,8 +24,8 @@ exec "export QT_QPA_PLATFORMTHEME=qt5ct"
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg, jxl-pixbuf-loader
-output * bg /home/tanish/GitHub/Tanish_Wallpapers/wallhaven-kwq9j6.jpg fill
-#
+#output * bg /home/tanish/GitHub/Tanish_Wallpapers/wallhaven-kwq9j6.jpg fill
+exec_always waypaper --restore
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -102,6 +102,8 @@ input "1739:30385:CUST0001:00_06CB:76B1_Touchpad" {
     # Suspend the system
     bindsym $mod+Shift+s exec systemctl suspend
 
+    # wallpapers:
+    bindsym $mod+Shift+w exec waypaper
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
