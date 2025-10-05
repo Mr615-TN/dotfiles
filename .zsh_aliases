@@ -130,7 +130,7 @@ alias txtmd='for f in *.txt; do mv "$f" "${f%.txt}.md"; done' # Convert .txt to 
 alias battery='upower -i $(upower -e | grep 'BAT')' # Get battery status (Linux)
 alias np='pnpm' # pnpm
 alias fu='flatpak update' # flatpak update (Fedora/Linux)
-alias du='dnf check-update' # dnf check-update
+alias dfu='dnf check-update' # dnf check-update
 alias acli='arduino-cli' # arduino-cli
 alias upgrade='sudo dnf upgrade --refresh' # Fedora upgrade
 
