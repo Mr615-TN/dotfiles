@@ -133,7 +133,6 @@ alias fu='flatpak update' # flatpak update (Fedora/Linux)
 alias du='dnf check-update' # dnf check-update
 alias acli='arduino-cli' # arduino-cli
 alias upgrade='sudo dnf upgrade --refresh' # Fedora upgrade
-alias ncdu='gdu' # Replace ncdu with gdu
 
 # ===============================================
 # HOMEBREW (macOS/Linux)
