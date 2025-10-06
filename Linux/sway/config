@@ -19,8 +19,9 @@ set $rofi_cmd rofi \
 # TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
-### Add this line here
 exec "export QT_QPA_PLATFORMTHEME=qt5ct"
+
+exec --no-startup-id brightnessctl -d dell::kbd_backlight set 0
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg, jxl-pixbuf-loader
