@@ -1,1 +1,18 @@
 *.mdb
+*.DS_Store
+*.db
+
+# OS-specific temporary and resource files
+.localized
+.Trashes
+Thumbs.db
+ehthumbs.db
+
+# Common Editor/IDE temporary files
+*~
+\#*
+.fuse_hidden*
+.idea/
+.vscode/
+*.swp
+*.bak
