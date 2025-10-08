@@ -77,6 +77,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     
     # PlatformIO (adjust path if different on your Mac)
     export PATH="$PATH:$HOME/.platformio/penv/bin"
+    # Add AeroSpace to PATH
+export PATH="/Applications/AeroSpace.app/Contents/MacOS:$PATH"
     
     # Random Pokemon (using gshuf on macOS)
     pokeget $(gshuf -i 1-905 -n 1) --hide-name

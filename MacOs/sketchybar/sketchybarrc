@@ -79,27 +79,11 @@ sketchybar --add bracket front_app_bracket \
 # ---
 ## Aerospace Workspaces (Left Side)
 
-# Current Space - Highlight for the active space.
-# Using 'Racing Red' (Project D accent) for the background color here for visibility,
-# and 'Tofu White' for the icon.
-sketchybar --add item current_space left \
-    --set current_space \
-    background.color=0xffcc0000 \
-    background.padding_right=0 \
-    background.padding_left=5 \
-    icon.font="$FONT_FACE:Bold:15.0" \
-    icon.color=0xfffffff8 \
-    label.drawing=off \
-    script="$PLUGIN_SHARED_DIR/currentspace.sh" \
-    --subscribe current_space space_change mouse.clicked
-
 # Tracks aerospace workspaces (This event is crucial for updates)
 sketchybar --add event aerospace_workspace_change
 
 # Loop through all aerospace workspaces to create buttons
 for sid in $(aerospace list-workspaces --all); do
-    # Using 'Pearl White' (0xfff5f5f5) as the default background, matching the bar's default,
-    # and 'Deep Black' (0xff0a0a0a) for the text/label.
     sketchybar --add item space.$sid left \
         --subscribe space.$sid aerospace_workspace_change \
         --set space.$sid \
@@ -110,6 +94,8 @@ for sid in $(aerospace list-workspaces --all); do
         icon.drawing=off \
         label="$sid" \
         label.color=0xff0a0a0a \
+        label.padding_left=10 \
+        label.padding_right=10 \
         click_script="aerospace workspace $sid" \
         script="$PLUGIN_SHARED_DIR/aerospace.sh $sid"
 done
