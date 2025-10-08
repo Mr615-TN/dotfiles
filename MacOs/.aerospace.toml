@@ -18,6 +18,7 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 start-at-login = true
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+# Disabled to allow split commands for more control like i3/sway
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
@@ -93,107 +94,89 @@ PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
-# You can uncomment this line to open up terminal with cmd + enter shortcut
-# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-# cmd-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
+# === LAYOUT CONTROLS (similar to i3/sway layout commands) ===
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#layout
+# Layout switching (like sway's layout commands)
+cmd-shift-w = 'layout accordion horizontal'  # Tabbed (tabs vertical)
+cmd-shift-s = 'layout accordion vertical'    # Tabbed (tabs horizontal)
+cmd-shift-e = 'layout tiles horizontal vertical' # Toggle split layout
+
+# Toggle between horizontal and vertical accordion
 cmd-slash = 'layout accordion horizontal vertical'
 cmd-backslash = 'layout tiles horizontal vertical'
 
-# alt-enter = 'exec-and-forget open -n /Applications/Alacritty.app' # use Super + N to open new alacritty terminal
-alt-enter = 'macos-native-fullscreen'
-alt-q = 'close'
-alt-e = 'macos-native-minimize'
-alt-m = 'fullscreen'
-cmd-left = 'workspace --wrap-around prev'
-cmd-right = 'workspace --wrap-around next'
-cmd-up = 'focus-monitor prev'
-cmd-down = 'focus-monitor next'
-cmd-shift-leftSquareBracket = 'move-workspace-to-monitor prev'
-cmd-shift-rightSquareBracket = 'move-workspace-to-monitor next'
-cmd-ctrl-left = 'move-node-to-monitor prev'
-cmd-ctrl-right = 'move-node-to-monitor next'
-cmd-ctrl-up = 'move-workspace-to-monitor prev'
-cmd-ctrl-down = 'move-workspace-to-monitor next'
+# === WINDOW MANAGEMENT ===
+cmd-f = 'fullscreen'
+cmd-shift-q = 'close'
+cmd-shift-space = 'layout floating tiling'  # Toggle floating
+
+# === WORKSPACE NAVIGATION ===
+# Workspace prev/next removed to avoid conflict with arrow key focus bindings
+# Use Alt+1-0 to switch workspaces directly
+
+# === WORKSPACE SWITCHING ===
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-0 = 'workspace 10'
+
+# === MOVE WINDOW TO WORKSPACE ===
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 10'
+
+# === FOCUS MANAGEMENT ===
+# Use arrow keys for focus (like your sway config)
+cmd-left = 'focus left'
+cmd-down = 'focus down'
+cmd-up = 'focus up'
+cmd-right = 'focus right'
+
+# === MOVE WINDOWS ===
+cmd-shift-left = 'move left'
+cmd-shift-down = 'move down'
+cmd-shift-up = 'move up'
+cmd-shift-right = 'move right'
+
+# === SCRATCHPAD (like sway) ===
+cmd-shift-minus = 'move-node-to-workspace scratchpad'
+cmd-minus = 'workspace scratchpad'
+
+# === RESIZE MODE ===
+cmd-r = 'mode resize'
+
+# === SYSTEM ===
 cmd-shift-c = 'reload-config'
-cmd-shift-f = 'layout floating tiling'
-f11 = 'fullscreen'
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#mode
-cmd-shift-m = 'mode manage'
-cmd-shift-r = 'mode resize'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#focus
-cmd-h = 'focus left'
-cmd-j = 'focus down'
-cmd-k = 'focus up'
-cmd-l = 'focus right'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#move
-cmd-shift-h = 'move left'
-cmd-shift-j = 'move down'
-cmd-shift-k = 'move up'
-cmd-shift-l = 'move right'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#resize
-cmd-shift-minus = 'resize smart -50'
-cmd-shift-equal = 'resize smart +50'
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-shift-1  = 'workspace 1'
-alt-shift-2 = 'workspace 2'
-alt-shift-3 = 'workspace 3'
-alt-shift-4 = 'workspace 4'
-alt-shift-5 = 'workspace 5'
-alt-shift-6 = 'workspace 6'
-alt-shift-7 = 'workspace 7'
-alt-shift-8 = 'workspace 8'
-alt-shift-9 = 'workspace 9'
-alt-shift-0 = 'workspace 10'
-
-# To move the current window and switch to a workspace (e.g., Control + Shift + 1)
-alt-ctrl-1 = ['move-node-to-workspace 1', 'workspace 1']
-alt-ctrl-2 = ['move-node-to-workspace 2', 'workspace 2']
-alt-ctrl-3 = ['move-node-to-workspace 3', 'workspace 3']
-alt-ctrl-4 = ['move-node-to-workspace 4', 'workspace 4']
-alt-ctrl-5 = ['move-node-to-workspace 5', 'workspace 5']
-alt-ctrl-6 = ['move-node-to-workspace 6', 'workspace 6']
-alt-ctrl-7 = ['move-node-to-workspace 7', 'workspace 7']
-alt-ctrl-8 = ['move-node-to-workspace 8', 'workspace 8']
-alt-ctrl-9 = ['move-node-to-workspace 9', 'workspace 9']
-alt-ctrl-0 = ['move-node-to-workspace 10', 'workspace 10']
-
-# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-alt-tab = 'workspace-back-and-forth'
-# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
-
-# 'manage' binding mode declaration.
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+# === 'manage' binding mode ===
+# This mode is now less necessary since we have split commands
+# But still useful for advanced operations
 [mode.manage.binding]
 esc = 'mode main'
 enter = 'mode main'
-c = ['reload-config', 'mode main'] # reload config
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
-#s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = [
-    'layout floating tiling',
-    'mode main',
-] # Toggle between floating and tiling layout
+f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
-h = ['join-with left', 'mode main']
-j = ['join-with down', 'mode main']
-k = ['join-with up', 'mode main']
-l = ['join-with right', 'mode main']
-
+# === 'resize' binding mode ===
+# Like sway's resize mode
 [mode.resize.binding]
-h = 'resize width -50'
-j = 'resize height +50'
-k = 'resize height -50'
-l = 'resize width +50'
+left = 'resize width -10'
+down = 'resize height +10'
+up = 'resize height -10'
+right = 'resize width +10'
 enter = 'mode main'
 esc = 'mode main'
-
-
