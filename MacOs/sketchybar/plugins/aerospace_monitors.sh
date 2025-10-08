@@ -1,4 +1,4 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 
 # This script monitors aerospace workspace changes and triggers sketchybar updates
 
