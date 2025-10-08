@@ -75,6 +75,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     
+    # PlatformIO (adjust path if different on your Mac)
+    export PATH="$PATH:$HOME/.platformio/penv/bin"
+    
     # Random Pokemon (using gshuf on macOS)
     pokeget $(gshuf -i 1-905 -n 1) --hide-name
     
