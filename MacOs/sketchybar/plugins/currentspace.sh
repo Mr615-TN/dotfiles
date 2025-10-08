@@ -1,11 +1,16 @@
 #!/usr/bin/env zsh
 
 update_space() {
-    SPACE_ID=$(echo "$INFO" | jq -r '."display-1"')
+    # Get the current focused workspace from aerospace
+    SPACE_ID=$(aerospace list-workspaces --focused)
+
+    if [ -z "$SPACE_ID" ]; then
+        SPACE_ID="1"
+    fi
 
     case $SPACE_ID in
     1)
-        ICON=
+        ICON=
         ICON_PADDING_LEFT=10
         ICON_PADDING_RIGHT=10
         ;;
@@ -17,7 +22,7 @@ update_space() {
     esac
 
     sketchybar --set $NAME \
-        icon=$ICON \
+        icon="$ICON" \
         icon.padding_left=$ICON_PADDING_LEFT \
         icon.padding_right=$ICON_PADDING_RIGHT
 }
