@@ -107,6 +107,7 @@ for sid in $(aerospace list-workspaces --all); do
         background.corner_radius=5 \
         background.height=20 \
         background.drawing=on \
+        icon.drawing=off \
         label="$sid" \
         label.color=0xff0a0a0a \
         click_script="aerospace workspace $sid" \
