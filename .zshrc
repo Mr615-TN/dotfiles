@@ -95,9 +95,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         fi
     fi
     unset __conda_setup
-    if [[ $- == *i* ]] && [[ $TERM == xterm-kitty ]]; then
-        fastfetch --config "$HOME/.config/fastfetch/config.jsonc"
-    fi
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # ===== Linux Configuration =====

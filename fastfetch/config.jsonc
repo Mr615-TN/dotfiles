@@ -71,18 +71,18 @@
     },
     {
       "type": "kernel",
-      "key": "  KERNEL:",
+      "key": " KERNEL:",
       "keyColor": "35",
       "keyWidth": "15"
     },
     {
       "type": "de",
-      "key": "  DE:",
+      "key": " DE:",
       "keyColor": "35"
     },
     {
       "type": "wm",
-      "key": "  WM:",
+      "key": " WM:",
       "keyColor": "35"
     },
     {
@@ -97,17 +97,17 @@
     },
     {
       "type": "cursor",
-      "key": " CURSOR:",
+      "key": "󰇀 CURSOR:",
       "keyColor": "35"
     },
     {
       "type": "terminal",
-      "key": " TERMINAL:",
+      "key": " TERMINAL:",
       "keyColor": "35"
     },
     {
       "type": "shell",
-      "key": "  SHELL:",
+      "key": " SHELL:",
       "keyColor": "35"
     },
     {
@@ -129,7 +129,7 @@
     },
     {
       "type": "memory",
-      "key": " RAM:",
+      "key": "󰑭 RAM:",
       "keyColor": "35"
     },
     {
@@ -139,7 +139,7 @@
     },
     {
       "type": "disk",
-      "key": " DISK:",
+      "key": " DISK:",
       "keyColor": "35",
       "temp": true
     },
