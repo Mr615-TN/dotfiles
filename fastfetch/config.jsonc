@@ -117,7 +117,7 @@
     },
     {
       "type": "cpu",
-      "key": "󰻠  CPU:",
+      "key": "󰻠 CPU:",
       "keyColor": "35",
       "temp": true
     },
