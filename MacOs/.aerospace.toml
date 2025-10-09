@@ -106,7 +106,7 @@ cmd-slash = 'layout accordion horizontal vertical'
 cmd-backslash = 'layout tiles horizontal vertical'
 
 # === WINDOW MANAGEMENT ===
-cmd-f = 'fullscreen'
+cmd-shift-f = 'fullscreen'
 cmd-shift-q = 'close'
 cmd-shift-space = 'layout floating tiling'  # Toggle floating
 
