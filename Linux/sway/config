@@ -87,7 +87,7 @@ input "type:keyboard" {
     bindsym $mod+b exec firefox
 
     #open browser (qutebrowser)
-    bindsym $mod+u exec qutebrowser
+    bindsym $mod+u exec brave-browser
 
     #open discord
     bindsym $mod+v exec flatpak run dev.vencord.Vesktop
