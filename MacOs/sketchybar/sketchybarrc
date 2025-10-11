@@ -139,7 +139,7 @@ sketchybar --add item weather right \
     --subscribe weather system_woke
 
 # Start aerospace workspace monitor
-   "$PLUGIN_SHARED_DIR/aerospace_monitor.sh" &
+   "$PLUGIN_SHARED_DIR/aerospace_monitors.sh" &
 ##### Finalizing Setup #####
 sketchybar --update
 sketchybar --trigger space_change
