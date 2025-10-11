@@ -1,40 +1,45 @@
 #!/usr/bin/env zsh
 
 update_space() {
-    # Get the current focused workspace from aerospace (with retry)
-    SPACE_ID=""
-    for i in 1 2 3 4 5; do
-        SPACE_ID=$(aerospace list-workspaces --focused 2>/dev/null)
-        if [ -n "$SPACE_ID" ]; then
-            break
-        fi
-        sleep 0.2
-    done
+    # Read the focused workspace ID directly from the environment variable 
+    # passed by the aerospace.toml trigger.
+    SPACE_ID="$FOCUSED_WORKSPACE"
 
-    # Fallback to workspace 1 if we couldn't get it
+    # Fallback if the variable is empty (e.g., on initial load)
     if [ -z "$SPACE_ID" ]; then
-        SPACE_ID="1"
+        # Revert to your original reliable method for initial load/fallback
+        SPACE_ID=$(aerospace list-workspaces --focused 2>/dev/null)
+        if [ -z "$SPACE_ID" ]; then
+            SPACE_ID="1"
+        fi
     fi
 
-    # Explicitly list all 10 common workspaces and set ICON to the space number
+    # The label is the most reliable way to display the number
+    LABEL_TEXT=$SPACE_ID
+    
+    # Use a specific icon for space 1 (like your friend's example) and numbers for the rest
     case $SPACE_ID in
-    1|2|3|4|5|6|7|8|9|10)
-        ICON=$SPACE_ID
-        ICON_PADDING_LEFT=10
-        ICON_PADDING_RIGHT=10
+    1)
+        # Use the specific icon for space 1 (example: a dev icon)
+        ICON_TEXT= 
         ;;
     *)
-        # Keep the wildcard for any unexpected workspace IDs (e.g., 'scratchpad' or named workspaces)
-        ICON=$SPACE_ID
-        ICON_PADDING_LEFT=10
-        ICON_PADDING_RIGHT=10
+        # Use a blank icon for all other spaces since the number is in the label
+        ICON_TEXT="" 
         ;;
     esac
 
+    # Ensure consistent padding
+    ICON_PADDING_LEFT=10
+    ICON_PADDING_RIGHT=10
+    
+    # Set the item properties
     sketchybar --set $NAME \
-        icon="$ICON" \
+        icon="$ICON_TEXT" \
         icon.padding_left=$ICON_PADDING_LEFT \
-        icon.padding_right=$ICON_PADDING_RIGHT
+        icon.padding_right=$ICON_PADDING_RIGHT \
+        label="$LABEL_TEXT" \
+        label.drawing=yes
 }
 
 case "$SENDER" in
