@@ -1,68 +1,72 @@
 return {
-  -- Better completion sources for all languages
+  -- blink.cmp configuration
   {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
+    lazy = false,
+    dependencies = "rafamadriz/friendly-snippets",
+    -- The `cargo build --release` step is necessary for the plugin to work,
+    -- as it has a Rust component. It should not be removed.
+    build = "cargo build --release",
+    opts = {
+      keymap = { preset = "default" },
+      appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = "mono",
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+    },
+
+    -- This function runs *after* the plugin is loaded but *before* it is fully set up.
+    -- It directly overrides the 'fuzzy' module to prevent the database from being created.
+    config = function(_, opts)
+      -- Load the blink.cmp module
+      local blink_cmp = require("blink.cmp")
+
+      -- Check if the fuzzy module exists before trying to patch it
+      if pcall(require, "blink.cmp.fuzzy") then
+        local fuzzy = require("blink.cmp.fuzzy")
+        -- Override the 'init_db' function with a blank one to prevent the error
+        fuzzy.init_db = function() end
+      end
+
+      -- Now, set up the plugin with the rest of your options
+      blink_cmp.setup(opts)
+    end,
+
+    -- opts_extend is not necessary here because we are using a custom config function
+  },
+
+  -- render-markdown.nvim configuration
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "saadparwaiz1/cmp_luasnip",
-      "rafamadriz/friendly-snippets", -- huge snippet collection
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-mini/mini.nvim", -- Use mini.nvim for icons
     },
     config = function()
-      local cmp = require("cmp")
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
+      require("render-markdown").setup({
+        completions = {
+          blink = {
+            enabled = true,
+          },
         },
-        mapping = cmp.mapping.preset.insert(),
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "path" },
-        }, {
-          { name = "buffer" },
-        }),
+        filetypes = {
+          markdown = {},
+          wiki = {},
+          latex = { enabled = false },
+        },
       })
     end,
-  },
-
-  -- Snippet engine
-  {
-    "L3MON4D3/LuaSnip",
-    version = "v2.*",
-    build = "make install_jsregexp",
-    dependencies = { "rafamadriz/friendly-snippets" },
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end,
-  },
-
-  -- Automatic formatting on save
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        c = { "clang-format" },
-        cpp = { "clang-format" },
-        python = { "black", "isort" },
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        rust = { "rustfmt" },
-        go = { "gofumpt", "goimports-reviser" },
-        java = { "google-java-format" },
-      },
-      format_on_save = { timeout_ms = 500, lsp_fallback = true },
-    },
   },
 
   -- mini.nvim for icons (dependency for render-markdown.nvim)
   {
     "nvim-mini/mini.nvim",
     version = false,
-    config = function() end, -- minimal setup
+    config = function()
+      -- Minimal setup for mini.nvim if you only need it for icons
+    end,
   },
 }
