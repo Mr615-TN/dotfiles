@@ -59,21 +59,6 @@ return {
     },
   },
 
-  -- render-markdown.nvim configuration (leave what you already had)
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-mini/mini.nvim",
-    },
-    config = function()
-      require("render-markdown").setup({
-        completions = { blink = { enabled = false } }, -- disable blink integration
-        filetypes = { markdown = {}, wiki = {}, latex = { enabled = false } },
-      })
-    end,
-  },
-
   -- mini.nvim for icons (dependency for render-markdown.nvim)
   {
     "nvim-mini/mini.nvim",
