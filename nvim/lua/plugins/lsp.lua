@@ -1,27 +1,118 @@
 return {
+  -- LSP Management (Mason)
+  -- Setting 'opts = {}' ensures we override LazyVim's default configuration for Mason
   {
-    "neovim/nvim-lspconfig",
-    enabled = false,
+    "mason-org/mason.nvim", -- Use the correct organization name
+    cmd = "Mason",
     opts = {
-      servers = {
-        pyright = {},
-        ts_ls = {},
-        clangd = {
-          cmd = {
-            "clangd",
-            "--background-index",
-            "--clang-tidy",
-            "--completion-style=detailed",
-            "--header-insertion=iwyu",
-            "--suggest-missing-includes",
-          },
-          filetypes = { "c", "cpp", "objc", "objcpp", "ino" },
-        },
-        rust_analyzer = {},
+      ensure_installed = {
+        "lua_ls",       -- Explicitly ensure lua_ls is targeted for installation
+        "pyright",      -- Python
+        "clangd",       -- C/C++
+        "rust_analyzer",-- Rust
+        "tsserver",     -- TypeScript/JavaScript
+        "html",         -- Web (HTML)
+        "cssls",        -- Web (CSS)
+        "gopls",        -- Go
+        "jdtls",        -- Java
+        "csharp_ls",    -- C#
+        "dockerls",     -- Dockerfiles
+        "jsonls",       -- JSON
+        "yamlls",       -- YAML
       },
     },
+    config = function(_, opts) -- Explicitly call setup to ensure Mason initializes correctly
+      require("mason").setup(opts)
+    end,
   },
-  -- Add PlatformIO support
+
+  -- LSP Configuration (LSPConfig + Mason Bridge)
+  -- This setup ensures nvim-lspconfig and mason-lspconfig work together
+  {
+    "neovim/nvim-lspconfig",
+    event = "BufReadPost",
+    dependencies = {
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      local lspconfig = require("lspconfig")
+      -- FIX: Use lspconfig.util for access to utility functions
+      local lsp_defaults = lspconfig.util.default_config
+
+      -- Helper to set up standard LSP keymaps
+      local on_attach = function(client, bufnr)
+        -- Ensure default on_attach behavior is run first
+        if lsp_defaults.on_attach then
+          lsp_defaults.on_attach(client, bufnr)
+        end
+        local map = function(mode, lhs, rhs, desc)
+          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc, silent = true })
+        end
+
+        -- Standard LSP mappings
+        map("n", "gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+        map("n", "gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+        map("n", "gr", vim.lsp.buf.references, "[G]oto [R]eferences")
+        map("n", "gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+        map("n", "K", vim.lsp.buf.hover, "Hover Documentation")
+        map("n", "<leader>ca", vim.lsp.buf.code_action, "Code [A]ction")
+        map("n", "<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+        map("n", "<leader>fD", vim.diagnostic.open_float, "Open floating diagnostic")
+        map("n", "[d", vim.diagnostic.goto_prev, "Go to previous diagnostic")
+        map("n", "]d", vim.diagnostic.goto_next, "Go to next diagnostic")
+      end
+
+      -- Setup LSPs via mason-lspconfig
+      require("mason-lspconfig").setup({
+        -- Default handler applies the common on_attach to most LSPs
+        handlers = {
+          function(server_name)
+            lspconfig[server_name].setup({
+              on_attach = on_attach,
+            })
+          end,
+
+          -- Custom setup for clangd (C/C++ needs better flags)
+          ["clangd"] = function()
+            lspconfig.clangd.setup({
+              on_attach = on_attach,
+              cmd = {
+                "clangd",
+                "--background-index",
+                "--clang-tidy",
+                "--completion-style=detailed",
+                "--header-insertion=iwyu",
+                "--suggest-missing-includes",
+                "--malloc-trim",
+                -- Ensures clangd looks for compilers in standard locations
+                "--query-driver=/usr/bin/gcc-*,/usr/bin/clang-*",
+              },
+              settings = {
+                clangd = {
+                  fallbackFlags = { "-std=c++20", "-Wall" },
+                },
+              },
+            })
+          end,
+
+          -- Custom setup for jdtls (Java requires project setup, this is a placeholder)
+          ["jdtls"] = function()
+            lspconfig.jdtls.setup({
+              on_attach = on_attach,
+              -- Placeholder config; real JDTLS setup is complex and requires external files
+              cmd = {
+                "jdtls",
+              },
+            })
+          end,
+        },
+      })
+    end,
+  },
+
+  -- PlatformIO support for Embedded C/C++ (Kept from existing config)
   {
     "nvim-lua/plenary.nvim",
   },
@@ -31,7 +122,8 @@ return {
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      vim.g.pio_terminal_split = "split" -- or "vsplit" for vertical split
+      vim.g.pio_terminal_split = "split"
     end,
   },
 }
+
