@@ -1,5 +1,4 @@
 return {
-  -- Explicitly DISABLE blink.cmp to resolve conflicts
   {
     "saghen/blink.cmp",
     enabled = false,
@@ -68,7 +67,6 @@ return {
     end,
   },
 
-  -- Formatting with conform.nvim
   {
     "stevearc/conform.nvim",
     dependencies = { "mason-org/mason.nvim" },
@@ -101,7 +99,6 @@ return {
     end,
   },
 
-  -- Testing with neotest
   {
     "nvim-neotest/neotest",
     dependencies = {
@@ -110,7 +107,6 @@ return {
       "nvim-neotest/neotest-vim-test", -- Fallback for generic runners
       "nvim-neotest/neotest-python",   -- Python (pytest, unittest)
       "haydenmeade/neotest-jest",      -- JavaScript/TypeScript/React
-      -- FIX: Changed repository name to the currently maintained one
       "rouge8/neotest-rust",           -- Rust (Corrected Repo)
     },
     config = function()
@@ -121,7 +117,6 @@ return {
         adapters = {
           require("neotest-python"),
           require("neotest-jest"),
-          -- FIX: Changed adapter module name to match the new repository
           require("neotest-rust"),
         },
       })
