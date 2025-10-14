@@ -81,3 +81,22 @@
         :desc "Toggle live HTML preview"
         "h" #'org-preview-html-mode)
   )
+
+;; Cross-platform PDF viewer setup for LaTeX
+(after! tex
+  ;; Enable SyncTeX (forward/backward search)
+  (setq TeX-source-correlate-mode t
+        TeX-source-correlate-start-server t)
+
+  ;; Select PDF viewer based on OS
+  (cond
+   ((eq system-type 'darwin) ;; macOS
+    (setq TeX-view-program-selection '((output-pdf "Skim")))
+    (setq TeX-view-program-list
+          '(("Skim" "open -a Skim.app %o"))))
+
+   ((eq system-type 'gnu/linux) ;; Linux
+    (setq TeX-view-program-selection '((output-pdf "Zathura")))
+    (setq TeX-view-program-list
+          '(("Zathura" "zathura %o"))))))
+
