@@ -1,4 +1,5 @@
 return {
+  -- Explicitly disable blink.cmp to prevent conflicts with nvim-cmp and crashing issues
   {
     "saghen/blink.cmp",
     enabled = false,
@@ -67,6 +68,7 @@ return {
     end,
   },
 
+  -- Formatting with conform.nvim
   {
     "stevearc/conform.nvim",
     dependencies = { "mason-org/mason.nvim" },
@@ -99,11 +101,13 @@ return {
     end,
   },
 
+  -- Testing with neotest
   {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/nvim-nio",               -- Added: Required dependency for async I/O
       "nvim-neotest/neotest-vim-test", -- Fallback for generic runners
       "nvim-neotest/neotest-python",   -- Python (pytest, unittest)
       "haydenmeade/neotest-jest",      -- JavaScript/TypeScript/React
@@ -130,7 +134,7 @@ return {
     },
   },
 
-  -- render-markdown.nvim configuration (Kept from existing config)
+  -- render-markdown.nvim configuration
   {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = {

@@ -1,12 +1,12 @@
 return {
   -- LSP Management (Mason)
-  -- Setting 'opts = {}' ensures we override LazyVim's default configuration for Mason
+  -- This setup ensures we explicitly manage which LSPs Mason installs.
   {
-    "mason-org/mason.nvim", -- Use the correct organization name
+    "mason-org/mason.nvim",
     cmd = "Mason",
     opts = {
       ensure_installed = {
-        "lua_ls",       -- Explicitly ensure lua_ls is targeted for installation
+        "lua_ls",       -- Lua
         "pyright",      -- Python
         "clangd",       -- C/C++
         "rust_analyzer",-- Rust
@@ -21,16 +21,17 @@ return {
         "yamlls",       -- YAML
       },
     },
-    config = function(_, opts) -- Explicitly call setup to ensure Mason initializes correctly
+    config = function(_, opts)
+      -- Explicitly calling setup ensures Mason initializes correctly
       require("mason").setup(opts)
     end,
   },
 
   -- LSP Configuration (LSPConfig + Mason Bridge)
-  -- This setup ensures nvim-lspconfig and mason-lspconfig work together
+  -- NOTE: Removed `enabled = false` to activate LSP.
   {
     "neovim/nvim-lspconfig",
-    event = "BufReadPost",
+    event = "BufReadPost", -- Load when a file is read
     dependencies = {
       "mason-org/mason.nvim",
       "mason-org/mason-lspconfig.nvim",
@@ -38,12 +39,10 @@ return {
     },
     config = function()
       local lspconfig = require("lspconfig")
-      -- FIX: Use lspconfig.util for access to utility functions
       local lsp_defaults = lspconfig.util.default_config
 
-      -- Helper to set up standard LSP keymaps
+      -- Define common LSP attachment function with keymaps
       local on_attach = function(client, bufnr)
-        -- Ensure default on_attach behavior is run first
         if lsp_defaults.on_attach then
           lsp_defaults.on_attach(client, bufnr)
         end
@@ -66,8 +65,8 @@ return {
 
       -- Setup LSPs via mason-lspconfig
       require("mason-lspconfig").setup({
-        -- Default handler applies the common on_attach to most LSPs
         handlers = {
+          -- Default handler applies the common on_attach to most LSPs
           function(server_name)
             lspconfig[server_name].setup({
               on_attach = on_attach,
@@ -86,7 +85,6 @@ return {
                 "--header-insertion=iwyu",
                 "--suggest-missing-includes",
                 "--malloc-trim",
-                -- Ensures clangd looks for compilers in standard locations
                 "--query-driver=/usr/bin/gcc-*,/usr/bin/clang-*",
               },
               settings = {
@@ -97,11 +95,10 @@ return {
             })
           end,
 
-          -- Custom setup for jdtls (Java requires project setup, this is a placeholder)
+          -- Custom setup for jdtls (Java placeholder)
           ["jdtls"] = function()
             lspconfig.jdtls.setup({
               on_attach = on_attach,
-              -- Placeholder config; real JDTLS setup is complex and requires external files
               cmd = {
                 "jdtls",
               },
@@ -112,7 +109,7 @@ return {
     end,
   },
 
-  -- PlatformIO support for Embedded C/C++ (Kept from existing config)
+  -- PlatformIO support for Embedded C/C++
   {
     "nvim-lua/plenary.nvim",
   },
@@ -126,4 +123,3 @@ return {
     end,
   },
 }
-
