@@ -99,4 +99,35 @@
     (setq TeX-view-program-selection '((output-pdf "Zathura")))
     (setq TeX-view-program-list
           '(("Zathura" "zathura %o"))))))
+;;; Berserk-ish tweaks – alpha-safe version ----------------------------
+;; 1. still use the dark-red theme
+(setq doom-theme 'doom-horizon)
 
+(after! doom-themes
+  (solaire-global-mode +1)
+
+  ;; 2. *opaque* colours only – Emacs is happy
+  (custom-set-faces!
+    `(default :background "#0c0b0d" :foreground "#e0d9d1")
+    `(font-lock-comment-face :foreground "#8b7d6b" :italic t)
+    `(font-lock-string-face :foreground "#c0392e")
+    `(error :foreground "#ff0055")
+    `(doom-modeline-bar :background "#c0392e")
+    `(doom-modeline-buffer-file :foreground "#ffffff" :weight bold))
+
+  ;; 3. add the alpha *after* the face is defined
+  (defun +my-set-alpha ()
+    "Set background opacity to 85 % on GUI frames."
+    (when (display-graphic-p)
+      (set-frame-parameter nil 'alpha-background 85)))
+  ;; run once now ...
+  (+my-set-alpha)
+  ;; ... and every time a new GUI frame appears
+  (add-hook 'after-make-frame-functions
+            (lambda (frame)
+              (when (display-graphic-p frame)
+                (with-selected-frame frame
+                  (+my-set-alpha))))))
+
+;; 4. floating windows (still legal – this is a frame parameter)
+(setq doom-floating-windows-extra-parameters '((alpha . 85)))
