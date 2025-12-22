@@ -1,53 +1,52 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 3,
+
   "palette": {
-    "base": "#000000",
-    "text": "#ffffff",
-    "ae86_white": "#f2f2f2",
-    "ae86_black": "#1a1a1a",
-    "red": "#e74c3c",
-    "yellow": "#f1c40f",
-    "blue": "#3498db",
-    "green": "#2ecc71",
-    "orange": "#f39c12",
-    "purple": "#9b59b6",
-    "gray": "#95a5a6"
+    "void": "#0b0b0b",
+    "ash": "#d6d6d6",
+    "bone": "#ffffff",
+    "iron": "#1a1a1a",
+    "steel": "#2a2a2a",
+
+    "blood": "#8b0000",
+    "blood_bright": "#ff2b2b",
+    "dried_blood": "#7a3b3b",
+
+    "gray": "#777777"
   },
+
   "blocks": [
     {
+      "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "foreground": "p:ae86_white",
+          "type": "session",
           "style": "plain",
-          "template": "[\uf1b9 {{ .UserName }}]",
-          "type": "session"
+          "foreground": "p:ash",
+          "template": "☩ {{ .UserName }}"
         },
         {
-          "foreground": "p:ae86_white",
-          "properties": {
-            "folder_separator_icon": "/",
-            "style": "full"
-          },
+          "type": "text",
           "style": "plain",
-          "template": " \u276f ",
-          "type": "text"
+          "foreground": "p:gray",
+          "template": " :: "
         },
         {
-          "foreground": "p:ae86_white",
-          "properties": {
-            "folder_separator_icon": "/",
-            "style": "folder"
-          },
+          "type": "path",
           "style": "plain",
-          "template": "{{ .Path }}",
-          "type": "path"
+          "foreground": "p:ash",
+          "properties": {
+            "style": "folder",
+            "folder_separator_icon": "/"
+          },
+          "template": "{{ .Path }}"
         },
         {
           "type": "git",
           "style": "plain",
-          "foreground": "p:red",
-          "powerline_symbol": "\ue0b0",
+          "foreground": "p:blood",
           "properties": {
             "fetch_status": true,
             "fetch_stash_count": true,
@@ -55,33 +54,33 @@
             "branch_status_ahead_icon": "↑",
             "branch_status_behind_icon": "↓",
             "branch_status_diverged_icon": "⇄",
-            "branch_status_up_to_date_icon": "✔"
+            "branch_status_up_to_date_icon": "·"
           },
-          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if .Working.Changed }} \u2699{{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \u26a0{{ .Staging.String }}{{ end }} {{ .BranchStatus }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} "
+          "template": " ⸸ {{ .HEAD }}{{ if .Working.Changed }} ✚{{ .Working.String }}{{ end }}{{ if .Staging.Changed }} ✦{{ .Staging.String }}{{ end }} {{ .BranchStatus }}{{ if gt .StashCount 0 }} ⚑ {{ .StashCount }}{{ end }}"
         },
         {
           "type": "python",
           "style": "plain",
-          "foreground": "p:yellow",
-          "template": "{{ if .Venv }}[\ue235 {{ .Venv }}] {{ end }}"
+          "foreground": "p:dried_blood",
+          "template": "{{ if .Venv }} ⟦ py {{ .Venv }} ⟧{{ end }}"
         },
         {
           "type": "rust",
           "style": "plain",
-          "foreground": "p:orange",
-          "template": "{{ if .Full }}[\ue7a8 {{ .Full }}] {{ end }}"
+          "foreground": "p:blood_bright",
+          "template": "{{ if .Full }} ⟦ rs {{ .Full }} ⟧{{ end }}"
         },
         {
           "type": "node",
           "style": "plain",
-          "foreground": "p:green",
-          "template": "{{ if .Full }}[\ue718 {{ .Full }}] {{ end }}"
+          "foreground": "p:gray",
+          "template": "{{ if .Full }} ⟦ node {{ .Full }} ⟧{{ end }}"
         },
         {
           "type": "command",
           "style": "plain",
-          "foreground": "p:gray",
-          "template": "{{ if eq .Code 0 }}[\ue61d C/C++] {{ end }}",
+          "foreground": "p:steel",
+          "template": " ⟦ C ⟧",
           "properties": {
             "shell": "bash",
             "command": "sh -c '[ -f Makefile ] || [ -f CMakeLists.txt ] || ls *.c *.cpp 1>/dev/null 2>&1'",
@@ -89,28 +88,27 @@
             "ignore_error": true
           }
         }
-      ],
-      "type": "prompt"
+      ]
     },
     {
+      "type": "prompt",
       "alignment": "left",
       "newline": true,
       "segments": [
         {
-          "foreground": "p:red",
+          "type": "root",
           "style": "plain",
-          "template": "\ue3bf ",
-          "type": "root"
+          "foreground": "p:blood_bright",
+          "template": "☩ "
         },
         {
-          "foreground": "p:red",
+          "type": "text",
           "style": "plain",
-          "template": "\u276f\u276f ",
-          "type": "text"
+          "foreground": "p:blood",
+          "template": "❯❯ "
         }
-      ],
-      "type": "prompt"
+      ]
     }
-  ],
-  "version": 3
+  ]
 }
+
