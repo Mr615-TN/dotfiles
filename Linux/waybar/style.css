@@ -1,262 +1,92 @@
-#temperature {
-    background: linear-gradient(45deg, #b7950b, #d68910, #f4d03f);
-    color: #2c3e50;
-    border-left: 3px solid #9a7d0a;
-    border-top: 1px solid rgba(212, 137, 16, 0.4);
-    text-shadow: 0 0 6px rgba(244, 208, 63, 0.8);
-}/* 頭文字D (Initial D) themed Waybar style */
-/* Inspired by the legendary street racing anime */
+/* ===============================
+   BERSERK – DARK FANTASY WAYBAR
+   ===============================
+   "In this world, is the destiny
+   of mankind controlled by some
+   transcendental entity?"
+*/
 
+/* === GLOBAL === */
 * {
-    /* Sleek monospaced font for that digital speedometer feel */
-    font-family: 'JetBrains Mono', 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
+    font-family: 'JetBrains Mono', 'Noto Sans Mono', monospace;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
+
     border: none;
-    border-radius: 0px;
-    margin: 0px;
-    padding: 0px;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
 }
 
-/* Main waybar window - like the dashboard of an AE86 */
+/* === WAYBAR CONTAINER === */
 window#waybar {
-    /* Dark gradient background reminiscent of Akina's midnight atmosphere */
-    background: linear-gradient(135deg, 
-        rgba(18, 18, 25, 0.95) 0%, 
-        rgba(25, 25, 35, 0.95) 50%, 
-        rgba(18, 18, 25, 0.95) 100%);
-    
-    /* Signature Akina SpeedStars yellow border */
-    border-bottom: 3px solid #ffcc00;
-    border-top: 1px solid rgba(255, 204, 0, 0.3);
-    
-    color: #ffffff;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    background: rgba(10, 10, 10, 0.95);
+    color: #d6d6d6;
+
+    border-bottom: 3px solid #6b0000;
+    border-top: 1px solid rgba(255, 0, 0, 0.15);
+
+    box-shadow:
+        0 0 12px rgba(120, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-/* Hover effects for interactive elements */
+/* === BUTTONS === */
 button {
     background: transparent;
-    border: none;
-    border-radius: 0px;
-    color: #ffffff;
+    color: #b0b0b0;
+    padding: 2px 8px;
     transition: all 0.2s ease;
-    margin: 0px 2px;
-    padding: 2px 6px;
 }
 
 button:hover {
-    background: linear-gradient(90deg, transparent, rgba(255, 204, 0, 0.2), transparent);
-    box-shadow: inset 0 -2px #ffcc00;
-    color: #ffcc00;
+    color: #ff2b2b;
+    text-shadow: 0 0 6px rgba(255, 43, 43, 0.6);
 }
 
-/* === WORKSPACES - Racing positions === */
+/* === WORKSPACES === */
 #workspaces {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    background: rgba(20, 20, 20, 0.8);
     padding: 2px 8px;
     margin: 4px 8px;
+    border-left: 2px solid #400000;
 }
 
 #workspaces button {
-    background: rgba(255, 255, 255, 0.05);
-    color: #888888;
-    border-radius: 4px;
-    margin: 2px 1px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #777;
+    margin: 2px;
     padding: 2px 8px;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 0, 0, 0.05);
 }
 
 #workspaces button.active {
-    background: linear-gradient(45deg, #ffcc00, #ffd700);
-    color: #000000;
-    font-weight: bold;
-    box-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
-    border: 1px solid #ffcc00;
+    color: #ff2b2b;
+    border: 1px solid #8b0000;
+    box-shadow:
+        0 0 8px rgba(255, 0, 0, 0.6);
+    background: rgba(90, 0, 0, 0.35);
 }
 
 #workspaces button.urgent {
-    background: linear-gradient(45deg, #ff4444, #ff6666);
     color: #ffffff;
-    animation: blink 1s ease-in-out infinite alternate;
+    background: #8b0000;
+    animation: eclipse-blink 1s infinite alternate;
 }
 
-#workspaces button:hover {
-    background: rgba(255, 204, 0, 0.3);
-    color: #ffcc00;
-    box-shadow: 0 0 4px rgba(255, 204, 0, 0.3);
-}
-
-/* === WINDOW TITLE - Current race === */
+/* === WINDOW TITLE === */
 #window {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    color: #cfcfcf;
     padding: 6px 16px;
     margin: 4px 8px;
-    font-weight: bold;
-    color: #ffcc00;
-    text-shadow: 0 0 4px rgba(255, 204, 0, 0.3);
+
+    border-left: 2px solid #6b0000;
+    background: rgba(15, 15, 15, 0.7);
+
+    text-shadow: 0 0 4px rgba(255, 0, 0, 0.25);
 }
 
-/* === RIGHT MODULES - Dashboard gauges === */
-#clock {
-    background: linear-gradient(45deg, #2c3e50, #34495e);
-    color: #ffffff;
-    font-weight: bold;
-    text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
-    border-left: 2px solid #3498db;
-}
-
-#pulseaudio {
-    background: linear-gradient(45deg, #e74c3c, #ff6b6b);
-    color: #ffffff;
-    border-left: 2px solid #c0392b;
-}
-
-#pulseaudio.muted {
-    background: linear-gradient(45deg, #7f8c8d, #95a5a6);
-    color: #2c3e50;
-}
-
-#network {
-    background: linear-gradient(45deg, #3498db, #5dade2);
-    color: #ffffff;
-    border-left: 2px solid #2980b9;
-}
-
-#network.disconnected {
-    background: linear-gradient(45deg, #7f8c8d, #95a5a6);
-    color: #2c3e50;
-}
-
-#battery {
-    background: linear-gradient(45deg, #2ecc71, #58d68d);
-    color: #ffffff;
-    border-left: 2px solid #27ae60;
-}
-
-#battery.warning {
-    background: linear-gradient(45deg, #f39c12, #f7dc6f);
-    color: #2c3e50;
-    animation: warning-pulse 2s ease-in-out infinite alternate;
-}
-
-#battery.critical {
-    background: linear-gradient(45deg, #e74c3c, #ff6b6b);
-    color: #ffffff;
-    animation: critical-blink 1s ease-in-out infinite alternate;
-}
-
-#cpu {
-    background: linear-gradient(45deg, #8e44ad, #bb8fce);
-    color: #ffffff;
-    border-left: 2px solid #7d3c98;
-}
-
-#cpu.warning {
-    background: linear-gradient(45deg, #f39c12, #f7dc6f);
-    color: #2c3e50;
-}
-
-#cpu.critical {
-    background: linear-gradient(45deg, #e74c3c, #ff6b6b);
-    color: #ffffff;
-}
-
-#memory {
-    background: linear-gradient(45deg, #16a085, #5dbeaa);
-    color: #ffffff;
-    border-left: 2px solid #138d75;
-}
-
-#temperature {
-    background: linear-gradient(45deg, #d68910, #f4d03f);
-    color: #2c3e50;
-    border-left: 2px solid #b7950b;
-}
-
-#temperature.critical {
-    background: linear-gradient(45deg, #e74c3c, #ff6b6b);
-    color: #ffffff;
-    animation: critical-blink 1s ease-in-out infinite alternate;
-}
-
-#idle_inhibitor {
-    background: rgba(0, 0, 0, 0.2);
-    color: #888888;
-}
-
-#idle_inhibitor.activated {
-    background: linear-gradient(45deg, #ffcc00, #ffd700);
-    color: #000000;
-}
-
-#tray {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    padding: 2px 8px;
-    margin: 4px 8px;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
-}
-
-/* === MODE DISPLAY === */
-#mode {
-    background: linear-gradient(45deg, #ff4444, #ff6666);
-    color: #ffffff;
-    font-weight: bold;
-    border-radius: 8px;
-    padding: 6px 12px;
-    margin: 4px 8px;
-    animation: mode-pulse 2s ease-in-out infinite alternate;
-}
-
-/* === ANIMATIONS === */
-@keyframes blink {
-    to {
-        background-color: #ff6666;
-        color: #ffffff;
-    }
-}
-
-@keyframes warning-pulse {
-    from {
-        box-shadow: 0 0 0 rgba(243, 156, 18, 0.4);
-    }
-    to {
-        box-shadow: 0 0 8px rgba(243, 156, 18, 0.8);
-    }
-}
-
-@keyframes critical-blink {
-    from {
-        box-shadow: 0 0 4px rgba(231, 76, 60, 0.8);
-    }
-    to {
-        box-shadow: 0 0 12px rgba(231, 76, 60, 1);
-    }
-}
-
-@keyframes mode-pulse {
-    from {
-        box-shadow: 0 0 4px rgba(255, 68, 68, 0.6);
-    }
-    to {
-        box-shadow: 0 0 12px rgba(255, 68, 68, 1);
-    }
-}
-
-/* === モジュールスタイリング - プロドライバー仕様 === */
+/* === MODULE BASE === */
 #clock,
 #pulseaudio,
 #network,
@@ -267,15 +97,20 @@ button:hover {
 #idle_inhibitor {
     padding: 7px 14px;
     margin: 5px 3px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    background: rgba(18, 18, 18, 0.85);
+    color: #d0d0d0;
+
+    border-left: 2px solid #400000;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 0 6px rgba(0, 0, 0, 0.8);
+
+    transition: all 0.25s ease;
 }
 
+/* === HOVER – BRAND GLOW === */
 #clock:hover,
 #pulseaudio:hover,
 #network:hover,
@@ -284,8 +119,94 @@ button:hover {
 #memory:hover,
 #temperature:hover,
 #idle_inhibitor:hover {
-    box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.3),
-        0 0 8px rgba(255, 204, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    color: #ff2b2b;
+    border-left: 2px solid #ff0000;
+
+    box-shadow:
+        0 0 12px rgba(255, 0, 0, 0.5),
+        inset 0 0 0 1px rgba(255, 0, 0, 0.2);
 }
+
+/* === BATTERY STATES === */
+#battery.warning {
+    color: #f1c40f;
+    border-left-color: #f1c40f;
+}
+
+#battery.critical {
+    color: #ffffff;
+    background: rgba(120, 0, 0, 0.85);
+    animation: eclipse-blink 0.8s infinite alternate;
+}
+
+/* === CPU === */
+#cpu.warning {
+    color: #f39c12;
+}
+
+#cpu.critical {
+    color: #ffffff;
+    background: rgba(120, 0, 0, 0.8);
+}
+
+/* === TEMPERATURE === */
+#temperature {
+    color: #e0a800;
+}
+
+#temperature.critical {
+    color: #ffffff;
+    background: rgba(120, 0, 0, 0.85);
+    animation: eclipse-blink 0.8s infinite alternate;
+}
+
+/* === NETWORK === */
+#network.disconnected {
+    color: #777;
+    background: rgba(30, 30, 30, 0.8);
+}
+
+/* === IDLE INHIBITOR === */
+#idle_inhibitor.activated {
+    color: #ff2b2b;
+    text-shadow: 0 0 6px rgba(255, 0, 0, 0.7);
+}
+
+/* === TRAY === */
+#tray {
+    background: rgba(15, 15, 15, 0.7);
+    margin: 4px 8px;
+    padding: 2px 8px;
+    border-left: 2px solid #400000;
+}
+
+/* === MODE === */
+#mode {
+    background: rgba(120, 0, 0, 0.9);
+    color: #ffffff;
+    padding: 6px 14px;
+    margin: 4px 8px;
+
+    text-shadow: 0 0 6px rgba(255, 0, 0, 0.9);
+    animation: brand-pulse 2s infinite alternate;
+}
+
+/* === ANIMATIONS === */
+@keyframes eclipse-blink {
+    from {
+        box-shadow: 0 0 4px rgba(255, 0, 0, 0.5);
+    }
+    to {
+        box-shadow: 0 0 14px rgba(255, 0, 0, 1);
+    }
+}
+
+@keyframes brand-pulse {
+    from {
+        box-shadow: 0 0 6px rgba(255, 0, 0, 0.6);
+    }
+    to {
+        box-shadow: 0 0 16px rgba(255, 0, 0, 1);
+    }
+}
+

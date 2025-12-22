@@ -1,16 +1,21 @@
 // -*- mode: jsonc -*-
+// ☩ BERSERK — FULL ECLIPSE WAYBAR ☩
+
 {
     "layer": "top",
     "position": "bottom",
     "height": 35,
     "spacing": 8,
+
     "modules-left": [
         "sway/workspaces",
         "sway/mode"
     ],
+
     "modules-center": [
         "sway/window"
     ],
+
     "modules-right": [
         "clock",
         "pulseaudio",
@@ -22,112 +27,142 @@
         "idle_inhibitor",
         "tray"
     ],
-    // Modules configuration
+
+    /* ==========================
+       WORKSPACES — CURSED RUNES
+       ========================== */
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "warp-on-scroll": false,
         "format": "{name}",
         "format-icons": {
-            "1": "🏁",
-            "2": "🏎️", 
-            "3": "⚡",
-            "4": "🔧",
-            "5": "📱",
-            "urgent": "🚨",
-            "focused": "🎯",
-            "default": "💨"
+            "urgent": "ᛉ",
+            "focused": "ᛇ",
+            "default": "ᚠ"
         }
     },
+
+    /* ==========================
+       MODE — BRAND OF SACRIFICE
+       ========================== */
     "sway/mode": {
-        "format": "<span style=\"italic\">🏁 {} MODE 🏁</span>"
-    },
-    "sway/window": {
-        "format": "{} - 頭文字D",
-        "max-length": 50,
+        "format": "<span font-weight='bold'>☩ {}</span>",
         "tooltip": false
     },
+
+    /* ==========================
+       WINDOW TITLE — SILENT STEEL
+       ========================== */
+    "sway/window": {
+        "format": "{title}",
+        "max-length": 60,
+        "tooltip": false
+    },
+
+    /* ==========================
+       CLOCK — ECLIPSE TIME
+       ========================== */
     "clock": {
-        "format": "<span font-weight='bold'>⏰ {:%H:%M:%S}</span>",
-        "format-alt": "<span font-weight='bold'>📅 {:%Y-%m-%d}</span>",
-        "tooltip-format": "<big>📅 {:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "on-click": "mode"
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d}",
+        "tooltip-format": "<big>☩ {:%Y %B}</big>\n<tt>{calendar}</tt>",
+        "interval": 1
     },
+
+    /* ==========================
+       AUDIO — VOID VOICES
+       ========================== */
     "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} 🔵",
-        "format-bluetooth-muted": "🔇 {icon} 🔵",
-        "format-muted": "🔇",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "🎧",
-            "hands-free": "🎤",
-            "headset": "🎧",
-            "phone": "📱",
-            "portable": "🔊",
-            "car": "🚗",
-            "default": ["🔈", "🔉", "🔊"]
-        },
-        "on-click": "pavucontrol",
-        "tooltip": true
+        "format": "{volume}%",
+        "format-muted": "X",
+        "format-bluetooth": "{volume}%ᛇ",
+        "format-bluetooth-muted": "Xᛇ",
+        "tooltip": true,
+        "on-click": "pavucontrol"
     },
+
+    /* ==========================
+       NETWORK — TETHERED
+       ========================== */
     "network": {
-        "format-wifi": "📶 {essid} ({signalStrength}%)",
-        "format-ethernet": "🔌 {ifname}: {ipaddr}/{cidr}",
-        "format-linked": "🔗 {ifname} (No IP)",
-        "format-disconnected": "❌ Disconnected",
-        "format-alt": "🌐 {ifname}: {ipaddr}",
-        "tooltip-format": "🌐 {ifname} via {gwaddr}",
-        "tooltip-format-wifi": "📶 {essid} ({signalStrength}%)\n🔒 {frequency}MHz\n📍 {ipaddr}/{cidr}",
+        "format-wifi": "{signalStrength}%",
+        "format-ethernet": "{ipaddr}",
+        "format-linked": "…",
+        "format-disconnected": "X",
+        "tooltip-format": "☩ {ifname}\n{ipaddr}/{cidr}",
+        "tooltip-format-wifi": "☩ {essid}\n{signalStrength}%\n{ipaddr}/{cidr}",
         "on-click": "nmtui"
     },
+
+    /* ==========================
+       BATTERY — LIFE FORCE
+       ========================== */
     "battery": {
         "states": {
-            "good": 95,
+            "good": 90,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-charging": "⚡ {capacity}%",
-        "format-plugged": "🔌 {capacity}%",
-        "format-alt": "⏱️ {time} {icon}",
-        "format-full": "💯 FULL",
-        "format-icons": ["🪫", "🔋", "🔋", "🔋", "🔋"],
+        "format": "{capacity}%",
+        "format-charging": "+{capacity}%",
+        "format-plugged": "+{capacity}%",
+        "format-full": "100%",
         "tooltip": true
     },
+
+    /* ==========================
+       CPU — STRAIN
+       ========================== */
     "cpu": {
-        "format": "🏎️ {usage}%",
-        "tooltip": true,
+        "format": "{usage}%",
         "states": {
             "warning": 70,
             "critical": 90
-        }
+        },
+        "tooltip": true
     },
+
+    /* ==========================
+       MEMORY — MIND
+       ========================== */
     "memory": {
-        "format": "🧠 {percentage}%",
+        "format": "{percentage}%",
         "tooltip": true,
-        "tooltip-format": "Memory: {used:0.1f}G/{total:0.1f}G\nSwap: {swapUsed:0.1f}G/{swapTotal:0.1f}G"
+        "tooltip-format": "RAM {used:0.1f}G / {total:0.1f}G\nSWAP {swapUsed:0.1f}G / {swapTotal:0.1f}G"
     },
+
+    /* ==========================
+       TEMPERATURE — HELLFIRE
+       ========================== */
     "temperature": {
         "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "format": "🌡️ {temperatureC}°C",
-        "format-critical": "🔥 {temperatureC}°C",
-        "tooltip": true,
-        "critical-threshold": 80
+        "format": "{temperatureC}°",
+        "format-critical": "☩ {temperatureC}°",
+        "critical-threshold": 80,
+        "tooltip": true
     },
+
+    /* ==========================
+       IDLE INHIBITOR — WATCHER
+       ========================== */
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "🔒 集中",
-            "deactivated": "🔓 待機"
+            "activated": "☩",
+            "deactivated": "·"
         },
         "tooltip": true,
-        "tooltip-format": "ドライバー状態: {status}"
+        "tooltip-format": "State: {status}"
     },
+
+    /* ==========================
+       TRAY — RELICS
+       ========================== */
     "tray": {
         "icon-size": 16,
         "spacing": 8,
         "tooltip": true
     }
 }
+
