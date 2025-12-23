@@ -56,7 +56,7 @@
             "branch_status_diverged_icon": "⇄",
             "branch_status_up_to_date_icon": "·"
           },
-          "template": " ⸸ {{ .HEAD }}{{ if .Working.Changed }} ✚{{ .Working.String }}{{ end }}{{ if .Staging.Changed }} ✦{{ .Staging.String }}{{ end }} {{ .BranchStatus }}{{ if gt .StashCount 0 }} ⚑ {{ .StashCount }}{{ end }}"
+          "template": " ⛧ {{ .HEAD }}{{ if .Working.Changed }} ✚{{ .Working.String }}{{ end }}{{ if .Staging.Changed }} ✦{{ .Staging.String }}{{ end }} {{ .BranchStatus }}{{ if gt .StashCount 0 }} ⚑ {{ .StashCount }}{{ end }}"
         },
         {
           "type": "python",
