@@ -49,11 +49,11 @@ alias temacs='emacs -nw' # Emacs in terminal
 alias macsync='~/.emacs.d/bin/doom sync'      # Doom Emacs sync (macOS path)
 alias macdoctor='~/.emacs.d/bin/doom doctor'  # Doom Emacs doctor (macOS path)
 alias macupgrade='~/.emacs.d/bin/doom upgrade' # Doom Emacs upgrade (macOS path)
-alias macpurge='~/.emacs.d/bin/doom purge'    # Doom Emacs purge (macOS path)
+alias macpurge='~/.emacs.d/bin/doom gc'    # Doom Emacs purge (macOS path)
 alias fedsync='~/.config/emacs/bin/doom sync' # Doom Emacs sync (Fedora path)
 alias feddoctor='~/.config/emacs/bin/doom doctor' # Doom Emacs doctor (Fedora path)
 alias fedupgrade='~/.config/emacs/bin/doom upgrade' # Doom Emacs upgrade (Fedora path)
-alias fedpurge='~/.config/emacs/bin/doom purge' # Doom Emacs purge (Fedora path)
+alias fedpurge='~/.config/emacs/bin/doom gc' # Doom Emacs purge (Fedora path)
 
 # C/C++ Compiler Aliases
 alias cplus='g++ -std=gnu++20 -Wall -Wextra -Wshadow -Wconversion' # C++20
