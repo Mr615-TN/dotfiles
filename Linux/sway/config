@@ -132,6 +132,10 @@ input "type:keyboard" {
 
     # Power off the system
     bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the shutdown shortcut. Do you really want to power off?' -B 'Yes, power off' 'systemctl poweroff'
+
+    # Start/Stop Hacking Lab
+    bindsym $mod+Shift+l exec /home/tanish/.config/sway/scripts/lab.sh start
+    bindsym $mod+Shift+k exec /home/tanish/.config/sway/scripts/lab.sh stop
 #
 # Moving around:
 #
