@@ -304,7 +304,7 @@
         "deadOpacity": 0.6,
         "displayMode": "auto_hide",
         "enabled": true,
-        "floatingRatio": 1,
+        "floatingRatio": 0,
         "inactiveIndicators": false,
         "monitors": [
         ],
@@ -313,7 +313,7 @@
         ],
         "pinnedStatic": false,
         "position": "bottom",
-        "size": 1
+        "size": 0.24
     },
     "general": {
         "allowPanelsOnScreenWithoutBar": true,
