@@ -135,7 +135,7 @@
                     "useMonospaceFont": true
                 },
                 {
-                    "characterCount": 2,
+                    "characterCount": 10,
                     "colorizeIcons": false,
                     "emptyColor": "secondary",
                     "enableScrollWheel": true,
@@ -145,7 +145,7 @@
                     "hideUnoccupied": false,
                     "iconScale": 0.8,
                     "id": "Workspace",
-                    "labelMode": "index",
+                    "labelMode": "name",
                     "occupiedColor": "secondary",
                     "pillSize": 0.6,
                     "reverseScroll": false,
@@ -333,7 +333,7 @@
         "deadOpacity": 0.6,
         "displayMode": "auto_hide",
         "enabled": true,
-        "floatingRatio": 0,
+        "floatingRatio": 1,
         "inactiveIndicators": false,
         "monitors": [
         ],
@@ -342,7 +342,7 @@
         ],
         "pinnedStatic": false,
         "position": "bottom",
-        "size": 0.24
+        "size": 1
     },
     "general": {
         "allowPanelsOnScreenWithoutBar": true,
@@ -537,9 +537,9 @@
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
         "boxBorderEnabled": false,
-        "fontDefault": "JetBrainsMono NF",
+        "fontDefault": "JetBrainsMono NFM",
         "fontDefaultScale": 1,
-        "fontFixed": "JetBrainsMono NF",
+        "fontFixed": "JetBrainsMono NFM",
         "fontFixedScale": 1,
         "networkPanelView": "wifi",
         "panelBackgroundOpacity": 0.93,
