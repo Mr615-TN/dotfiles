@@ -60,26 +60,6 @@
         "widgets": {
             "center": [
                 {
-                    "characterCount": 10,
-                    "colorizeIcons": false,
-                    "emptyColor": "secondary",
-                    "enableScrollWheel": true,
-                    "focusedColor": "primary",
-                    "followFocusedScreen": false,
-                    "groupedBorderOpacity": 1,
-                    "hideUnoccupied": false,
-                    "iconScale": 0.8,
-                    "id": "Workspace",
-                    "labelMode": "none",
-                    "occupiedColor": "secondary",
-                    "pillSize": 0.6,
-                    "reverseScroll": false,
-                    "showApplications": false,
-                    "showBadge": true,
-                    "showLabelsOnlyWhenOccupied": true,
-                    "unfocusedIconsOpacity": 1
-                },
-                {
                     "defaultSettings": {
                         "completedCount": 0,
                         "count": 0,
@@ -103,9 +83,26 @@
                         "useCustomColors": false
                     },
                     "id": "plugin:todo"
-                }
-            ],
-            "left": [
+                },
+                {
+                    "compactMode": false,
+                    "compactShowAlbumArt": true,
+                    "compactShowVisualizer": false,
+                    "hideMode": "hidden",
+                    "hideWhenIdle": false,
+                    "id": "MediaMini",
+                    "maxWidth": 145,
+                    "panelShowAlbumArt": true,
+                    "panelShowVisualizer": true,
+                    "scrollingMode": "hover",
+                    "showAlbumArt": true,
+                    "showArtistFirst": true,
+                    "showProgressRing": true,
+                    "showVisualizer": false,
+                    "textColor": "none",
+                    "useFixedWidth": false,
+                    "visualizerType": "linear"
+                },
                 {
                     "clockColor": "none",
                     "customFont": "",
@@ -114,7 +111,9 @@
                     "id": "Clock",
                     "tooltipFormat": "HH:mm ddd, MMM dd",
                     "useCustomFont": false
-                },
+                }
+            ],
+            "left": [
                 {
                     "compactMode": true,
                     "diskPath": "/",
@@ -136,23 +135,24 @@
                     "useMonospaceFont": true
                 },
                 {
-                    "compactMode": false,
-                    "compactShowAlbumArt": true,
-                    "compactShowVisualizer": false,
-                    "hideMode": "hidden",
-                    "hideWhenIdle": false,
-                    "id": "MediaMini",
-                    "maxWidth": 145,
-                    "panelShowAlbumArt": true,
-                    "panelShowVisualizer": true,
-                    "scrollingMode": "hover",
-                    "showAlbumArt": true,
-                    "showArtistFirst": true,
-                    "showProgressRing": true,
-                    "showVisualizer": false,
-                    "textColor": "none",
-                    "useFixedWidth": false,
-                    "visualizerType": "linear"
+                    "characterCount": 2,
+                    "colorizeIcons": false,
+                    "emptyColor": "secondary",
+                    "enableScrollWheel": true,
+                    "focusedColor": "primary",
+                    "followFocusedScreen": false,
+                    "groupedBorderOpacity": 1,
+                    "hideUnoccupied": false,
+                    "iconScale": 0.8,
+                    "id": "Workspace",
+                    "labelMode": "index",
+                    "occupiedColor": "secondary",
+                    "pillSize": 0.6,
+                    "reverseScroll": false,
+                    "showApplications": false,
+                    "showBadge": true,
+                    "showLabelsOnlyWhenOccupied": true,
+                    "unfocusedIconsOpacity": 1
                 }
             ],
             "right": [
@@ -256,9 +256,9 @@
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
-        "predefinedScheme": "Berserk",
+        "predefinedScheme": "Ayu",
         "schedulingMode": "off",
-        "useWallpaperColors": true
+        "useWallpaperColors": false
     },
     "controlCenter": {
         "cards": [
