@@ -8,15 +8,6 @@
   "current_page_id": 0,
   "todos": [
     {
-      "id": 1771099015490,
-      "text": "Cancel free trial of Linkedin Premium by Feburary 20th",
-      "completed": false,
-      "createdAt": "2026-02-14T19:56:55.490Z",
-      "pageId": 0,
-      "priority": "high",
-      "details": ""
-    },
-    {
       "id": 1770932513250,
       "text": "Actually finish the stuff for the army",
       "completed": false,
@@ -35,7 +26,7 @@
       "details": ""
     }
   ],
-  "count": 3,
+  "count": 2,
   "completedCount": 0,
   "isExpanded": false,
   "useCustomColors": false,
