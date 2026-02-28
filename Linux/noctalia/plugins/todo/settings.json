@@ -6,27 +6,8 @@
     }
   ],
   "current_page_id": 0,
-  "todos": [
-    {
-      "id": 1770932513250,
-      "text": "Actually finish the stuff for the army",
-      "completed": false,
-      "createdAt": "2026-02-12T21:41:53.250Z",
-      "pageId": 0,
-      "priority": "medium",
-      "details": ""
-    },
-    {
-      "id": 1770932499557,
-      "text": "Figure out which MOS I want to do for the army",
-      "completed": false,
-      "createdAt": "2026-02-12T21:41:39.557Z",
-      "pageId": 0,
-      "priority": "medium",
-      "details": ""
-    }
-  ],
-  "count": 2,
+  "todos": [],
+  "count": 0,
   "completedCount": 0,
   "isExpanded": false,
   "useCustomColors": false,
