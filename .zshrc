@@ -49,7 +49,7 @@ fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # ===== macOS Configuration =====
-    
+    eval "$(/usr/libexec/path_helper)" 
     # Zellij config
     if [[ -z "$ZELLIJ" ]]; then
       :
