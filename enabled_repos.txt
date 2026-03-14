@@ -1,0 +1,6 @@
+repo id                                                    repo name
+brave-browser                                              Brave Browser
+docker-ce-stable                                           Docker CE Stable - x86_64
+slack                                                      slack
+terra                                                      Terra 43
+updates                                                    Fedora 43 - x86_64 - Updates
