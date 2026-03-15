@@ -89,7 +89,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         eval "$__conda_setup"
     else
         if [ -f "/Users/optimusprime/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/Users/optimusprime/miniconda3/etc/profile.d/conda.sh"
+# . "/Users/optimusprime/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
         else
             export PATH="/Users/optimusprime/miniconda3/bin:$PATH"
         fi
@@ -128,7 +128,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
         eval "$__conda_setup"
     else
         if [ -f "/home/tanish/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/home/tanish/miniconda3/etc/profile.d/conda.sh"
+# . "/home/tanish/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
         else
             export PATH="/home/tanish/miniconda3/bin:$PATH"
         fi
@@ -152,3 +152,19 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 export PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/tanish/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/tanish/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/tanish/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/tanish/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

@@ -277,9 +277,9 @@
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
-        "predefinedScheme": "Eldritch",
+        "predefinedScheme": "Berserk",
         "schedulingMode": "off",
-        "useWallpaperColors": true
+        "useWallpaperColors": false
     },
     "controlCenter": {
         "cards": [
@@ -643,7 +643,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/tanish/Pictures/Wallpapers",
+        "directory": "/home/tanish/GitHub/Tanish_Wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
