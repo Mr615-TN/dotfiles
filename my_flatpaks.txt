@@ -1,8 +1,0 @@
-com.github.tchx84.Flatseal
-com.mojang.Minecraft
-com.spotify.Client
-dev.vencord.Vesktop
-io.github.flattool.Warehouse
-one.flipperzero.qFlipper
-org.ferdium.Ferdium
-org.localsend.localsend_app
