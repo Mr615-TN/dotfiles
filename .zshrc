@@ -140,6 +140,10 @@ fi
 # Universal Initialization (Both OS)
 # ============================================
 
+# Go environment variables
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
 # Oh-my-posh prompt
 eval "$(oh-my-posh init zsh --config ~/.config/initiald.omp.json)"
 
