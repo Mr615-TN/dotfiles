@@ -161,4 +161,18 @@ return {
     "nvim-mini/mini.nvim",
     version = false,
   },
+
+  -- CSV Viewing and Editing
+  {
+    "hat0uma/csvview.nvim",
+    opts = {
+      parser = { comments = { "#", "//" } },
+      keymaps = {
+        -- Text objects for columns are very useful for editing
+        textobject_field_inner = "if",
+        textobject_field_outer = "af",
+      },
+    },
+    cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
+  },
 }
