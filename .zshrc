@@ -58,7 +58,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Homebrew paths
     export PATH="/opt/homebrew/bin:$PATH"
     export PATH=$PATH:/usr/local/bin
-    
+
+   # --- Auteck ---
+    export PATH="/Library/TeX/texbin:$PATH" 
     # Prefer Homebrew LLVM/clang
     export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
     export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
