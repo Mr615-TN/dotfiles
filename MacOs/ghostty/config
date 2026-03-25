@@ -1,42 +1,87 @@
+#
+# ☩ BERSERK — ECLIPSE OBSIDIAN (macOS)
+# Forged for MacBook Pro 14" M3 Pro
+#
+
+# ======================
+# FONT & RENDERING
+# ======================
+font-family = JetBrainsMono Nerd Font
+font-size = 12
+
+font-style-bold = auto
+font-style-italic = auto
+font-style-bold-italic = auto
+
+# Enable ligatures (kitty: disable_ligatures never)
+font-feature = calt
+font-feature = liga
+
+scrollback-limit = 10000
+
+# ======================
+# WINDOW
+# ======================
+window-padding-x = 0
+window-padding-y = 0
+background-opacity = 0.88
+
+# macOS specific
+macos-titlebar-style = hidden
+macos-titlebar-color = #0b0b0b
+macos-option-as-alt = left
 window-decoration = true
-window-theme = dark
-background-opacity = 0.85
-background-blur-radius = 20
-font-family = Maple Mono NF 
-font-size = 11
 
-font-feature = "-liga"
-font-style-italic = "auto"
-font-style-bold-italic = "auto"
+# ======================
+# COLORS — VOID & ASH
+# ======================
+foreground = #d8d8d8
+background = #0b0b0b
 
-# Cursor configuration
-cursor-color = "#51afef"
-cursor-text = "#282c34"
+# ======================
+# CURSOR — BRAND MARK
+# ======================
+cursor-color = #ff2b2b
+cursor-text = #0b0b0b
 
-# Colors
-foreground = "#bbc2cf"
-background = "#282c34"
+# ======================
+# SELECTION
+# ======================
+# selection-foreground = none  # Ghostty does not support "none"; omit to inherit
+selection-background = #2a0000
 
-# Selection colors
-selection-foreground = "#bbc2cf"
-selection-background = "#3f444a"
+# ======================
+# PALETTE — BLOOD & IRON
+# ======================
 
-# Normal colors
-palette = 0=#1c1f24
-palette = 1=#ff6c6b
-palette = 2=#98be65
-palette = 3=#ecbe7b
-palette = 4=#51afef
-palette = 5=#c678dd
-palette = 6=#46d9ff
-palette = 7=#bbc2cf
+# Black / Iron
+palette = 0=#141414
+palette = 8=#2a2a2a
 
-# Bright colors
-palette = 8=#5b6268
-palette = 9=#ff6c6b
-palette = 10=#98be65
-palette = 11=#ecbe7b
-palette = 12=#51afef
-palette = 13=#c678dd
-palette = 14=#46d9ff
-palette = 15=#bbc2cf
+# Blood Red (Brand of Sacrifice)
+palette = 1=#8b0000
+palette = 9=#b22222
+
+# Ash Gray
+palette = 2=#9a9a9a
+palette = 10=#b5b5b5
+
+# Dried Blood / Bronze
+palette = 3=#7a3b3b
+palette = 11=#9b4a4a
+
+# Cold Steel Blue-Gray
+palette = 4=#6f7a85
+palette = 12=#8a96a3
+
+# Void Purple (subtle)
+palette = 5=#4a3f4f
+palette = 13=#6b5f72
+
+# Bone Gray
+palette = 6=#8e8e8e
+palette = 14=#a5a5a5
+
+# White / Highlight
+palette = 7=#e5e5e5
+palette = 15=#ffffff
