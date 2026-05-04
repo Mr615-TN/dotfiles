@@ -160,7 +160,7 @@ cmd-shift-minus = 'move-node-to-workspace scratchpad'
 cmd-minus = 'workspace scratchpad'
 
 # === RESIZE MODE ===
-cmd-r = 'mode resize'
+cmd-shift-r = 'mode resize'
 
 # === SYSTEM ===
 cmd-shift-c = 'reload-config'
