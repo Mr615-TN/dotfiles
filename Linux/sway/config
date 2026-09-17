@@ -37,7 +37,7 @@ exec --no-startup-id brightnessctl -d dell::kbd_backlight set 0
 #exec qs -c noctalia
 exec noctalia
 
-exec_always waypaper --restore --backend swaybg
+#exec_always waypaper --restore --backend swaybg
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
